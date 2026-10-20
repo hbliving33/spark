@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=73999803">
+<link rel="stylesheet" href="assets/css/site.css?v=0d8f5d6c">
 </head>
 <body>
 <header class="top">
@@ -121,7 +121,24 @@
     </g>
     <!-- ocean -->
     <path class="sea" d="M1240 240 C 1300 236 1380 232 1440 230 V320 H1300Z"/>
-    <path class="surf s1" d="M1260 262 q18 -10 36 0 t36 0 t36 0 t36 0"/>
+    <!-- swimmers bobbing in the water -->
+    <g class="swimmer sw1"><circle class="sw-head" cx="1342" cy="305" r="5.6"/><path class="sw-cap" d="M1336.2 304 a5.8 5.4 0 0 1 11.6 0 Z"/><ellipse class="sw-water" cx="1342" cy="310.4" rx="9" ry="3.2"/><ellipse class="sw-ring" cx="1342" cy="308" rx="10" ry="2.6"/></g>
+    <g class="swimmer sw2"><circle class="sw-head" cx="1404" cy="301" r="5.6"/><path class="sw-hair" d="M1398.2 300 a5.8 5.4 0 0 1 11.6 0 Z"/><ellipse class="sw-water" cx="1404" cy="306.4" rx="9" ry="3.2"/><ellipse class="sw-ring" cx="1404" cy="304" rx="10" ry="2.6"/></g>
+    <!-- a curling wave with a surfer riding the face -->
+    <defs><linearGradient id="waveFace" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fc6ee"/><stop offset=".6" stop-color="#3a9ad0"/><stop offset="1" stop-color="#2a8cc4"/></linearGradient></defs>
+    <g class="bigwave">
+      <path class="wv-body" d="M1296 266 C 1328 262 1350 246 1364 222 C 1372 206 1390 198 1404 204 C 1414 209 1414 222 1403 226 C 1395 229 1390 221 1396 216 C 1418 220 1430 240 1440 246 V 280 H1306Z"/>
+      <path class="wv-lip" d="M1364 222 C 1372 206 1390 198 1404 204 C 1414 209 1414 222 1403 226 C 1395 229 1390 221 1396 216"/>
+      <path class="wv-foam" d="M1300 265 C 1324 262 1342 252 1354 238"/>
+      <circle class="wv-spray sp1" cx="1412" cy="200" r="2.2"/><circle class="wv-spray sp2" cx="1420" cy="208" r="1.6"/><circle class="wv-spray sp3" cx="1398" cy="194" r="1.8"/>
+    </g>
+    <g class="surfer">
+      <ellipse class="sf-board" cx="1346" cy="246" rx="17" ry="3.6" transform="rotate(-24 1346 246)"/>
+      <path class="sf-leg" d="M1340 247 L1344 236 L1350 242 M1344 236 L1352 238 L1354 244"/>
+      <path class="sf-body" d="M1347 236 L1352 224"/>
+      <path class="sf-arm" d="M1351 227 L1340 223 M1351 227 L1362 222"/>
+      <circle class="sf-head" cx="1354" cy="219" r="3.6"/>
+    </g>
     <path class="surf s2" d="M1290 290 q18 -10 36 0 t36 0 t36 0 t36 0"/>
   </svg></div>
   </section>
