@@ -157,7 +157,7 @@ home = f'''<main>
     <div class="sec-head"><div class="kicker">Around the neighborhood</div><h2>From our street <em>to the sand</em></h2>
       <p class="sec-lede">Suburbia Park sits right next to the Seaview ballfields, a short walk from the Santa Ana River Trail.  Hop on the trail and it's about two miles along the river to the beach.</p></div>
     <div class="map-grid">
-      <figure class="route-card" aria-label="Map from Suburbia Park to the beach">{ROUTE}<figcaption>Our way to the beach: a short walk to the river trail, then about two miles south along the river.  Simplified map.</figcaption></figure>
+      <figure class="route-card" aria-label="Map from Suburbia Park to the beach">{ROUTE}<figcaption>Our way to the beach: a short walk to the river trail, then about 2.2 miles south along the river.  Distances are approximate.  Simplified map.</figcaption></figure>
       <div class="gm">
         <div class="map-box"><iframe id="gmap" title="Google map of the Suburbia Park area" src="https://maps.google.com/maps?q=Suburbia%20Ln%2C%20Huntington%20Beach%2C%20CA%2092646&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
         <ol class="places" id="places">

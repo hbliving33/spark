@@ -693,3 +693,12 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .bat { stroke: #b07a3a; stroke-width: 1.8; stroke-linecap: round; }
 .scene .bb-glove { fill: #8a5a2b; }
 .scene .bb-ball { fill: #fff; stroke: #d0d0d0; stroke-width: .4; }
+
+/* Route map: streets, bridge and mileage */
+.route .road.st { stroke: #fff; stroke-width: 6; }
+.route .hbridge rect { fill: #b9c3c9; } .route .hbridge path { stroke: #5d6b78; stroke-width: 1.6; }
+.route .mk-st { stroke: var(--navy); fill: #fff; }
+.route .stname { font-family: var(--body); font-weight: 800; font-size: 12px; fill: var(--navy); paint-order: stroke; stroke: #f1ede3; stroke-width: 4px; stroke-linejoin: round; }
+.route .stname.sm { font-size: 10px; fill: #5d6b78; }
+.route .mi rect { fill: var(--ocean); } .route .mi text { font-family: var(--display); font-weight: 600; font-size: 12px; fill: #fff; text-anchor: middle; }
+.route .coastmi { font-family: var(--body); font-weight: 800; font-size: 12px; fill: #fff; letter-spacing: .02em; }
