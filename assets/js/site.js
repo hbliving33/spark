@@ -28,3 +28,17 @@ window.SP = {
   },
   kinds: { news: "News", lost: "Lost and found", sale: "For sale", free: "Free", recommend: "Recommendation", help: "Help wanted" }
 };
+
+// A menu link to the page you're already on scrolls back to the top instead of doing nothing.
+(() => {
+  const here = location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll('a[href="index.html"], a[href="calendar.html"], a[href="board.html"], a[href="suggestions.html"]').forEach((a) => {
+    if (a.getAttribute("href") !== here) return;
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      const nav = document.getElementById("nav"), btn = document.querySelector(".menu-btn");
+      if (nav && nav.classList.contains("open")) { nav.classList.remove("open"); if (btn) btn.setAttribute("aria-expanded", "false"); }
+    });
+  });
+})();

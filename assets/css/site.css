@@ -413,3 +413,16 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .bike { animation: ride 12s ease-in-out infinite alternate; }
 @keyframes ride { from { transform: translate(1016px, 284px); } to { transform: translate(1210px, 290px); } }
 @media (prefers-reduced-motion: reduce) { .scene .car, .scene .bike { animation: none; } .scene .c-1 { transform: translate(760px, 210px); } .scene .c-2 { transform: translate(1100px, 220px) scaleX(-1); } .scene .bike { transform: translate(1100px, 286px); } }
+
+/* Bike bridge over PCH */
+.scene .road { fill: #5d6b78; } .scene .lane { stroke: #ffd23f; stroke-width: 3; stroke-dasharray: 12 10; } .scene .edge { stroke: #fff; stroke-width: 2; }
+.scene .car-top rect { fill: var(--red); } .scene .car-top.c2 rect { fill: #ffd23f; } .scene .car-top .glass { fill: #cfe9f6; }
+.scene .pch-road { font-family: var(--display); font-weight: 700; font-size: 15px; fill: #fff; text-anchor: middle; letter-spacing: .1em; paint-order: stroke; stroke: #5d6b78; stroke-width: 6px; }
+.scene .trail { stroke: #e9d6a8; stroke-width: 10; stroke-linecap: round; }
+.scene .span { fill: none; stroke: #f4f7f9; stroke-width: 10; stroke-linecap: round; }
+.scene .rail2 { fill: none; stroke: var(--ocean); stroke-width: 3; }
+.scene .truss { fill: none; stroke: var(--ocean); stroke-width: 2.5; stroke-linecap: round; }
+.scene .col { stroke: #b9c3c9; stroke-width: 8; }
+.scene .route-hide { fill: none; stroke: none; }
+.scene .bike2 { fill: none; stroke: var(--navy); stroke-width: 2.5; stroke-linejoin: round; }
+.scene .bike2 .rider { fill: var(--red); stroke: none; } .scene .bike2 .helmet { fill: var(--ocean); stroke: none; }
