@@ -46,7 +46,6 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 
 /* Header: flag stripe on top */
 .top { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.top::before { content: ""; display: block; height: 8px; background: radial-gradient(circle, #fff 0 1.1px, transparent 1.7px) 3px 0 / 9px 4px, linear-gradient(var(--deep), var(--deep)) 0 0 / 140px 100% no-repeat, repeating-linear-gradient(180deg, var(--red) 0 2px, #fff 2px 4px); }
 .top-in { max-width: 1120px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
 .brand b { display: block; font-family: var(--display); font-weight: 700; font-size: 24px; line-height: 1; }
@@ -65,8 +64,8 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 }
 
 /* Hero: sky, sun, clouds, gulls and rolling waves */
-.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #b9e3f3 0%, #dcf2f9 45%, #fbf3e2 100%); padding: 70px 0 270px; }
-.hero-short { padding: 50px 0 220px; }
+.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #b9e3f3 0%, #dcf2f9 45%, #fbf3e2 100%); padding: 56px 0 120px; }
+.hero-short { padding: 46px 0 120px; }
 .hero-in { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .hero h1 { font-size: clamp(38px, 6vw, 72px); font-weight: 700; margin-top: 10px; max-width: 15ch; color: var(--navy); text-shadow: 0 2px 0 rgba(255, 255, 255, .6); }
 .hero-short h1 { font-size: clamp(34px, 5vw, 56px); }
@@ -151,7 +150,6 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 @media (max-width: 860px) { .around-grid { grid-template-columns: 1fr; } }
 
 .join { margin-top: 64px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; background: linear-gradient(135deg, var(--ocean), var(--deep)); color: var(--white); border-radius: 24px; padding: 34px 32px; position: relative; overflow: hidden; }
-.join::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: radial-gradient(circle, #fff 0 1.1px, transparent 1.7px) 3px 0 / 9px 4px, linear-gradient(var(--navy), var(--navy)) 0 0 / 140px 100% no-repeat, repeating-linear-gradient(180deg, var(--red) 0 2px, #fff 2px 4px); }
 .join h2 { color: var(--white); font-size: clamp(26px, 3vw, 34px); }
 .join p { margin: 8px 0 0; max-width: 54ch; color: #e1f3ff; }
 .join .cta-row { margin-top: 0; }
@@ -202,7 +200,7 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 /* Forms */
 .form-wrap { margin-top: 56px; }
 .card-form { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: 22px; padding: 30px 28px; box-shadow: var(--shadow); display: grid; gap: 16px; max-width: 760px; overflow: hidden; }
-.card-form::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: radial-gradient(circle, #fff 0 1.1px, transparent 1.7px) 3px 0 / 9px 4px, linear-gradient(var(--deep), var(--deep)) 0 0 / 140px 100% no-repeat, repeating-linear-gradient(180deg, var(--red) 0 2px, #fff 2px 4px); }
+.card-form { border-top: 6px solid var(--ocean); }
 .card-form h2 { font-size: 30px; }
 .card-form .fine { margin: -8px 0 0; color: var(--muted); }
 .card-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -309,3 +307,45 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 @media (max-width: 900px) { .map-grid { grid-template-columns: 1fr; } .map-box, .nb-map { min-height: 340px; } }
 .nb-pin span { transform: none; border-radius: 50%; }
 @media (max-width: 700px) { .tiles { margin-top: -12px; } }
+
+/* Hero layout with the route map card */
+.hero-home .hero-in { display: grid; grid-template-columns: 1.15fr minmax(280px, 400px); gap: 40px; align-items: center; }
+.hero-copy { min-width: 0; }
+.route-card { margin: 0; background: #fff; border-radius: 22px; padding: 10px; box-shadow: 0 18px 40px rgba(20, 48, 77, .18); border: 1px solid var(--line); }
+.route { width: 100%; height: auto; border-radius: 14px; background: #f1ede3; }
+.route-card figcaption { font-size: 13px; color: var(--muted); padding: 8px 6px 2px; line-height: 1.4; }
+.route .beach { fill: #f3dfb0; } .route .ocean { fill: url(#sea); } .route .foam { fill: none; stroke: #fff; stroke-width: 3; stroke-dasharray: 10 8; animation: foam 6s linear infinite; }
+.route .road { fill: none; stroke: #fff; stroke-width: 7; stroke-linecap: round; } .route .pch { stroke: #fbe7a8; }
+.route .hood { fill: rgba(230, 57, 70, .14); stroke: var(--red); stroke-width: 2; stroke-dasharray: 5 4; }
+.route .home-dot { fill: var(--red); stroke: #fff; stroke-width: 3; }
+.route .fld { fill: #5bbf6e; stroke: #fff; stroke-width: 1.5; } .route .dia { fill: #e2b07a; }
+.route .pole { stroke: var(--navy); stroke-width: 1.6; }
+.route .cloth { transform-box: fill-box; transform-origin: left center; animation: flutter 2.4s ease-in-out infinite; }
+.route .river { fill: none; stroke: #3d9fd6; stroke-width: 16; stroke-linecap: round; }
+.route .trail { fill: none; stroke: #c8a96b; stroke-width: 3; stroke-dasharray: 2 5; stroke-linecap: round; }
+.route .walk { fill: none; stroke: var(--red); stroke-width: 3; stroke-dasharray: 2 6; stroke-linecap: round; }
+.route .route-line { fill: none; stroke: none; }
+.route .rider-dot { fill: var(--red); stroke: #fff; stroke-width: 3; }
+.route .mk { fill: #fff; stroke: var(--ocean); stroke-width: 3; } .route .mk-beach { stroke: var(--coral); }
+.route .lb rect { fill: #fff; stroke: var(--line); } .route .lb text { font-family: var(--display); font-weight: 600; font-size: 14px; fill: var(--navy); text-anchor: middle; }
+.route .lb.small text { font-size: 12px; } .route .t-home rect { fill: var(--red); stroke: none; } .route .t-home text { fill: #fff; }
+.route .t-beach rect { fill: var(--coral); stroke: none; } .route .t-beach text { fill: #fff; }
+.route .lb.big rect { fill: var(--navy); stroke: none; } .route .lb.big text { fill: #fff; font-size: 16px; } .route .lb.big .sub { font-family: var(--body); font-weight: 600; font-size: 11.5px; fill: #cfe6f5; }
+.route .water { font-family: var(--display); font-weight: 600; font-size: 14px; fill: #fff; letter-spacing: .08em; text-anchor: middle; }
+.route .water.big { font-size: 20px; }
+.route .roadname { font-family: var(--body); font-weight: 700; font-size: 11px; fill: #8a7440; text-anchor: middle; letter-spacing: .04em; }
+.route .north circle { fill: #fff; stroke: var(--line); } .route .north path { fill: var(--navy); } .route .north text { font-family: var(--display); font-weight: 700; font-size: 12px; fill: var(--navy); text-anchor: middle; }
+@keyframes flutter { 50% { transform: skewY(5deg) scaleX(.94); } }
+@keyframes foam { to { stroke-dashoffset: -36; } }
+@media (max-width: 860px) { .hero-home .hero-in { grid-template-columns: 1fr; } .route-card { max-width: 420px; } }
+@media (prefers-reduced-motion: reduce) { .route .cloth, .route .foam { animation: none; } }
+
+/* Google map */
+.map-box iframe { display: block; width: 100%; height: 100%; min-height: 440px; border: 0; }
+@media (max-width: 900px) { .map-box iframe { min-height: 340px; } }
+
+/* Footer flag */
+.proud { display: flex; align-items: center; gap: 12px; font-weight: 700; color: #fff !important; }
+.usflag { width: 54px; height: auto; flex: none; border-radius: 2px; box-shadow: 0 2px 6px rgba(0, 0, 0, .3); }
+.usflag .fl-cloth { transform-origin: left center; animation: flutter 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .usflag .fl-cloth { animation: none; } }
