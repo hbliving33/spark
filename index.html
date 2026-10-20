@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=94c86969">
+<link rel="stylesheet" href="assets/css/site.css?v=41f7859c">
 </head>
 <body>
 <header class="top">
@@ -68,28 +68,17 @@
       <rect class="base" x="117" y="93" width="6" height="6"/><rect class="base" x="81" y="77" width="6" height="6"/><rect class="base" x="117" y="63" width="6" height="6"/><rect class="base" x="153" y="77" width="6" height="6"/>
       <g class="flag" transform="translate(196 52)"><path class="flagpole" d="M0 40 V0"/><rect class="fs1" x="1" y="0" width="22" height="14"/><rect class="fc" x="1" y="0" width="9" height="7"/><path class="fstr" d="M10 2 H23 M10 5 H23 M1 9 H23 M1 12 H23"/></g>
     </g>
-    <!-- river trail, then a bike bridge over Pacific Coast Highway to the sand -->
-    <path class="lawn" d="M790 236 L 944 236 L 944 320 H 790Z"/>
-    <path class="trail" d="M826 240 H 944"/>
-    <rect class="road" x="944" y="236" width="112" height="84"/>
-    <path class="lane" d="M1000 240 V320"/>
-    <path class="edge" d="M950 236 V320 M1050 236 V320"/>
-    <g clip-path="url(#pchClip)">
-      <g class="car-top"><rect x="-10" y="0" width="20" height="34" rx="6"/><rect class="glass" x="-7" y="7" width="14" height="8" rx="2"/><animateTransform attributeName="transform" type="translate" values="975 330;975 200" dur="4.5s" repeatCount="indefinite"/></g>
-      <g class="car-top c2"><rect x="-10" y="0" width="20" height="32" rx="6"/><rect class="glass" x="-7" y="18" width="14" height="8" rx="2"/><animateTransform attributeName="transform" type="translate" values="1025 196;1025 330" dur="5.5s" begin="-2s" repeatCount="indefinite"/></g>
-    </g>
-    <defs><clipPath id="pchClip"><rect x="944" y="236" width="112" height="84"/></clipPath></defs>
-    <path class="sand" d="M1056 236 C 1120 232 1180 236 1240 240 L 1300 320 H 1056Z"/>
-    <g class="bridge">
-      <path class="col" d="M930 236 V214 M1070 236 V214"/>
-      <path class="span" d="M880 236 Q 1000 156 1120 236"/>
-      <path class="truss" d="M930 205 L 960 192 M960 192 L 990 186 M1010 186 L 1040 192 M1040 192 L 1070 205 M945 210 V198 M975 202 V188 M1000 200 V184 M1025 202 V188 M1055 210 V198"/>
-      <path class="rail2" d="M880 228 Q 1000 148 1120 228"/>
-    </g>
-    <path id="bikeRoute" class="route-hide" d="M826 233 L 880 229 Q 1000 149 1120 229 L 1190 233"/>
-    <g class="bike2"><g transform="translate(-11 0)"><circle cx="0" cy="0" r="7"/><circle cx="22" cy="0" r="7"/><path d="M0 0 L8 -12 L18 -12 L22 0 M8 -12 L12 0 L0 0 M18 -12 L16 -18 M12 -14 L10 -22"/><circle class="rider" cx="11" cy="-28" r="4.5"/><path class="helmet" d="M6 -31 a5 4 0 0 1 10 0Z"/></g>
-      <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#bikeRoute"/></animateMotion></g>
-    <text class="pch-road" x="1000" y="300">PCH</text>
+    <!-- bike path from the park along the river trail, under PCH, out to the sand -->
+    <path class="lawn" d="M790 236 L 1010 236 L 1010 320 H 790Z"/>
+    <path class="sand" d="M1010 236 C 1100 232 1180 236 1240 240 L 1300 320 H 1010Z"/>
+    <path class="bikepath" d="M700 252 C 800 250 900 250 1000 252 S 1150 254 1236 258"/>
+    <rect class="tunnel" x="990" y="234" width="56" height="30" rx="4"/>
+    <g class="bike3"><g transform="translate(-11 -7)"><circle cx="0" cy="0" r="7"/><circle cx="22" cy="0" r="7"/><path d="M0 0 L8 -12 L18 -12 L22 0 M8 -12 L12 0 L0 0 M18 -12 L16 -18 M12 -14 L10 -22"/><circle class="rider" cx="11" cy="-28" r="4.5"/><path class="helmet" d="M6 -31 a5 4 0 0 1 10 0Z"/></g>
+      <animateMotion dur="11s" repeatCount="indefinite" path="M700 252 C 800 250 900 250 1000 252 S 1150 254 1236 258"/></g>
+    <!-- PCH overpass: the bike disappears underneath -->
+    <path class="overpass" fill-rule="evenodd" d="M984 214 H1052 V270 H984Z M996 268 V250 Q 1018 236 1040 250 V268Z"/>
+    <rect class="pchdeck" x="980" y="208" width="76" height="9" rx="2"/>
+    <path class="pchlane" d="M984 212.5 H1052"/>
     <g class="tower" transform="translate(1150 150)">
       <path class="legs" d="M8 86 L18 44 M52 86 L42 44 M14 66 H46"/>
       <rect class="deck" x="4" y="36" width="52" height="10"/>
@@ -103,7 +92,6 @@
     <path class="surf s1" d="M1260 262 q18 -10 36 0 t36 0 t36 0 t36 0"/>
     <path class="surf s2" d="M1290 290 q18 -10 36 0 t36 0 t36 0 t36 0"/>
     <!-- labels -->
-    <g class="lbl" transform="translate(872 272)"><rect x="-54" y="-17" width="108" height="30" rx="15"/><text y="4">River trail</text></g>
     <g class="lbl" transform="translate(1270 200)"><rect x="-44" y="-17" width="88" height="30" rx="15"/><text y="4">Beach</text></g>
     <g class="lbl" transform="translate(484 120)"><rect x="-56" y="-17" width="112" height="30" rx="15"/><text y="4">Playground</text></g>
     <g class="lbl" transform="translate(190 120)"><rect x="-70" y="-17" width="140" height="30" rx="15"/><text y="4">Suburbia Park</text></g>
