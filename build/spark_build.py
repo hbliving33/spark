@@ -448,4 +448,12 @@ for f, t, d, b, s in pages:
     if f in ('thanks.html', '404.html', 'admin.html', 'account.html', 'offline.html'):
         html = html.replace('<meta name="description"', '<meta name="robots" content="noindex">\n<meta name="description"', 1)
     (ROOT / f).write_text(html)
+# Stamp the offline worker with a version from every page, script and style, so phones pick up each update
+import glob
+h = hashlib.md5()
+for f in sorted(glob.glob(str(ROOT / '*.html')) + glob.glob(str(ROOT / 'assets/js/*.js')) + glob.glob(str(ROOT / 'assets/css/*.css'))):
+    h.update(pathlib.Path(f).read_bytes())
+sw = (ROOT / 'sw.js').read_text()
+sw = re.sub(r'const CACHE = "sp-[^"]*";', f'const CACHE = "sp-{h.hexdigest()[:10]}";', sw)
+(ROOT / 'sw.js').write_text(sw)
 print('built')

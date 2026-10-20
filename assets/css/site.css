@@ -654,7 +654,7 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
   .hero-home .scene-wrap, .hero-home .scene-wrap .scene { height: 170px; } .hero-home .scene-wrap .scene { width: 765px; }
   .hero-home .sun { display: none; }
 }
-@media (max-width: 700px) { .hero-home .scene-wrap .scene { position: relative; top: 9%; } }
+@media (max-width: 700px) { .hero-home .scene-wrap .scene { position: relative; top: 2%; } }
 /* Tab bar: always one row, labels shrink to fit */
 @media (max-width: 820px) {
   .tabbar { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }

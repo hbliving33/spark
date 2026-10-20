@@ -51,7 +51,16 @@ window.SP = {
 
 // Install as an app: offline support, and a one-time tip for adding to the Home Screen.
 (() => {
-  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    // When a new version is published, switch to it right away instead of showing the saved copy
+    let reloaded = false;
+    const hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadController && !reloaded) { reloaded = true; location.reload(); } });
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then((reg) => {
+      const check = () => reg.update().catch(() => {});
+      document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") check(); });
+    }).catch(() => {});
+  }
   const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
   let seen = false; try { seen = localStorage.getItem("sp-install-tip") === "1"; } catch (e) {}
   if (standalone || seen) return;
