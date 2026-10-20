@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suggestion Box | Suburbia Park</title>
+<meta name="description" content="Send an idea to make Suburbia Park even better.">
+<meta name="theme-color" content="#0b78c2">
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=4158ecc9">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html"><img src="assets/img/mark.svg" alt="" width="46" height="46"><span><b>Suburbia Park</b><small>Huntington Beach, California</small></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main"><a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="board.html">Bulletin Board</a><a href="suggestions.html" aria-current="page">Suggestion Box</a></nav>
+  </div>
+</header>
+<main>
+  <section class="hero hero-short">
+    <div class="sky" aria-hidden="true"><span class="sun"></span><span class="cloud c1"></span><span class="cloud c2"></span><span class="gull g1"></span><span class="gull g2"></span></div>
+    <div class="hero-in">
+      <div class="kicker">Suggestion box</div>
+      <h1>Got an <em>idea</em>?</h1>
+      <p class="lede">A new event, a safety concern, a fix around the neighborhood, or something that would make Suburbia Park a better place to live.  We read every one.</p>
+      
+    </div>
+    <svg class="waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0 70 C 240 20 480 120 720 70 S 1200 20 1440 70 V140 H0Z"/>
+    <path class="w2" d="M0 90 C 260 50 520 130 780 90 S 1240 50 1440 90 V140 H0Z"/>
+    <path class="w3" d="M0 110 C 300 80 600 140 900 110 S 1300 85 1440 110 V140 H0Z"/>
+  </svg>
+  </section>
+  <section class="wrap sugg">
+    <form class="card-form box-form" action="https://formsubmit.co/dc@hbliving.com" method="POST">
+      <div class="slot" aria-hidden="true"></div>
+      <h2>Drop it in the box</h2>
+      <input type="hidden" name="_subject" value="Suburbia Park: new suggestion">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://hbliving33.github.io/spark/thanks.html">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label>What's it about?
+        <select name="topic" required>
+          <option value="">Choose one</option><option>An event idea</option><option>Safety</option><option>Parks and the Seaview fields</option><option>Streets, parking and traffic</option><option>This website</option><option>Something else</option>
+        </select>
+      </label>
+      <label>Your idea<textarea name="idea" rows="6" required maxlength="1500"></textarea></label>
+      <div class="row">
+        <label>Your name <span class="opt">(optional)</span><input name="name"></label>
+        <label>Your email <span class="opt">(optional, if you'd like a reply)</span><input type="email" name="email"></label>
+      </div>
+      <button class="btn btn-red" type="submit">Drop it in</button>
+    </form>
+    <aside class="ideas">
+      <h3>Ideas to get you started</h3>
+      <ul>
+        <li><b>Block party</b><span>A summer evening with food, music and a bounce house.</span></li>
+        <li><b>Welcome wagon</b><span>A hello and a list of local favorites for new neighbors.</span></li>
+        <li><b>Beach cleanup</b><span>A Saturday morning on the sand, then breakfast together.</span></li>
+        <li><b>Neighborhood watch</b><span>Neighbors keeping an eye out for each other.</span></li>
+        <li><b>Movie night at the fields</b><span>A big screen and blankets on an off-season evening.</span></li>
+      </ul>
+    </aside>
+  </section>
+</main>
+<footer class="foot">
+  <div class="foot-wave"><svg class="waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0 70 C 240 20 480 120 720 70 S 1200 20 1440 70 V140 H0Z"/>
+    <path class="w2" d="M0 90 C 260 50 520 130 780 90 S 1240 50 1440 90 V140 H0Z"/>
+    <path class="w3" d="M0 110 C 300 80 600 140 900 110 S 1300 85 1440 110 V140 H0Z"/>
+  </svg></div>
+  <div class="foot-in">
+    <div>
+      <a class="brand brand-foot" href="index.html"><img src="assets/img/mark.svg" alt="" width="40" height="40"><span><b>Suburbia Park</b><small>A neighborhood in Surf City</small></span></a>
+      <p>Made by neighbors, for neighbors.  Not an official City of Huntington Beach website.</p>
+    </div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="board.html">Bulletin Board</a><a href="suggestions.html">Suggestion Box</a></nav>
+    <small>&copy; 2026 Suburbia Park neighbors.</small>
+  </div>
+</footer>
+<script src="assets/js/site.js?v=46ee5239"></script>
+
+</body>
+</html>
