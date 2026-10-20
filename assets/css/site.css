@@ -661,3 +661,25 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
   .tabbar a { font-size: clamp(9.5px, 2.7vw, 12px); white-space: nowrap; min-width: 0; }
   .tabbar svg { width: clamp(20px, 5.6vw, 24px); height: clamp(20px, 5.6vw, 24px); }
 }
+
+/* The wave and the surfer */
+.scene .wv-body { fill: url(#waveFace); }
+.scene .wv-lip { fill: none; stroke: #fff; stroke-width: 4; stroke-linecap: round; opacity: .95; }
+.scene .wv-foam { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 6 5; opacity: .85; animation: foam 3s linear infinite; }
+.scene .wv-spray { fill: #fff; animation: spray 2.4s ease-in-out infinite; } .scene .sp2 { animation-delay: -.8s; } .scene .sp3 { animation-delay: -1.6s; }
+.scene .bigwave { transform-box: fill-box; transform-origin: 50% 100%; animation: swell 5s ease-in-out infinite; }
+.scene .surfer { animation: carve 5s ease-in-out infinite; }
+.scene .sf-board { fill: #ffd23f; stroke: var(--red); stroke-width: 1.4; }
+.scene .sf-leg, .scene .sf-arm { fill: none; stroke: var(--navy); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.scene .sf-body { stroke: var(--navy); stroke-width: 4.4; stroke-linecap: round; }
+.scene .sf-head { fill: #f2c39b; }
+@keyframes swell { 50% { transform: scaleY(1.05); } }
+@keyframes carve { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(12px, -7px); } }
+@keyframes spray { 0%, 100% { opacity: 0; transform: translate(0, 0); } 40% { opacity: .9; } 80% { opacity: 0; transform: translate(5px, -6px); } }
+@media (prefers-reduced-motion: reduce) { .scene .bigwave, .scene .surfer, .scene .wv-spray, .scene .wv-foam { animation: none; } }
+.scene .sw-ring { fill: none; stroke: #fff; stroke-width: 1.8; opacity: .8; }
+.scene .sw-head { fill: #f2c39b; } .scene .sw-cap { fill: var(--red); } .scene .sw-hair { fill: #6b4a2b; }
+.scene .swimmer { animation: bob 3.2s ease-in-out infinite; } .scene .sw2 { animation-delay: -1.4s; animation-duration: 3.8s; }
+@keyframes bob { 50% { transform: translateY(2.5px); } }
+@media (prefers-reduced-motion: reduce) { .scene .swimmer { animation: none; } }
+.scene .sw-water { fill: #2a8cc4; }
