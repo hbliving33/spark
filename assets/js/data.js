@@ -17,7 +17,8 @@ window.SP_EVENTS = [
 ];
 
 window.SP_POSTS = [
-  { date: "2026-10-18", kind: "lost", title: "Found: blue boogie board", body: "Left near the Seaview fields after Saturday games.  Message the board to claim it.", sample: true },
+  { date: "2026-10-20", kind: "lost", title: "Found: keys at Seaview Park", body: "A ring of keys with a blue tag, found near the field after Saturday's games.  Describe them to claim.", sample: true },
+  { date: "2026-10-19", kind: "recommend", title: "Computer running slow?  Worried about viruses?", body: "A neighbor offers friendly computer help: virus cleanup, speed-ups, new computer setup and Wi-Fi fixes.", sample: true },
   { date: "2026-10-16", kind: "recommend", title: "Great local plumber", body: "Fixed our water heater same day and the price was fair.  Ask for details.", sample: true },
   { date: "2026-10-15", kind: "sale", title: "Kids' bikes for sale", body: "Two 20-inch bikes, good shape.  Perfect for riding to practice.", sample: true },
   { date: "2026-10-12", kind: "news", title: "Street sweeping reminder", body: "Check the posted signs on your street and move cars on sweeping days.", sample: true },
