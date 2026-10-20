@@ -449,3 +449,24 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .pchdeck { fill: #56636f; } .scene .pchside { fill: #c9d1d6; }
 .scene .pchlane { stroke: #ffd23f; stroke-width: 1.8; stroke-dasharray: 10 8; }
 .scene .guard { fill: none; stroke: #e7ecef; stroke-width: 2.2; stroke-linecap: round; }
+
+/* Family on bikes */
+.scene .fam .wh { fill: none; stroke: var(--navy); stroke-width: 2.4; }
+.scene .fam .frame { fill: none; stroke: var(--navy); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.scene .f-dad .frame { stroke: var(--ocean); } .scene .f-mom .frame { stroke: var(--red); } .scene .f-kid .frame { stroke: #2f9e5b; }
+.scene .fam .leg, .scene .fam .arm { fill: none; stroke: #2b3a4a; stroke-width: 3; stroke-linecap: round; }
+.scene .fam .torso { fill: none; stroke-width: 6; stroke-linecap: round; }
+.scene .dadc { stroke: #1d5f96; } .scene .momc { stroke: #ff8a5b; } .scene .kidc { stroke: #ffd23f; } .scene .tod { stroke: #ff9fb3; stroke-width: 5; }
+.scene .fam .face { fill: #f2c39b; stroke: none; }
+.scene .dadch { fill: var(--navy); } .scene .momch { fill: var(--red); } .scene .kidch { fill: #2f9e5b; } .scene .todh { fill: #ffd23f; }
+.scene .fam .hel { stroke: none; }
+.scene .cseat { fill: #ffd23f; stroke: var(--navy); stroke-width: 1.2; }
+.scene .fam .hair { fill: none; stroke: #6b4a2b; stroke-width: 3; stroke-linecap: round; }
+
+/* PCH heading toward the horizon */
+.scene .pch-road { fill: #5d6b78; }
+.scene .pch-line { stroke: #ffd23f; stroke-width: 2; stroke-dasharray: 5 6; }
+.scene .pch-edge { stroke: #fff; stroke-width: 1.6; opacity: .8; }
+.scene .pch-open { fill: #2f3a44; }
+.scene .pch-wall { stroke: #d5dce0; stroke-width: 5; stroke-linecap: round; }
+.scene .pch-rail { stroke: #e7ecef; stroke-width: 2.5; stroke-linecap: round; opacity: .9; }
