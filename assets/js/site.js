@@ -78,3 +78,26 @@ window.SP = {
   addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; show("<b>Get the Suburbia Park app</b> on your Home Screen.", () => deferred.prompt()); });
   if (ios && matchMedia("(max-width: 820px)").matches) setTimeout(() => show("<b>Get the app on your iPhone</b><br>1. Tap <b>&middot;&middot;&middot;</b> next to the web address at the bottom<br>2. Tap <b>Share</b><br>3. Scroll down, tap <b>Add to Home Screen</b>, then <b>Add</b>"), 2000);
 })();
+
+// Phones: the banner camera follows the riders, so they never leave the screen and it holds on the beach during their stop
+(() => {
+  const wrap = document.querySelector(".hero-home .scene-wrap") || document.querySelector(".scene-wrap");
+  if (!wrap) return;
+  const svg = wrap.querySelector("svg.scene"), lead = svg && svg.querySelector(".fam.f-mom");
+  if (!svg || !lead) return;
+  const mq = matchMedia("(max-width: 700px)");
+  let x = null;
+  function frame() {
+    if (mq.matches) {
+      svg.style.animation = "none";
+      const vw = wrap.clientWidth, w = svg.getBoundingClientRect().width;
+      const r = lead.getBoundingClientRect(), s = svg.getBoundingClientRect();
+      const riderX = r.left + r.width / 2 - s.left;              // rider position inside the picture
+      const target = Math.max(vw - w, Math.min(0, vw * 0.42 - riderX));
+      x = x === null ? target : x + (target - x) * 0.08;         // smooth follow
+      svg.style.transform = `translateX(${x.toFixed(1)}px)`;
+    } else if (x !== null) { svg.style.transform = ""; svg.style.animation = ""; x = null; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
