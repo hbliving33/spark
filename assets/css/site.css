@@ -426,3 +426,18 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .route-hide { fill: none; stroke: none; }
 .scene .bike2 { fill: none; stroke: var(--navy); stroke-width: 2.5; stroke-linejoin: round; }
 .scene .bike2 .rider { fill: var(--red); stroke: none; } .scene .bike2 .helmet { fill: var(--ocean); stroke: none; }
+
+/* Bike path and the small PCH underpass */
+.scene .bikepath { fill: none; stroke: #f2e3bd; stroke-width: 10; stroke-linecap: round; }
+.scene .tunnel { fill: #39434d; }
+.scene .overpass { fill: #c3ccd1; stroke: #9aa6ad; stroke-width: 1.5; }
+.scene .pchdeck { fill: #5d6b78; } .scene .pchlane { stroke: #ffd23f; stroke-width: 1.5; stroke-dasharray: 6 5; }
+.scene .bike3 { fill: none; stroke: var(--navy); stroke-width: 2.5; stroke-linejoin: round; }
+.scene .bike3 .rider { fill: var(--red); stroke: none; } .scene .bike3 .helmet { fill: var(--ocean); stroke: none; }
+/* Wide screens: scale the banner evenly instead of cropping it, so labels never ride up into the buttons */
+@media (min-width: 701px) {
+  .scene-wrap { height: auto; aspect-ratio: 1440 / 320; }
+  .scene { display: block; }
+  .hero { padding-bottom: max(230px, calc(100vw * 320 / 1440 - 30px)); }
+  .hero-short { padding-bottom: max(200px, calc(100vw * 320 / 1440 - 60px)); }
+}
