@@ -67,5 +67,5 @@ window.SP = {
     if (onGo) tip.querySelector(".it-go").onclick = () => { onGo(); close(); };
   };
   addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; show("<b>Get the Suburbia Park app</b> on your Home Screen.", () => deferred.prompt()); });
-  if (ios && matchMedia("(max-width: 820px)").matches) setTimeout(() => show("<b>Get the app:</b> tap the Share button, then <b>Add to Home Screen</b>."), 2500);
+  if (ios && matchMedia("(max-width: 820px)").matches) setTimeout(() => show("<b>Get the app on your iPhone</b><br>1. Tap <b>&middot;&middot;&middot;</b> next to the web address at the bottom<br>2. Tap <b>Share</b><br>3. Scroll down, tap <b>Add to Home Screen</b>, then <b>Add</b>"), 2000);
 })();
