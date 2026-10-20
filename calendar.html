@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=41f7859c">
+<link rel="stylesheet" href="assets/css/site.css?v=a15ca17c">
 </head>
 <body>
 <header class="top">
@@ -72,13 +72,18 @@
     <path class="lawn" d="M790 236 L 1010 236 L 1010 320 H 790Z"/>
     <path class="sand" d="M1010 236 C 1100 232 1180 236 1240 240 L 1300 320 H 1010Z"/>
     <path class="bikepath" d="M-30 276 C 300 272 700 278 1000 278 S 1150 280 1228 284"/>
-    <rect class="tunnel" x="990" y="258" width="56" height="34" rx="4"/>
-    <g class="bike3"><g transform="translate(-11 -7)"><circle cx="0" cy="0" r="7"/><circle cx="22" cy="0" r="7"/><path d="M0 0 L8 -12 L18 -12 L22 0 M8 -12 L12 0 L0 0 M18 -12 L16 -18 M12 -14 L10 -22"/><circle class="rider" cx="11" cy="-28" r="4.5"/><path class="helmet" d="M6 -31 a5 4 0 0 1 10 0Z"/></g>
-      <animateMotion dur="20s" repeatCount="indefinite" path="M-30 276 C 300 272 700 278 1000 278 S 1150 280 1228 284"/></g>
-    <!-- PCH overpass: the bike disappears underneath -->
-    <path class="overpass" fill-rule="evenodd" d="M984 216 H1052 V296 H984Z M996 294 V274 Q 1018 258 1040 274 V294Z"/>
-    <rect class="pchdeck" x="980" y="208" width="76" height="9" rx="2"/>
-    <path class="pchlane" d="M984 212.5 H1052"/>
+    <!-- shade under the PCH overpass -->
+    <path class="underpass" d="M972 248 H1066 L1074 300 H964Z"/>
+    <g class="bike3"><g><animateTransform attributeName="transform" type="scale" values="1 1;-1 1" keyTimes="0;0.5" calcMode="discrete" dur="40s" repeatCount="indefinite"/><g transform="translate(-11 -7)"><circle cx="0" cy="0" r="7"/><circle cx="22" cy="0" r="7"/><path d="M0 0 L8 -12 L18 -12 L22 0 M8 -12 L12 0 L0 0 M18 -12 L16 -18 M12 -14 L10 -22"/><circle class="rider" cx="11" cy="-28" r="4.5"/><path class="helmet" d="M6 -31 a5 4 0 0 1 10 0Z"/></g></g>
+      <animateMotion dur="40s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear" path="M-30 276 C 300 272 700 278 1000 278 S 1150 280 1228 284"/></g>
+    <!-- PCH overpass: a low road on embankments; the bike rides underneath -->
+    <path class="embank" d="M900 238 C 930 230 950 228 972 226 L 972 300 L 936 300 C 930 270 918 250 900 238Z"/>
+    <path class="embank sandy" d="M1066 226 C 1090 228 1110 230 1140 238 C 1122 250 1110 270 1104 300 L 1066 300Z"/>
+    <path class="abut" d="M964 226 H976 V300 H964Z M1062 226 H1074 V300 H1062Z"/>
+    <rect class="pchdeck" x="900" y="214" width="240" height="14" rx="3"/>
+    <rect class="pchside" x="900" y="226" width="240" height="6" rx="2"/>
+    <path class="pchlane" d="M908 221 H1132"/>
+    <path class="guard" d="M904 210 H1136 M914 210 V214 M944 210 V214 M974 210 V214 M1004 210 V214 M1034 210 V214 M1064 210 V214 M1094 210 V214 M1124 210 V214"/>
     <g class="tower" transform="translate(1150 150)">
       <path class="legs" d="M8 86 L18 44 M52 86 L42 44 M14 66 H46"/>
       <rect class="deck" x="4" y="36" width="52" height="10"/>

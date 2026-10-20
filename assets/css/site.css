@@ -441,3 +441,11 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
   .hero { padding-bottom: max(230px, calc(100vw * 320 / 1440 - 30px)); }
   .hero-short { padding-bottom: max(200px, calc(100vw * 320 / 1440 - 60px)); }
 }
+
+/* PCH overpass */
+.scene .underpass { fill: #3d4852; }
+.scene .embank { fill: #8fc77f; } .scene .embank.sandy { fill: #ead39f; }
+.scene .abut { fill: #c9d1d6; }
+.scene .pchdeck { fill: #56636f; } .scene .pchside { fill: #c9d1d6; }
+.scene .pchlane { stroke: #ffd23f; stroke-width: 1.8; stroke-dasharray: 10 8; }
+.scene .guard { fill: none; stroke: #e7ecef; stroke-width: 2.2; stroke-linecap: round; }
