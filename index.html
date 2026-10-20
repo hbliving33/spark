@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suburbia Park | Huntington Beach Neighborhood</title>
+<meta name="description" content="The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.">
+<meta name="theme-color" content="#0b78c2">
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=4158ecc9">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html"><img src="assets/img/mark.svg" alt="" width="46" height="46"><span><b>Suburbia Park</b><small>Huntington Beach, California</small></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="calendar.html">Calendar</a><a href="board.html">Bulletin Board</a><a href="suggestions.html">Suggestion Box</a></nav>
+  </div>
+</header>
+<main>
+  <section class="hero hero-home">
+    <div class="sky" aria-hidden="true"><span class="sun"></span><span class="cloud c1"></span><span class="cloud c2"></span><span class="gull g1"></span><span class="gull g2"></span></div>
+    <div class="hero-in">
+      <div class="kicker">Welcome, neighbor</div>
+      <h1>Life is better in <em>Suburbia Park</em>.</h1>
+      <p class="lede">A small neighborhood a short ride from the sand in Surf City, USA.  Find out what is happening, post a notice, and share your ideas for making the neighborhood even better.</p>
+      <div class="cta-row"><a class="btn btn-red" href="calendar.html">See what's happening</a><a class="btn btn-white" href="board.html">Visit the bulletin board</a></div>
+    </div>
+    <svg class="waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0 70 C 240 20 480 120 720 70 S 1200 20 1440 70 V140 H0Z"/>
+    <path class="w2" d="M0 90 C 260 50 520 130 780 90 S 1240 50 1440 90 V140 H0Z"/>
+    <path class="w3" d="M0 110 C 300 80 600 140 900 110 S 1300 85 1440 110 V140 H0Z"/>
+  </svg>
+  </section>
+
+  <section class="wrap tiles">
+    <a class="tile t-cal" href="calendar.html">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+      <h2>Community calendar</h2><p>Block parties, cleanups, garage sales and game days, all in one place.</p><span class="go">Open the calendar &rarr;</span>
+    </a>
+    <a class="tile t-board" href="board.html">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></span>
+      <h2>Bulletin board</h2><p>Lost and found, things for sale, recommendations and neighbors helping neighbors.</p><span class="go">Read the board &rarr;</span>
+    </a>
+    <a class="tile t-idea" href="suggestions.html">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></span>
+      <h2>Suggestion box</h2><p>Got an idea for a new event or a fix around the neighborhood?  Drop it in the box.</p><span class="go">Share an idea &rarr;</span>
+    </a>
+  </section>
+
+  <section class="wrap split">
+    <div class="up">
+      <div class="sec-head"><div class="kicker">Coming up</div><h2>Next on the <em>calendar</em></h2></div>
+      <ol class="up-list" id="upNext"></ol>
+      <a class="more" href="calendar.html">Full calendar &rarr;</a>
+    </div>
+    <div class="latest">
+      <div class="sec-head"><div class="kicker">Fresh on the board</div><h2>Latest <em>notices</em></h2></div>
+      <ul class="note-mini" id="latestPosts"></ul>
+      <a class="more" href="board.html">All notices &rarr;</a>
+    </div>
+  </section>
+
+  <section class="wrap around">
+    <div class="sec-head"><div class="kicker">Around the neighborhood</div><h2>Our <em>backyard</em></h2></div>
+    <div class="around-grid">
+      <article class="spot">
+        <div class="spot-art art-field" aria-hidden="true"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice"><path d="M100 112 L22 44 A110 110 0 0 1 178 44 Z" class="grass"/><path d="M100 104 L66 72 L100 40 L134 72 Z" class="dirt"/><rect x="96" y="100" width="8" height="8" class="base"/><rect x="62" y="68" width="8" height="8" class="base"/><rect x="96" y="36" width="8" height="8" class="base"/><rect x="130" y="68" width="8" height="8" class="base"/></svg></div>
+        <h3>Seaview Little League fields</h3>
+        <p>Right next door at 20461 Craimer Lane.  Spring weekends mean baseball, softball and the snack bar.</p>
+        <a class="more" href="https://www.seaviewlittleleague.com/" rel="noopener" target="_blank">Seaview Little League website &rarr;</a>
+      </article>
+      <article class="spot">
+        <div class="spot-art art-beach" aria-hidden="true"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice"><circle cx="150" cy="34" r="16" class="sunc"/><path d="M0 70 C40 60 80 80 120 70 S180 60 200 66 V120 H0Z" class="sea"/><path d="M0 92 C50 84 110 100 200 88 V120 H0Z" class="sand"/><path d="M46 92 L54 46 L62 92" class="tower"/><rect x="44" y="40" width="20" height="10" class="tower-top"/></svg></div>
+        <h3>The beach</h3>
+        <p>Surf City, USA is the reason we live here.  Catch a sunrise session or a sunset walk on the sand.</p>
+        <a class="more" href="https://www.surfcityusa.com/" rel="noopener" target="_blank">Visit Huntington Beach &rarr;</a>
+      </article>
+      <article class="spot">
+        <div class="spot-art art-city" aria-hidden="true"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice"><rect x="0" y="0" width="200" height="120" class="sky2"/><path d="M20 120 V70 L50 50 L80 70 V120Z" class="house"/><path d="M90 120 V64 L125 40 L160 64 V120Z" class="house h2"/><rect x="40" y="88" width="20" height="32" class="door"/><rect x="114" y="86" width="22" height="34" class="door"/></svg></div>
+        <h3>City services</h3>
+        <p>Trash pickup, street repairs, permits and parks: report it or look it up with the City of Huntington Beach.</p>
+        <a class="more" href="https://www.huntingtonbeachca.gov/" rel="noopener" target="_blank">City of Huntington Beach &rarr;</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap join">
+    <div>
+      <h2>Have something to share?</h2>
+      <p>Post a notice, add an event to the calendar, or send an idea.  Every post is reviewed by a neighbor before it goes up.</p>
+    </div>
+    <div class="cta-row"><a class="btn btn-red" href="board.html#post">Post a notice</a><a class="btn btn-blue" href="suggestions.html">Send an idea</a></div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="foot-wave"><svg class="waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0 70 C 240 20 480 120 720 70 S 1200 20 1440 70 V140 H0Z"/>
+    <path class="w2" d="M0 90 C 260 50 520 130 780 90 S 1240 50 1440 90 V140 H0Z"/>
+    <path class="w3" d="M0 110 C 300 80 600 140 900 110 S 1300 85 1440 110 V140 H0Z"/>
+  </svg></div>
+  <div class="foot-in">
+    <div>
+      <a class="brand brand-foot" href="index.html"><img src="assets/img/mark.svg" alt="" width="40" height="40"><span><b>Suburbia Park</b><small>A neighborhood in Surf City</small></span></a>
+      <p>Made by neighbors, for neighbors.  Not an official City of Huntington Beach website.</p>
+    </div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="board.html">Bulletin Board</a><a href="suggestions.html">Suggestion Box</a></nav>
+    <small>&copy; 2026 Suburbia Park neighbors.</small>
+  </div>
+</footer>
+<script src="assets/js/site.js?v=46ee5239"></script>
+<script src="assets/js/data.js?v=f21dd8f4"></script>
+<script src="assets/js/home.js?v=5aa2342a"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bulletin Board | Suburbia Park</title>
+<meta name="description" content="Suburbia Park bulletin board: lost and found, for sale, free, recommendations and news.">
+<meta name="theme-color" content="#0b78c2">
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=4158ecc9">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html"><img src="assets/img/mark.svg" alt="" width="46" height="46"><span><b>Suburbia Park</b><small>Huntington Beach, California</small></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main"><a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="board.html" aria-current="page">Bulletin Board</a><a href="suggestions.html">Suggestion Box</a></nav>
+  </div>
+</header>
+<main>
+  <section class="hero hero-short">
+    <div class="sky" aria-hidden="true"><span class="sun"></span><span class="cloud c1"></span><span class="cloud c2"></span><span class="gull g1"></span><span class="gull g2"></span></div>
+    <div class="hero-in">
+      <div class="kicker">Bulletin board</div>
+      <h1>Neighbors <em>helping</em> neighbors.</h1>
+      <p class="lede">Lost and found, things for sale or free, recommendations and neighborhood news.</p>
+      
+    </div>
+    <svg class="waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0 70 C 240 20 480 120 720 70 S 1200 20 1440 70 V140 H0Z"/>
+    <path class="w2" d="M0 90 C 260 50 520 130 780 90 S 1240 50 1440 90 V140 H0Z"/>
+    <path class="w3" d="M0 110 C 300 80 600 140 900 110 S 1300 85 1440 110 V140 H0Z"/>
+  </svg>
+  </section>
+  <section class="wrap">
+    <div class="chips" id="chips" role="group" aria-label="Filter notices">
+      <button type="button" data-k="all" aria-pressed="true">All</button>
+      <button type="button" data-k="news" aria-pressed="false">News</button>
+      <button type="button" data-k="lost" aria-pressed="false">Lost and found</button>
+      <button type="button" data-k="sale" aria-pressed="false">For sale</button>
+      <button type="button" data-k="free" aria-pressed="false">Free</button>
+      <button type="button" data-k="recommend" aria-pressed="false">Recommendations</button>
+      <button type="button" data-k="help" aria-pressed="false">Help wanted</button>
+    </div>
+    <div class="cork" id="cork"></div>
+  </section>
+  <section class="wrap form-wrap" id="post">
+    <form class="card-form" action="https://formsubmit.co/dc@hbliving.com" method="POST">
+      <h2>Post a notice</h2>
+      <p class="fine">Notices are reviewed before they go up.  Please don't include phone numbers or home addresses; we'll connect people privately.</p>
+      <input type="hidden" name="_subject" value="Suburbia Park: new bulletin board notice">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://hbliving33.github.io/spark/thanks.html">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="row">
+        <label>Type of notice
+          <select name="type" required>
+            <option value="">Choose one</option><option>News</option><option>Lost and found</option><option>For sale</option><option>Free</option><option>Recommendation</option><option>Help wanted</option>
+          </select>
+        </label>
+        <label>Headline<input name="headline" required maxlength="80"></label>
+      </div>
+      <label>Your notice<textarea name="notice" rows="4" required maxlength="600"></textarea></label>
+      <div class="row">
+        <label>Your name<input name="name" required></label>
+        <label>Your email<input type="email" name="email" required></label>
+      </div>
+      <button class="btn btn-red" type="submit">Send notice</button>
+    </form>
+  </section>
+</main>
+<footer class="foot">
+  <div class="foot-wave"><svg class="waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0 70 C 240 20 480 120 720 70 S 1200 20 1440 70 V140 H0Z"/>
+    <path class="w2" d="M0 90 C 260 50 520 130 780 90 S 1240 50 1440 90 V140 H0Z"/>
+    <path class="w3" d="M0 110 C 300 80 600 140 900 110 S 1300 85 1440 110 V140 H0Z"/>
+  </svg></div>
+  <div class="foot-in">
+    <div>
+      <a class="brand brand-foot" href="index.html"><img src="assets/img/mark.svg" alt="" width="40" height="40"><span><b>Suburbia Park</b><small>A neighborhood in Surf City</small></span></a>
+      <p>Made by neighbors, for neighbors.  Not an official City of Huntington Beach website.</p>
+    </div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="board.html">Bulletin Board</a><a href="suggestions.html">Suggestion Box</a></nav>
+    <small>&copy; 2026 Suburbia Park neighbors.</small>
+  </div>
+</footer>
+<script src="assets/js/site.js?v=46ee5239"></script>
+<script src="assets/js/data.js?v=f21dd8f4"></script>
+<script src="assets/js/board.js?v=f9060cb4"></script>
+</body>
+</html>
