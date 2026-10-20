@@ -2,9 +2,8 @@
   const grid = document.getElementById("calGrid");
   if (!grid) return;
   const title = document.getElementById("calTitle"), list = document.getElementById("calList"), dayTitle = document.getElementById("dayTitle");
-  const events = [...(window.SP_EVENTS || [])].sort((a, b) => a.date.localeCompare(b.date));
-  const byDay = {};
-  events.forEach((e) => (byDay[e.date] = byDay[e.date] || []).push(e));
+  let events = [], byDay = {};
+  function index() { byDay = {}; events.sort((a, b) => a.date.localeCompare(b.date)).forEach((e) => (byDay[e.date] = byDay[e.date] || []).push(e)); }
   const today = SP.today();
   let view = new Date(today.getFullYear(), today.getMonth(), 1), selected = null;
 
@@ -16,7 +15,7 @@
       list.innerHTML = evs.length ? evs.map(SP.event).join("") : '<li class="empty">Nothing planned this day.</li>';
     } else {
       dayTitle.textContent = "Upcoming events";
-      const up = SP.upcoming(6);
+      const up = SP.upcoming(6, events);
       list.innerHTML = up.length ? up.map(SP.event).join("") : '<li class="empty">Nothing on the calendar yet.</li>';
     }
   }
@@ -42,5 +41,35 @@
   });
   document.getElementById("calPrev").onclick = () => { view = new Date(view.getFullYear(), view.getMonth() - 1, 1); draw(); };
   document.getElementById("calNext").onclick = () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); draw(); };
-  draw(); showList();
+  async function load() {
+    try { events = await SPC.events(); } catch (e) { console.warn(e); events = []; }
+    index(); draw(); showList();
+  }
+  load();
+
+  // Add-event area: live form for approved neighbors, sign-in prompt for everyone else
+  const area = document.getElementById("addArea");
+  function paintArea() {
+    if (!area || !SPC.live) return;
+    if (!SPC.me()) { area.innerHTML = SP.gate("Add an event", "Sign in to add events to the calendar.  Only verified Suburbia Park neighbors can post."); return; }
+    if (!SPC.approved()) { area.innerHTML = SP.pending(); return; }
+    area.innerHTML = `<form class="card-form" id="liveEvent"><h2>Add an event</h2>
+      <p class="fine">Your event goes on the calendar right away, signed with your first name and last initial.</p>
+      <div class="row"><label>Event name<input name="title" required minlength="3" maxlength="80"></label><label>Date<input type="date" name="date" required></label></div>
+      <div class="row"><label>Start time<input name="time" placeholder="6:00 PM" maxlength="20"></label><label>Where<input name="place" placeholder="Seaview fields entrance" maxlength="80"></label></div>
+      <div class="row"><label>Type<select name="kind"><option value="social">Social</option><option value="volunteer">Volunteer</option><option value="market">Market</option><option value="beach">Beach</option><option value="sports">Sports</option></select></label><span></span></div>
+      <label>Details<textarea name="note" rows="3" maxlength="300"></textarea></label>
+      <p class="form-msg" role="status"></p>
+      <button class="btn btn-red" type="submit">Add to calendar</button></form>`;
+    const f = document.getElementById("liveEvent");
+    f.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = f.querySelector(".form-msg"), btn = f.querySelector("button");
+      btn.disabled = true; msg.textContent = "Adding...";
+      try { await SPC.addEvent(Object.fromEntries(new FormData(f))); f.reset(); msg.textContent = "Added!  Thanks, neighbor."; await load(); }
+      catch (err) { msg.textContent = err.message || "Sorry, that didn't go through."; }
+      btn.disabled = false;
+    });
+  }
+  SPC.onAuth(paintArea);
 })();
