@@ -683,3 +683,13 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 @keyframes bob { 50% { transform: translateY(2.5px); } }
 @media (prefers-reduced-motion: reduce) { .scene .swimmer { animation: none; } }
 .scene .sw-water { fill: #2a8cc4; }
+
+/* Kids playing ball */
+.scene .bb-leg { fill: none; stroke: #f4f1e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.scene .bb-shirt { stroke: #0b6b3a; stroke-width: 3.4; stroke-linecap: round; }
+.scene .bb-face { fill: #f2c39b; }
+.scene .bb-cap { fill: #f2c94c; stroke: #f2c94c; stroke-width: 1; stroke-linecap: round; }
+.scene .bb-arm { stroke: #0b6b3a; stroke-width: 1.6; stroke-linecap: round; }
+.scene .bat { stroke: #b07a3a; stroke-width: 1.8; stroke-linecap: round; }
+.scene .bb-glove { fill: #8a5a2b; }
+.scene .bb-ball { fill: #fff; stroke: #d0d0d0; stroke-width: .4; }

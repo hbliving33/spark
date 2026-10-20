@@ -49,6 +49,11 @@
       <path class="infield" d="M120 96 L84 80 L120 66 L156 80Z"/>
       <path class="backstop" d="M106 98 Q120 84 134 98" />
       <rect class="base" x="117" y="93" width="6" height="6"/><rect class="base" x="81" y="77" width="6" height="6"/><rect class="base" x="117" y="63" width="6" height="6"/><rect class="base" x="153" y="77" width="6" height="6"/>
+      <!-- kids playing ball -->
+      <g class="bb-kid batter" transform="translate(110.5 99)"><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><g class="bb-bat"><path class="bat" d="M1.6 -8 L7.5 -15"/><animateTransform attributeName="transform" type="rotate" values="0 1.6 -8;0 1.6 -8;-110 1.6 -8;0 1.6 -8" keyTimes="0;.55;.62;1" dur="3s" repeatCount="indefinite"/></g><path class="bb-arm" d="M0 -9 L1.6 -8"/></g>
+      <g class="bb-kid pitcher" transform="translate(120 84)"><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><path class="bb-arm" d="M0 -9 L3 -12"/></g>
+      <g class="bb-kid fielder" transform="translate(146 74)"><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><path class="bb-arm" d="M0 -9 L-3 -7"/><circle class="bb-glove" cx="-3.4" cy="-6.8" r="1.6"/></g>
+      <circle class="bb-ball" r="1.4"><animateMotion dur="3s" repeatCount="indefinite" keyPoints="0;0;1;0.35;0.35" keyTimes="0;.15;.58;.85;1" calcMode="linear" path="M122 72 L113 88"/><animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;.15;.58;.85;1" dur="3s" repeatCount="indefinite"/></circle>
     </g>
     <!-- scoreboard and bleachers at the field -->
     <!-- Seaview Little League flag at the ballfield -->
