@@ -1,0 +1,63 @@
+<svg class="route" viewBox="20 60 370 700" role="img" aria-labelledby="routeT routeD">
+      <title id="routeT">Map: Suburbia Park to the beach</title>
+      <desc id="routeD">Suburbia Park sits beside the Seaview fields.  A short walk east reaches the Santa Ana River Trail footbridge, and the trail follows the river about two miles south to the beach at the river mouth.</desc>
+      <defs>
+        <pattern id="roofs" width="14" height="12" patternUnits="userSpaceOnUse"><rect width="14" height="12" fill="#f4efe4"/><rect x="2" y="3" width="9" height="6" rx="1" fill="#e6dccb"/></pattern>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#57b3e0"/><stop offset="1" stop-color="#1d7fbd"/></linearGradient>
+      </defs>
+      <!-- land -->
+      <rect x="0" y="0" width="420" height="820" fill="#f1ede3"/>
+      <!-- other neighborhoods (texture) -->
+      <rect x="20" y="60" width="370" height="560" fill="url(#roofs)" opacity=".55"/>
+      <!-- beach and ocean: coastline runs northwest to southeast through the river mouth -->
+      <path class="beach" d="M0 572 L143.5 692 L420 924 L420 820 L0 820Z"/>
+      <path class="ocean" d="M0 600 L143.5 720 L420 952 L420 820 L0 820Z"/>
+      <path class="foam" d="M0 604 L143.5 724 L420 956"/>
+      <!-- Pacific Coast Highway -->
+      <path class="road pch" d="M0 553 L157 685 L420 905"/>
+      <!-- Suburbia Park -->
+      <rect class="hood" x="168" y="120" width="70" height="44" rx="8"/>
+      <circle class="home-dot" cx="206.1" cy="138.7" r="7"/>
+      <!-- Seaview fields -->
+      <g transform="translate(222 112)">
+        <path class="fld" d="M0 10 L-16 -6 A22 22 0 0 1 16 -6 Z"/>
+        <path class="dia" d="M0 7 L-6 1 L0 -5 L6 1 Z"/>
+      </g>
+      <g class="flag" transform="translate(240 82)">
+        <path class="pole" d="M0 32 V0"/>
+        <g class="cloth">
+          <rect x="1" y="0" width="26" height="16" fill="#fff"/>
+          <path d="M1 1.2 H27 M1 3.6 H27 M1 6 H27 M1 8.4 H27 M1 10.8 H27 M1 13.2 H27 M1 15.4 H27" stroke="#d62839" stroke-width="1.25"/>
+          <rect x="1" y="0" width="11" height="8.6" fill="#1d3f74"/>
+          <path d="M3 2 h.1 M6 2 h.1 M9 2 h.1 M4.5 4.2 h.1 M7.5 4.2 h.1 M3 6.4 h.1 M6 6.4 h.1 M9 6.4 h.1" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!-- Santa Ana River -->
+      <path class="river" d="M330 60 C 310 100 296 125 291.4 139.5 C 284 166 266 182 258.4 194.3 C 230 260 190 420 165 560 C 156 620 148 670 143.5 712"/>
+      <!-- river trail, west bank -->
+      <path class="trail" d="M286 138 C 279 164 261 180 253 192 C 226 258 186 418 161 558 C 152 618 144 668 139 704"/>
+      <!-- walk from the neighborhood to the footbridge -->
+      <path class="walk" d="M212 140 C 240 146 262 146 288 140"/>
+      <!-- the route the bike follows -->
+      <path id="routePath" class="route-line" d="M206 139 C 240 146 262 146 288 140 C 279 164 261 180 253 192 C 226 258 186 418 161 558 C 152 618 144 668 139 704"/>
+      <g class="rider">
+        <circle r="8" class="rider-dot"/>
+        <animateMotion dur="14s" repeatCount="indefinite" rotate="0" keyPoints="0;1;1" keyTimes="0;0.85;1" calcMode="linear"><mpath href="#routePath"/></animateMotion>
+      </g>
+      <!-- markers -->
+      <circle class="mk" cx="291.4" cy="139.5" r="6"/>
+      <circle class="mk" cx="258.4" cy="194.3" r="5"/>
+      <circle class="mk mk-beach" cx="143.5" cy="712" r="8"/>
+      <!-- labels -->
+      <g class="lb t-home" transform="translate(130 160)"><rect x="-58" y="-14" width="116" height="26" rx="13"/><text y="4">Suburbia Park</text></g>
+      <g class="lb" transform="translate(150 88)"><rect x="-58" y="-14" width="116" height="26" rx="13"/><text y="4">Seaview fields</text></g>
+      <g class="lb" transform="translate(320 168)"><rect x="-46" y="-14" width="92" height="26" rx="13"/><text y="4">Footbridge</text></g>
+      <g class="lb small" transform="translate(318 210)"><rect x="-38" y="-12" width="76" height="22" rx="11"/><text y="4">Mile 2</text></g>
+      <text class="water" transform="translate(236 400) rotate(-76)">Santa Ana River</text>
+      <g class="lb big" transform="translate(300 470)"><rect x="-72" y="-30" width="144" height="56" rx="16"/><text y="-6">About 2 miles</text><text class="sub" y="14">along the river trail</text></g>
+      <text class="roadname" transform="translate(64 598) rotate(40)">Pacific Coast Hwy</text>
+      <g class="lb t-beach" transform="translate(222 704)"><rect x="-64" y="-14" width="128" height="26" rx="13"/><text y="4">The beach</text></g>
+      <text class="water big" transform="translate(50 690) rotate(40)">Pacific</text>
+      <!-- north arrow -->
+      <g class="north" transform="translate(52 96)"><circle r="16"/><path d="M0 -10 L6 6 L0 2 L-6 6Z"/><text y="30">N</text></g>
+    </svg>
