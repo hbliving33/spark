@@ -10,7 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=4158ecc9">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="assets/css/site.css?v=90a3f6f9">
 </head>
 <body>
 <header class="top">
@@ -22,18 +23,70 @@
 </header>
 <main>
   <section class="hero hero-home">
-    <div class="sky" aria-hidden="true"><span class="sun"></span><span class="cloud c1"></span><span class="cloud c2"></span><span class="gull g1"></span><span class="gull g2"></span></div>
+    <div class="sky" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span></div>
     <div class="hero-in">
       <div class="kicker">Welcome, neighbor</div>
       <h1>Life is better in <em>Suburbia Park</em>.</h1>
-      <p class="lede">A small neighborhood a short ride from the sand in Surf City, USA.  Find out what is happening, post a notice, and share your ideas for making the neighborhood even better.</p>
+      <p class="lede">Next door to the Seaview ballfields and a short ride down the river trail to the sand.  Find out what is happening, post a notice, and share your ideas for making the neighborhood even better.</p>
       <div class="cta-row"><a class="btn btn-red" href="calendar.html">See what's happening</a><a class="btn btn-white" href="board.html">Visit the bulletin board</a></div>
     </div>
-    <svg class="waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
-    <path class="w1" d="M0 70 C 240 20 480 120 720 70 S 1200 20 1440 70 V140 H0Z"/>
-    <path class="w2" d="M0 90 C 260 50 520 130 780 90 S 1240 50 1440 90 V140 H0Z"/>
-    <path class="w3" d="M0 110 C 300 80 600 140 900 110 S 1300 85 1440 110 V140 H0Z"/>
-  </svg>
+    <div class="scene-wrap"><svg class="scene" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Illustration: Suburbia Park homes, the Seaview ballfields, the Santa Ana River Trail and the beach">
+    <!-- pelicans gliding over the river -->
+    <g class="pelicans">
+      <path class="pel p1" d="M0 0 q10 -8 20 0 q10 -8 20 0"/>
+      <path class="pel p2" d="M0 0 q8 -6 16 0 q8 -6 16 0"/>
+      <path class="pel p3" d="M0 0 q7 -5 14 0 q7 -5 14 0"/>
+    </g>
+    <!-- ground -->
+    <path class="lawn" d="M0 236 C 200 228 420 232 560 236 L 800 236 L 820 320 H0Z"/>
+    <!-- palms behind houses -->
+    <g class="palm" transform="translate(70 128)"><path class="trunk" d="M8 110 C 6 70 10 36 18 6"/><path class="frond" d="M18 6 c-18 -6 -34 2 -42 14 c14 -10 28 -10 42 -10 c-10 -10 -26 -14 -38 -8 c16 -2 28 2 38 8 c4 -14 -2 -26 -12 -32 c8 10 12 20 12 28 c10 -12 26 -16 40 -10 c-14 0 -26 6 -36 14 c16 -4 30 0 40 10 c-14 -6 -28 -6 -42 0z"/></g>
+    <g class="palm" transform="translate(452 112) scale(1.1)"><path class="trunk" d="M8 110 C 6 70 10 36 18 6"/><path class="frond" d="M18 6 c-18 -6 -34 2 -42 14 c14 -10 28 -10 42 -10 c-10 -10 -26 -14 -38 -8 c16 -2 28 2 38 8 c4 -14 -2 -26 -12 -32 c8 10 12 20 12 28 c10 -12 26 -16 40 -10 c-14 0 -26 6 -36 14 c16 -4 30 0 40 10 c-14 -6 -28 -6 -42 0z"/></g>
+    <!-- Suburbia Park homes -->
+    <g class="homes">
+      <g transform="translate(20 170)"><path class="roof r1" d="M-6 30 L50 -4 L106 30Z"/><rect class="wall" x="4" y="28" width="92" height="40"/><rect class="door" x="40" y="40" width="18" height="28"/><rect class="win" x="12" y="38" width="20" height="14"/><rect class="win" x="68" y="38" width="20" height="14"/></g>
+      <g transform="translate(140 164)"><path class="roof r2" d="M-6 34 L60 -6 L126 34Z"/><rect class="wall w2" x="4" y="32" width="112" height="42"/><rect class="door" x="30" y="44" width="18" height="30"/><rect class="garage" x="62" y="46" width="46" height="28"/></g>
+      <g transform="translate(286 172)"><path class="roof r3" d="M-6 28 L48 -4 L102 28Z"/><rect class="wall" x="4" y="26" width="88" height="40"/><rect class="door" x="38" y="38" width="18" height="28"/><rect class="win" x="10" y="36" width="20" height="14"/><rect class="win" x="64" y="36" width="20" height="14"/></g>
+      <g transform="translate(400 168)"><path class="roof r1" d="M-6 30 L52 -4 L110 30Z"/><rect class="wall w2" x="4" y="28" width="96" height="40"/><rect class="door" x="18" y="40" width="18" height="28"/><rect class="win" x="54" y="38" width="36" height="14"/></g>
+      <!-- picket fence -->
+      <path class="fence" d="M0 238 H520 M10 228 V246 M30 228 V246 M50 228 V246 M70 228 V246 M90 228 V246 M110 228 V246 M130 228 V246 M150 228 V246 M170 228 V246 M190 228 V246 M210 228 V246 M230 228 V246 M250 228 V246 M270 228 V246 M290 228 V246 M310 228 V246 M330 228 V246 M350 228 V246 M370 228 V246 M390 228 V246 M410 228 V246 M430 228 V246 M450 228 V246 M470 228 V246 M490 228 V246 M510 228 V246"/>
+    </g>
+    <!-- Seaview ballfields -->
+    <g class="field" transform="translate(560 150)">
+      <path class="pole" d="M14 90 V10 M226 90 V10"/>
+      <rect class="lamp" x="2" y="2" width="24" height="10" rx="2"/><rect class="lamp" x="214" y="2" width="24" height="10" rx="2"/>
+      <path class="grass" d="M0 90 Q120 40 240 90 V100 H0Z"/>
+      <path class="infield" d="M120 96 L84 80 L120 66 L156 80Z"/>
+      <path class="backstop" d="M106 98 Q120 84 134 98" />
+      <rect class="base" x="117" y="93" width="6" height="6"/><rect class="base" x="81" y="77" width="6" height="6"/><rect class="base" x="117" y="63" width="6" height="6"/><rect class="base" x="153" y="77" width="6" height="6"/>
+      <g class="flag" transform="translate(196 52)"><path class="flagpole" d="M0 40 V0"/><rect class="fs1" x="1" y="0" width="22" height="14"/><rect class="fc" x="1" y="0" width="9" height="7"/><path class="fstr" d="M10 2 H23 M10 5 H23 M1 9 H23 M1 12 H23"/></g>
+    </g>
+    <!-- river channel and trail -->
+    <path class="levee" d="M800 236 L 840 236 L 860 320 H 820Z"/>
+    <path class="river" d="M840 236 L 1000 236 L 1010 320 L 860 320Z"/>
+    <path class="ripple" d="M870 262 q12 -6 24 0 t24 0 M920 290 q12 -6 24 0 t24 0 M900 306 q12 -6 24 0"/>
+    <path class="trail" d="M780 230 H 1220"/>
+    <g class="bike"><circle cx="0" cy="0" r="7"/><circle cx="22" cy="0" r="7"/><path d="M0 0 L8 -12 L18 -12 L22 0 M8 -12 L12 0 L0 0 M18 -12 L16 -18 M12 -14 L10 -22"/><circle class="rider" cx="11" cy="-28" r="4.5"/></g>
+    <!-- beach -->
+    <path class="sand" d="M1000 236 C 1100 232 1180 236 1240 240 L 1300 320 H 1010Z"/>
+    <g class="tower" transform="translate(1110 150)">
+      <path class="legs" d="M8 86 L18 44 M52 86 L42 44 M14 66 H46"/>
+      <rect class="deck" x="4" y="36" width="52" height="10"/>
+      <rect class="hut" x="10" y="12" width="40" height="26"/>
+      <path class="hroof" d="M4 14 L30 0 L56 14Z"/>
+      <rect class="hwin" x="18" y="18" width="24" height="10"/>
+      <path class="ramp" d="M56 44 L82 86"/>
+    </g>
+    <!-- ocean -->
+    <path class="sea" d="M1240 240 C 1300 236 1380 232 1440 230 V320 H1300Z"/>
+    <path class="surf s1" d="M1260 262 q18 -10 36 0 t36 0 t36 0 t36 0"/>
+    <path class="surf s2" d="M1290 290 q18 -10 36 0 t36 0 t36 0 t36 0"/>
+    <!-- labels -->
+    <g class="lbl" transform="translate(250 120)"><rect x="-70" y="-17" width="140" height="30" rx="15"/><text y="4">Suburbia Park</text></g>
+    <g class="lbl" transform="translate(680 120)"><rect x="-74" y="-17" width="148" height="30" rx="15"/><text y="4">Seaview fields</text></g>
+    <g class="lbl" transform="translate(920 196)"><rect x="-62" y="-17" width="124" height="30" rx="15"/><text y="4">River trail</text></g>
+    <g class="lbl" transform="translate(1300 196)"><rect x="-56" y="-17" width="112" height="30" rx="15"/><text y="4">The beach</text></g>
+  </svg></div>
   </section>
 
   <section class="wrap tiles">
@@ -64,28 +117,20 @@
     </div>
   </section>
 
-  <section class="wrap around">
-    <div class="sec-head"><div class="kicker">Around the neighborhood</div><h2>Our <em>backyard</em></h2></div>
-    <div class="around-grid">
-      <article class="spot">
-        <div class="spot-art art-field" aria-hidden="true"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice"><path d="M100 112 L22 44 A110 110 0 0 1 178 44 Z" class="grass"/><path d="M100 104 L66 72 L100 40 L134 72 Z" class="dirt"/><rect x="96" y="100" width="8" height="8" class="base"/><rect x="62" y="68" width="8" height="8" class="base"/><rect x="96" y="36" width="8" height="8" class="base"/><rect x="130" y="68" width="8" height="8" class="base"/></svg></div>
-        <h3>Seaview Little League fields</h3>
-        <p>Right next door at 20461 Craimer Lane.  Spring weekends mean baseball, softball and the snack bar.</p>
-        <a class="more" href="https://www.seaviewlittleleague.com/" rel="noopener" target="_blank">Seaview Little League website &rarr;</a>
-      </article>
-      <article class="spot">
-        <div class="spot-art art-beach" aria-hidden="true"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice"><circle cx="150" cy="34" r="16" class="sunc"/><path d="M0 70 C40 60 80 80 120 70 S180 60 200 66 V120 H0Z" class="sea"/><path d="M0 92 C50 84 110 100 200 88 V120 H0Z" class="sand"/><path d="M46 92 L54 46 L62 92" class="tower"/><rect x="44" y="40" width="20" height="10" class="tower-top"/></svg></div>
-        <h3>The beach</h3>
-        <p>Surf City, USA is the reason we live here.  Catch a sunrise session or a sunset walk on the sand.</p>
-        <a class="more" href="https://www.surfcityusa.com/" rel="noopener" target="_blank">Visit Huntington Beach &rarr;</a>
-      </article>
-      <article class="spot">
-        <div class="spot-art art-city" aria-hidden="true"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice"><rect x="0" y="0" width="200" height="120" class="sky2"/><path d="M20 120 V70 L50 50 L80 70 V120Z" class="house"/><path d="M90 120 V64 L125 40 L160 64 V120Z" class="house h2"/><rect x="40" y="88" width="20" height="32" class="door"/><rect x="114" y="86" width="22" height="34" class="door"/></svg></div>
-        <h3>City services</h3>
-        <p>Trash pickup, street repairs, permits and parks: report it or look it up with the City of Huntington Beach.</p>
-        <a class="more" href="https://www.huntingtonbeachca.gov/" rel="noopener" target="_blank">City of Huntington Beach &rarr;</a>
-      </article>
+  <section class="wrap around" id="map">
+    <div class="sec-head"><div class="kicker">Around the neighborhood</div><h2>From our street <em>to the sand</em></h2>
+      <p class="sec-lede">Suburbia Park sits right next to the Seaview ballfields, a short walk from the Santa Ana River Trail.  Hop on the trail and it's about two miles along the river to the beach.</p></div>
+    <div class="map-grid">
+      <div class="map-box"><div id="nbMap" class="nb-map" aria-label="Neighborhood map"></div><noscript><p class="fine">Turn on JavaScript to see the map.</p></noscript></div>
+      <ol class="places" id="places">
+        <li><button type="button" data-i="0"><span class="pin p-home">1</span><b>Suburbia Park</b><span>Our neighborhood, along Suburbia Lane.</span></button></li>
+        <li><button type="button" data-i="1"><span class="pin p-field">2</span><b>Seaview Little League fields</b><span>20461 Craimer Lane, right next door.  Spring weekends mean baseball, softball and the snack bar.</span></button><a class="more" href="https://www.seaviewlittleleague.com/" rel="noopener" target="_blank">Seaview Little League &rarr;</a></li>
+        <li><button type="button" data-i="2"><span class="pin p-trail">3</span><b>River trail footbridge</b><span>The closest way onto the Santa Ana River Trail, just east of the neighborhood.</span></button></li>
+        <li><button type="button" data-i="3"><span class="pin p-trail">4</span><b>Mile marker 2</b><span>Two miles to go.  Watch for pelicans and ducks along the river.</span></button></li>
+        <li><button type="button" data-i="4"><span class="pin p-beach">5</span><b>The river mouth and the beach</b><span>Where the Santa Ana River meets the Pacific, at the south end of Huntington State Beach.  Mile 0 of the trail.</span></button></li>
+      </ol>
     </div>
+    <p class="map-links"><a href="https://www.surfcityusa.com/" rel="noopener" target="_blank">Visit Huntington Beach</a><a href="https://www.huntingtonbeachca.gov/" rel="noopener" target="_blank">City of Huntington Beach services</a></p>
   </section>
 
   <section class="wrap join">
@@ -112,7 +157,9 @@
   </div>
 </footer>
 <script src="assets/js/site.js?v=46ee5239"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="assets/js/data.js?v=f21dd8f4"></script>
 <script src="assets/js/home.js?v=5aa2342a"></script>
+<script src="assets/js/map.js?v=a9ed5ae1"></script>
 </body>
 </html>
