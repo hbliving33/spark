@@ -11,4 +11,10 @@
     lp.innerHTML = top.length ? top.map((p) => `<li><b>${SP.esc(p.title)}${p.sample ? '<span class="tag">Example</span>' : ""}</b><span>${SP.esc(SP.kinds[p.kind] || "Notice")}${p.author_name ? " &middot; " + SP.esc(p.author_name) : ""}</span></li>`).join("")
       : '<li class="empty">Nothing on the board yet.</li>';
   }
+  const hm = document.getElementById("helpMini");
+  if (hm) {
+    let help = [];
+    try { help = (await SPC.help()).slice(0, 3); } catch (e) { console.warn(e); }
+    hm.innerHTML = help.length ? help.map((h) => `<li class="t-${SP.esc(h.type)}"><span>${h.type === "ask" ? "Needs a hand" : "Offering to help"}</span><b>${SP.esc(h.title)}</b></li>`).join("") : '<li><b>No requests right now.</b></li>';
+  }
 })();

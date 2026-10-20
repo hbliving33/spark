@@ -14,19 +14,21 @@
       db.from("streets").select("*").order("name")
     ]);
     const r = reps.data || [];
-    const pIds = r.filter((x) => x.post_id).map((x) => x.post_id), eIds = r.filter((x) => x.event_id).map((x) => x.event_id);
-    const [ps, es] = await Promise.all([
+    const pIds = r.filter((x) => x.post_id).map((x) => x.post_id), eIds = r.filter((x) => x.event_id).map((x) => x.event_id), hIds = r.filter((x) => x.help_id).map((x) => x.help_id);
+    const [ps, es, hs] = await Promise.all([
       pIds.length ? db.from("posts").select("id,title,body,status").in("id", pIds) : { data: [] },
-      eIds.length ? db.from("events").select("id,title,note,status").in("id", eIds) : { data: [] }
+      eIds.length ? db.from("events").select("id,title,note,status").in("id", eIds) : { data: [] },
+      hIds.length ? db.from("help").select("id,title,body,status").in("id", hIds) : { data: [] }
     ]);
-    const pm = Object.fromEntries((ps.data || []).map((x) => [x.id, x])), em = Object.fromEntries((es.data || []).map((x) => [x.id, x]));
+    const pm = Object.fromEntries((ps.data || []).map((x) => [x.id, x])), em = Object.fromEntries((es.data || []).map((x) => [x.id, x])), hm = Object.fromEntries((hs.data || []).map((x) => [x.id, x]));
+    const kindOf = (x) => (x.post_id ? ["posts", x.post_id, pm[x.post_id]] : x.event_id ? ["events", x.event_id, em[x.event_id]] : ["help", x.help_id, hm[x.help_id]]);
     box.innerHTML = `
       <section class="adm"><h2>Neighbors waiting for approval <span class="count">${(pend.data || []).length}</span></h2>
         ${(pend.data || []).map((p) => `<div class="adm-row"><div><b>${esc(p.first_name)} ${esc(p.last_initial)}.</b><span>${esc(p.house_number || "")} ${esc(p.streets ? p.streets.name : "")} &middot; signed up ${when(p.created_at)}</span></div>
           <div class="adm-act"><button class="btn btn-blue" data-a="approve" data-id="${p.id}">Approve</button><button class="btn btn-white" data-a="deny" data-id="${p.id}">Deny</button></div></div>`).join("") || `<p class="fine">No one is waiting.</p>`}</section>
       <section class="adm"><h2>Reported posts and events <span class="count">${r.length}</span></h2>
-        ${r.map((x) => { const it = x.post_id ? pm[x.post_id] : em[x.event_id]; return `<div class="adm-row"><div><b>${esc(it ? it.title : "Deleted item")}</b><span>${esc(it ? (it.body || it.note || "") : "")}</span><span class="why">Reason: ${esc(x.reason || "none given")}</span></div>
-          <div class="adm-act"><button class="btn btn-blue" data-a="restore" data-id="${x.id}" data-t="${x.post_id ? "posts" : "events"}" data-item="${x.post_id || x.event_id}">Put it back</button><button class="btn btn-white" data-a="remove" data-id="${x.id}" data-t="${x.post_id ? "posts" : "events"}" data-item="${x.post_id || x.event_id}">Remove it</button></div></div>`; }).join("") || `<p class="fine">Nothing reported.</p>`}</section>
+        ${r.map((x) => { const [tb, iid, it] = kindOf(x); return `<div class="adm-row"><div><b>${esc(it ? it.title : "Deleted item")}</b><span>${esc(it ? (it.body || it.note || "") : "")}</span><span class="why">Reason: ${esc(x.reason || "none given")}</span></div>
+          <div class="adm-act"><button class="btn btn-blue" data-a="restore" data-id="${x.id}" data-t="${tb}" data-item="${iid}">Put it back</button><button class="btn btn-white" data-a="remove" data-id="${x.id}" data-t="${tb}" data-item="${iid}">Remove it</button></div></div>`; }).join("") || `<p class="fine">Nothing reported.</p>`}</section>
       <section class="adm"><h2>Sponsors</h2>
         ${(ads.data || []).map((a) => `<div class="adm-row"><div><b>${esc(a.business)}</b><span>${esc(a.headline)} &middot; ${esc(a.slot)} &middot; ${esc(a.starts_on)} to ${esc(a.ends_on || "open")}</span></div>
           <div class="adm-act"><button class="btn ${a.active ? "btn-white" : "btn-blue"}" data-a="adtoggle" data-id="${a.id}" data-on="${a.active}">${a.active ? "Turn off" : "Turn on"}</button></div></div>`).join("") || `<p class="fine">No sponsors yet.</p>`}
@@ -50,7 +52,7 @@
     let res;
     if (a === "approve" || a === "deny") res = await db.from("profiles").update({ status: a === "approve" ? "approved" : "denied" }).eq("id", id);
     if (a === "restore" || a === "remove") {
-      res = await db.from(b.dataset.t).update({ status: a === "restore" ? "live" : "removed" }).eq("id", b.dataset.item);
+      res = await db.from(b.dataset.t).update({ status: a === "restore" ? (b.dataset.t === "help" ? "open" : "live") : "removed" }).eq("id", b.dataset.item);
       if (!res.error) res = await db.from("reports").update({ resolved: true }).eq("id", id);
     }
     if (a === "adtoggle") res = await db.from("ads").update({ active: b.dataset.on !== "true" }).eq("id", id);

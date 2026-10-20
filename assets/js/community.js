@@ -46,6 +46,17 @@
     if (error) throw error;
     return data;
   };
+  C.help = async () => {
+    if (!live) return window.SP_HELP || [];
+    const { data, error } = await db.from("help_public").select("*").order("created_at", { ascending: false }).limit(80);
+    if (error) throw error;
+    return data.map((h) => ({ ...h, date: h.created_at.slice(0, 10) }));
+  };
+  C.myReplies = async () => {
+    if (!live || !me) return [];
+    const { data } = await db.from("my_help_replies").select("*").order("created_at");
+    return data || [];
+  };
   C.ads = async (slot) => {
     if (!live) return [];
     const { data, error } = await db.from("ads").select("*").eq("slot", slot).order("created_at");
@@ -73,8 +84,23 @@
     const { error } = await db.from("events").insert(row);
     if (error) throw error;
   };
+  C.addHelp = async (h) => {
+    const row = { type: h.type, category: h.category, title: clean(h.title, 80), body: clean(h.body, 500) || null, when_text: clean(h.when_text, 60) || null };
+    if (C.hasBadWords([row.title, row.body].join(" "))) throw new Error("Please keep it family friendly.");
+    const { error } = await db.from("help").insert(row);
+    if (error) throw error;
+  };
+  C.replyHelp = async (id, note) => {
+    if (C.hasBadWords(note)) throw new Error("Please keep it family friendly.");
+    const { error } = await db.from("help_replies").insert({ help_id: id, note: clean(note, 300) || null });
+    if (error) throw new Error(/duplicate|unique/i.test(error.message) ? "You've already replied to this one." : error.message);
+  };
+  C.setHelpStatus = async (id, status) => {
+    const { error } = await db.from("help").update({ status }).eq("id", id);
+    if (error) throw error;
+  };
   C.report = async (what, id, reason) => {
-    const row = what === "event" ? { event_id: id } : { post_id: id };
+    const row = what === "event" ? { event_id: id } : what === "help" ? { help_id: id } : { post_id: id };
     row.reason = clean(reason, 200);
     const { error } = await db.from("reports").insert(row);
     if (error) throw error;

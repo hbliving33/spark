@@ -192,3 +192,71 @@ create policy ads_admin on public.ads for all using (public.is_admin()) with che
 -- After you sign up on the site, run this once with your email:
 --   update public.profiles set status = 'approved', is_admin = true
 --   where id = (select id from auth.users where email = 'YOUR EMAIL HERE');
+
+-- ============================================================
+-- Neighbors helping neighbors: requests for help and offers to help
+-- ============================================================
+create table if not exists public.help (
+  id bigserial primary key,
+  author uuid not null default auth.uid() references public.profiles (id) on delete cascade,
+  type text not null check (type in ('ask', 'offer')),
+  category text not null check (category in ('groceries', 'errands', 'rides', 'meals', 'yard', 'pets', 'tech', 'checkin', 'other')),
+  title text not null check (char_length(title) between 3 and 80),
+  body text check (char_length(body) <= 500),
+  when_text text check (char_length(when_text) <= 60),
+  status text not null default 'open' check (status in ('open', 'matched', 'closed', 'hidden', 'removed')),
+  created_at timestamptz not null default now()
+);
+-- "I can help" replies.  Only the person who asked (and admins) can read them.
+create table if not exists public.help_replies (
+  id bigserial primary key,
+  help_id bigint not null references public.help (id) on delete cascade,
+  helper uuid not null default auth.uid() references public.profiles (id) on delete cascade,
+  note text check (char_length(note) <= 300),
+  created_at timestamptz not null default now(),
+  unique (help_id, helper)
+);
+alter table public.reports add column if not exists help_id bigint references public.help (id) on delete cascade;
+
+create or replace function public.hide_reported() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if new.post_id is not null then update public.posts set status = 'hidden' where id = new.post_id and status = 'live'; end if;
+  if new.event_id is not null then update public.events set status = 'hidden' where id = new.event_id and status = 'live'; end if;
+  if new.help_id is not null then update public.help set status = 'hidden' where id = new.help_id and status in ('open', 'matched'); end if;
+  return new;
+end;
+$$;
+
+create or replace view public.help_public with (security_invoker = false) as
+  select h.id, h.type, h.category, h.title, h.body, h.when_text, h.status, h.created_at,
+         pr.first_name || ' ' || pr.last_initial || '.' as author_name, (h.author = auth.uid()) as mine,
+         (select count(*) from public.help_replies r where r.help_id = h.id) as replies
+  from public.help h join public.profiles pr on pr.id = h.author where h.status in ('open', 'matched');
+grant select on public.help_public to anon, authenticated;
+
+-- Replies on my own requests, with the helper's first name and last initial
+create or replace view public.my_help_replies with (security_invoker = false) as
+  select r.id, r.help_id, r.note, r.created_at, pr.first_name || ' ' || pr.last_initial || '.' as helper_name
+  from public.help_replies r join public.help h on h.id = r.help_id join public.profiles pr on pr.id = r.helper
+  where h.author = auth.uid() or public.is_admin();
+grant select on public.my_help_replies to authenticated;
+
+alter table public.help enable row level security;
+alter table public.help_replies enable row level security;
+drop policy if exists help_insert on public.help;
+create policy help_insert on public.help for insert with check (public.is_approved() and author = auth.uid() and status = 'open');
+drop policy if exists help_select on public.help;
+create policy help_select on public.help for select using (author = auth.uid() or public.is_admin());
+drop policy if exists help_update on public.help;
+create policy help_update on public.help for update using (public.is_admin() or (author = auth.uid() and status in ('open', 'matched', 'closed')))
+  with check (public.is_admin() or (author = auth.uid() and status in ('open', 'matched', 'closed')));
+create or replace function public.help_is_open_for_me(hid bigint) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.help h where h.id = hid and h.status in ('open', 'matched') and h.author <> auth.uid());
+$$;
+drop policy if exists help_replies_insert on public.help_replies;
+create policy help_replies_insert on public.help_replies for insert with check (
+  public.is_approved() and helper = auth.uid() and public.help_is_open_for_me(help_id));
+drop policy if exists help_replies_select on public.help_replies;
+create policy help_replies_select on public.help_replies for select using (helper = auth.uid() or public.is_admin());

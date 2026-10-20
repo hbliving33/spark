@@ -24,3 +24,10 @@ window.SP_POSTS = [
   { date: "2026-10-10", kind: "help", title: "Looking for a dog walker", body: "Two friendly labs, weekday afternoons.  Neighborhood teens welcome.", sample: true },
   { date: "2026-10-08", kind: "free", title: "Free: patio chairs", body: "Four chairs, a little sun-faded.  On the curb this weekend.", sample: true }
 ];
+
+window.SP_HELP = [
+  { id: "s1", date: "2026-10-19", type: "ask", category: "groceries", title: "Grocery pickup once a week", body: "I'm not driving right now.  A short list, usually Thursday mornings.", when_text: "Thursdays", author_name: "", sample: true },
+  { id: "s2", date: "2026-10-18", type: "offer", category: "errands", title: "Happy to run errands", body: "Retired and around most days.  Pharmacy, post office, dry cleaning.", when_text: "Weekdays", author_name: "", sample: true },
+  { id: "s3", date: "2026-10-17", type: "ask", category: "tech", title: "Help setting up a new phone", body: "Need someone patient to help move my photos and contacts.", when_text: "Any afternoon", author_name: "", sample: true },
+  { id: "s4", date: "2026-10-15", type: "offer", category: "rides", title: "Rides to appointments", body: "I can drive to local doctor visits in Huntington Beach and Fountain Valley.", when_text: "Mornings", author_name: "", sample: true }
+];
