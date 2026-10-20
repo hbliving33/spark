@@ -488,7 +488,7 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 @media (display-mode: standalone) { .top { padding-top: env(safe-area-inset-top); } }
 .install-tip { position: fixed; left: 12px; right: 12px; bottom: calc(80px + env(safe-area-inset-bottom)); z-index: 40; display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 12px 14px; box-shadow: 0 16px 40px rgba(20, 48, 77, .2); max-width: 480px; margin: 0 auto; }
 .install-tip img { border-radius: 10px; flex: none; }
-.install-tip p { margin: 0; font-size: 14.5px; flex: 1; }
+.install-tip p { margin: 0; font-size: 14.5px; flex: 1; line-height: 1.55; }
 .install-tip .btn { padding: 8px 16px; font-size: 15px; }
 .install-tip .it-x { border: 0; background: none; font-size: 24px; color: var(--muted); cursor: pointer; }
 @media (min-width: 821px) { .install-tip { bottom: 20px; } }
