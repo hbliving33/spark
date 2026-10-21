@@ -788,3 +788,15 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .fam .sbody { fill: #7ec8f0; stroke: #2b3a4a; stroke-width: 1.4; }
 .scene .fam .shood { fill: #1271a8; }
 .scene .fam .swheel { fill: #fff; stroke: #2b3a4a; stroke-width: 1.6; }
+
+/* Local page: sponsors from HBLiving and the advertise band */
+.spons { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.spon { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: grid; gap: 6px; box-shadow: var(--shadow); }
+.spon-top { display: flex; justify-content: space-between; align-items: center; }
+.spon-cat { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ocean); }
+.spon-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; background: var(--sky2); color: var(--deep); border-radius: 999px; padding: 2px 9px; }
+.spon b { font-family: var(--display); font-size: 20px; color: var(--navy); } .spon > span { color: var(--muted); }
+.spon-links { display: flex; gap: 8px; margin-top: 4px; } .spon-links a { font-weight: 800; font-size: 14px; color: var(--white); background: var(--navy); border-radius: 999px; padding: 6px 14px; text-decoration: none; }
+.adv-band { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; background: var(--navy); color: #fff; border-radius: 22px; padding: 28px 30px; box-shadow: var(--shadow); }
+.adv-band h2 { color: #fff; margin: 4px 0 8px; } .adv-band h2 em { color: #ffd23f; } .adv-band p { margin: 0; color: #cfe6f6; max-width: 620px; } .adv-band .kicker { color: #9fd8ff; }
+@media (max-width: 700px) { .spons { grid-template-columns: 1fr; } }
