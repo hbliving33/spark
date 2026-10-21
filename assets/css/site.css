@@ -767,4 +767,4 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .dot.dot-city, .k-hb::before { background: #2fb37a; }
 .ev[data-k="city"] .ev-date { border-color: #2fb37a; }
 .link-btn { font: inherit; font-style: normal; font-weight: 800; color: var(--ocean); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
-.day.sel .dot.dot-local, .day.today .dot.dot-local { background: #9fdcff; }
+.day.sel .dot.dot-local { background: #9fdcff; }
