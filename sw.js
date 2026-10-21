@@ -1,5 +1,5 @@
 // Suburbia Park app: offline support.  Pages load fresh when online and fall back to the last copy offline.
-const CACHE = "sp-bc716ba1ee";
+const CACHE = "sp-3f68096c01";
 const CORE = ["./", "index.html", "calendar.html", "board.html", "businesses.html", "suggestions.html", "account.html", "rules.html", "privacy.html", "offline.html", "manifest.webmanifest", "assets/img/mark.svg", "assets/img/icon-192.png"];
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", (e) => {
