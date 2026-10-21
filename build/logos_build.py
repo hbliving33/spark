@@ -1,6 +1,6 @@
 import pathlib, math
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
+ROOT = pathlib.Path('/home/claude/spark')
 N, O, R, C, S, Y, G, SK = '#14304d', '#1271a8', '#e63946', '#ff8a5b', '#ecd6a6', '#ffd23f', '#3f9b6a', '#bfe6f5'
 
 
@@ -58,6 +58,66 @@ LOGOS = [
  ('Pelican Glide', 'A pelican gliding low over a wave, like the ones along the river trail.',
   f'<circle cx="86" cy="32" r="12" fill="{Y}"/><path d="M14 64 C 30 50 46 48 58 58 C 70 46 88 44 104 54 C 90 54 76 58 66 66 L 58 70 C 50 64 32 60 14 64Z" fill="{N}"/><path d="M58 58 C 56 52 60 46 66 46 C 72 46 74 52 70 56 L 92 60 L 70 62Z" fill="{N}"/><path d="M70 60 L92 60 L72 64Z" fill="{C}"/>{wave(90, 14, 106, 6, 4, O, 7)}'),
 ]
+# Fence Wave variations with the US flag (concepts 19 to 24)
+def picket(x, top, fill='#fff', w=12, sw=3):
+    h = w / 2
+    return f'<path d="M{x} 86 V{top} l{h} -8 l{h} 8 V86Z" fill="{fill}" stroke="{N}" stroke-width="{sw}" stroke-linejoin="round"/>'
+
+def outline(x, top, w=12, sw=3):
+    h = w / 2
+    return f'<path d="M{x} 86 V{top} l{h} -8 l{h} 8 V86Z" fill="none" stroke="{N}" stroke-width="{sw}" stroke-linejoin="round"/>'
+
+def stripes(x, top, w=12, colors=(R, '#fff'), band=5):
+    out, y, i = '', top, 0
+    out += f'<path d="M{x} {top} l{w/2} -8 l{w/2} 8Z" fill="{R}"/>'
+    while y < 86:
+        out += f'<rect x="{x}" y="{y}" width="{w}" height="{min(band, 86 - y)}" fill="{colors[i % 2]}"/>'
+        y += band; i += 1
+    return out
+
+def star(cx, cy, r, color='#fff'):
+    pts = []
+    for k in range(10):
+        a = math.radians(-90 + 36 * k); rr = r if k % 2 == 0 else r * .42
+        pts.append(f'{cx + rr*math.cos(a):.1f},{cy + rr*math.sin(a):.1f}')
+    return f'<polygon points="{" ".join(pts)}" fill="{color}"/>'
+
+CURL = f'<path d="M70 86 C 70 60 84 40 100 44 C 110 47 108 60 98 60 C 92 60 92 53 96 52" fill="none" stroke="{O}" stroke-width="8" stroke-linecap="round"/>'
+BASE = f'<path d="M10 86 H110" stroke="{N}" stroke-width="5" stroke-linecap="round"/>{wave(100, 16, 104, 4, 3, O, 5)}'
+TOPS = [52, 48, 44]
+
+FLAG_FENCE = [
+ ('Flag Fence', 'The picket fence painted as the flag: a blue picket with stars, then red and white stripes, rolling into the wave.',
+  f'<path d="M16 86 V52 l6 -8 l6 8 V86Z" fill="{N}"/>' + star(22, 58, 4.2) + star(22, 70, 4.2) +
+  stripes(34, 48) + stripes(52, 44) + ''.join(outline(x, t) for x, t in zip([16, 34, 52], TOPS)) + CURL + BASE),
+ ('Old Glory Gate', 'Our fence with a flag flying from the corner post, waving in the ocean breeze.',
+  ''.join(picket(x, t) for x, t in zip([34, 52, 70], [50, 46, 50])) +
+  f'<path d="M22 86 V18" stroke="{N}" stroke-width="4" stroke-linecap="round"/><circle cx="22" cy="16" r="3" fill="{Y}"/>' +
+  f'<path d="M24 20 C 40 14 52 26 70 20 V48 C 52 54 40 42 24 48Z" fill="#fff" stroke="{N}" stroke-width="2"/>' +
+  ''.join(f'<path d="M24 {24 + k*8} C 40 {18 + k*8} 52 {30 + k*8} 70 {24 + k*8}" fill="none" stroke="{R}" stroke-width="4"/>' for k in range(3)) +
+  f'<path d="M24 20 C 32 17 38 18 44 20 V34 C 38 32 32 32 24 34Z" fill="{N}"/>' + star(31, 26, 3) + star(38, 28, 2.4) +
+  f'<path d="M86 86 C 88 66 98 58 106 62 C 112 65 110 74 104 74" fill="none" stroke="{O}" stroke-width="7" stroke-linecap="round"/>' + BASE),
+ ('Star Rail', 'White pickets on a red and blue rail, with a star at the curl of the wave.',
+  f'<path d="M12 60 H70" stroke="{R}" stroke-width="7" stroke-linecap="round"/><path d="M12 76 H70" stroke="{N}" stroke-width="7" stroke-linecap="round"/>' +
+  ''.join(picket(x, t) for x, t in zip([16, 34, 52], TOPS)) +
+  ''.join(star(x, 76, 2.6) for x in [25, 43, 61]) + CURL + star(97, 52, 7, Y) + BASE),
+ ('Fourth on the Fence', 'Fireworks over the fence and the surf, the way the neighborhood looks on the Fourth of July.',
+  rays(30, 26, 4, 14, 10, R, 3) + rays(62, 16, 3, 11, 10, N, 3) + rays(94, 26, 4, 13, 10, O, 3) +
+  f'<circle cx="30" cy="26" r="2.5" fill="{Y}"/><circle cx="62" cy="16" r="2.5" fill="{Y}"/><circle cx="94" cy="26" r="2.5" fill="{Y}"/>' +
+  ''.join(picket(x, t + 8) for x, t in zip([16, 34, 52], TOPS)) + CURL.replace('C 70 60 84 40 100 44 C 110 47 108 60 98 60 C 92 60 92 53 96 52', 'C 70 64 84 50 100 54 C 110 57 108 70 98 70 C 92 70 92 63 96 62') + BASE),
+ ('Stripes to Sea', 'The flag\'s stripes stretch out into the waves, with the starry corner set in the fence.',
+  f'<rect x="14" y="40" width="34" height="26" rx="3" fill="{N}"/>' + ''.join(star(x, y, 3) for x, y in [(22, 48), (32, 48), (42, 48), (27, 58), (37, 58)]) +
+  ''.join(picket(x, 44, '#fff', 10) for x in [52]) +
+  ''.join(f'<path d="M64 {48 + k*10} C 78 {42 + k*10} 92 {54 + k*10} 108 {48 + k*10}" fill="none" stroke="{R if k % 2 == 0 else O}" stroke-width="5" stroke-linecap="round"/>' for k in range(4)) +
+  f'<path d="M14 72 V86 M26 72 V86 M38 72 V86" stroke="{N}" stroke-width="3"/>' + BASE),
+ ('Liberty Picket', 'A tall center picket shaped like a flagpole, wearing a little flag, with the fence and wave on either side.',
+  picket(16, 60) + picket(32, 54) + f'<path d="M54 86 V20" stroke="{N}" stroke-width="5" stroke-linecap="round"/><path d="M54 14 l4 6 h-8Z" fill="{Y}"/>' +
+  f'<rect x="56" y="22" width="30" height="20" fill="#fff" stroke="{N}" stroke-width="2"/>' + ''.join(f'<rect x="56" y="{22 + k*5.7:.1f}" width="30" height="2.85" fill="{R}"/>' for k in range(4)) +
+  f'<rect x="56" y="22" width="13" height="11" fill="{N}"/>' + star(62.5, 27.5, 3) +
+  f'<path d="M72 86 C 74 68 88 58 100 62 C 110 65 108 76 100 76" fill="none" stroke="{O}" stroke-width="8" stroke-linecap="round"/>' + BASE),
+]
+LOGOS.extend(FLAG_FENCE)
+
 
 
 def mark(svg, size=120):
@@ -116,7 +176,7 @@ html = f'''<!doctype html>
 <header>
   <div class="kicker">Logo options</div>
   <h1>Pick a <em>favorite</em>.</h1>
-  <p>Eighteen ideas for the Suburbia Park logo.  Each card shows the logo with the name, on a dark background, and as a phone app icon.  Tell us the number you like, or mix and match.</p>
+  <p>Twenty-four ideas for the Suburbia Park logo.  Number 16, Fence Wave, is the one in use now, and numbers 19 to 24 are new takes on it with the flag.  Each card shows the logo with the name, on a dark background, and as a phone app icon.  Tell us the number you like, or mix and match.</p>
 </header>
 <main class="grid">{cards}
 </main>
