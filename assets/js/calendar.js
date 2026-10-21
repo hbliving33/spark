@@ -2,7 +2,7 @@
   const grid = document.getElementById("calGrid");
   if (!grid) return;
   const title = document.getElementById("calTitle"), list = document.getElementById("calList"), dayTitle = document.getElementById("dayTitle");
-  let all = [], events = [], byDay = {};
+  let all = [], events = [], byDay = {}, allDay = {};
   let view2 = "local";
   try { if (location.hash === "#city" || localStorage.getItem("sp-calview") === "city") view2 = "city"; } catch (e) { if (location.hash === "#city") view2 = "city"; }
   // Neighborhood view: community events only.  City view: trash, sweeping and city holidays only.
@@ -17,7 +17,8 @@
     paintViews(); pick(); draw(); showList();
   }));
   paintViews();
-  function index() { byDay = {}; events.sort((a, b) => a.date.localeCompare(b.date)).forEach((e) => (byDay[e.date] = byDay[e.date] || []).push(e)); }
+  list.addEventListener("click", (e) => { const b = e.target.closest("[data-switch]"); if (b) document.querySelector(`.cv[data-view="${b.dataset.switch}"]`).click(); });
+  function index() { allDay = {}; all.forEach((e) => (allDay[e.date] = allDay[e.date] || []).push(e)); byDay = {}; events.sort((a, b) => a.date.localeCompare(b.date)).forEach((e) => (byDay[e.date] = byDay[e.date] || []).push(e)); }
   const today = SP.today();
   let view = new Date(today.getFullYear(), today.getMonth(), 1), selected = null;
 
@@ -26,7 +27,9 @@
       const d = SP.parse(selected);
       dayTitle.textContent = d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
       const evs = byDay[selected] || [];
-      list.innerHTML = evs.length ? evs.map(SP.event).join("") : '<li class="empty">Nothing planned this day.</li>';
+      const other = (allDay[selected] || []).length - evs.length;
+      const hint = other > 0 ? `<li class="empty other-view">Plus ${other} ${view2 === "city" ? "neighborhood" : "Huntington Beach"} item${other > 1 ? "s" : ""} this day.  <button type="button" class="link-btn" data-switch="${view2 === "city" ? "local" : "city"}">Show ${view2 === "city" ? "Neighborhood" : "Trash and sweeping"}</button></li>` : "";
+      list.innerHTML = (evs.length ? evs.map(SP.event).join("") : '<li class="empty">Nothing planned this day.</li>') + hint;
     } else {
       dayTitle.textContent = view2 === "city" ? "Coming up from the city" : "Upcoming events";
       const up = SP.upcoming(6, events);
@@ -39,10 +42,10 @@
     let html = "";
     for (let i = 0; i < 42; i++) {
       const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
-      const k = SP.key(d), evs = byDay[k] || [];
+      const k = SP.key(d), evs = allDay[k] || [];
       const cls = ["day", d.getMonth() !== view.getMonth() ? "out" : "", +d === +today ? "today" : "", k === selected ? "sel" : ""].join(" ");
       const label = d.toLocaleDateString("en-US", { month: "long", day: "numeric" }) + (evs.length ? `, ${evs.length} event${evs.length > 1 ? "s" : ""}` : "");
-      html += `<button type="button" class="${cls}" data-k="${k}" aria-label="${label}"${k === selected ? ' aria-pressed="true"' : ""}><span>${d.getDate()}</span><span class="dots">${evs.map((e) => `<i class="dot ${SP.esc(e.kind || "social")}"></i>`).join("")}</span></button>`;
+      html += `<button type="button" class="${cls}" data-k="${k}" aria-label="${label}"${k === selected ? ' aria-pressed="true"' : ""}><span>${d.getDate()}</span><span class="dots">${evs.some((e) => !e.city) ? '<i class="dot dot-local"></i>' : ""}${evs.some((e) => e.city) ? '<i class="dot dot-city"></i>' : ""}</span></button>`;
       if (i === 34 && d.getMonth() !== view.getMonth()) break;
     }
     grid.innerHTML = html;

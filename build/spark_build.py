@@ -198,7 +198,7 @@ cal = f'''<main>
       </div>
       <div class="cal-dow" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
       <div class="cal-grid" id="calGrid"></div>
-      <div class="legend" data-for="local"><span class="k k-social">Social</span><span class="k k-volunteer">Volunteer</span><span class="k k-market">Market</span><span class="k k-beach">Beach</span><span class="k k-sports">Sports</span></div><div class="legend" data-for="city" hidden><span class="k k-city">Trash, sweeping and city holidays</span></div>
+      <div class="legend"><span class="k k-local">Neighborhood</span><span class="k k-hb">Huntington Beach trash and sweeping</span></div>
     </div>
     <aside class="cal-side">
       <h3 id="dayTitle">Upcoming events</h3>

@@ -761,3 +761,10 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .legend[hidden] { display: none; }
 .pickup .pk-list { flex: 1 1 200px; display: flex; flex-direction: column; gap: 2px; }
 .pickup .pk-item { flex: none; }
+
+/* Calendar dots: blue for neighborhood, green for Huntington Beach */
+.dot.dot-local, .k-local::before { background: var(--ocean); }
+.dot.dot-city, .k-hb::before { background: #2fb37a; }
+.ev[data-k="city"] .ev-date { border-color: #2fb37a; }
+.link-btn { font: inherit; font-style: normal; font-weight: 800; color: var(--ocean); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.day.sel .dot.dot-local, .day.today .dot.dot-local { background: #9fdcff; }
