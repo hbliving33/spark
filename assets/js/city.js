@@ -10,7 +10,7 @@
 //   trashDay: 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday.  Leave null to hide.
 //   sweep.day: the weekday, same numbers.  sweep.weeks: which weeks of the month, for example [1, 3] or [2, 4].
 window.SP_CITY = {
-  trashDay: null,
+  trashDay: 1,  // Monday, confirmed by a Suburbia Park resident
   sweep: { day: null, weeks: [], time: "" },
   from: "2026-10-01",
   to: "2027-12-31",
