@@ -8,7 +8,7 @@
 // TO TURN ON THE WEEKLY ENTRIES, fill in the two settings below.
 // Find your days on the city's Surf City Services Map, or call the Trash and Recycling office at (714) 375-5010.
 //   trashDay: 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday.  Leave null to hide.
-//   sweep.day: the weekday, same numbers.  sweep.weeks: which weeks of the month, for example [1, 3] or [2, 4].
+//   sweep.day: the weekday, same numbers.  sweep.weeks: which weeks of the month, for example [1, 3], [2, 4] or [1, "last"].
 window.SP_CITY = {
   trashDay: 1,  // Monday, confirmed by a Suburbia Park resident
   sweep: { day: null, weeks: [], time: "" },
@@ -84,7 +84,8 @@ window.SP_CITY_EVENTS = (() => {
   // Street sweeping, skipped on holidays
   if (C.sweep && C.sweep.day && C.sweep.weeks.length) {
     for (let t = new Date(start); t <= end; t = add(t, 1)) {
-      if (t.getDay() !== C.sweep.day || !C.sweep.weeks.includes(Math.ceil(t.getDate() / 7))) continue;
+      const nth = Math.ceil(t.getDate() / 7), isLast = add(t, 7).getMonth() !== t.getMonth();
+      if (t.getDay() !== C.sweep.day || !(C.sweep.weeks.includes(nth) || (isLast && C.sweep.weeks.includes("last")))) continue;
       if (noSweep[key(t)]) continue;
       out.push({ date: key(t), title: "Street sweeping", kind: "city", time: C.sweep.time,
         note: "Move cars off the street.  Enforced rain or shine.", city: true, repeat: true });
