@@ -25,11 +25,14 @@
   if (!el || !window.SP_CITY_EVENTS) return;
   const t = SP.key(SP.today()), next = (re) => window.SP_CITY_EVENTS.filter((e) => e.date >= t && re.test(e.title)).sort((a, b) => a.date.localeCompare(b.date))[0];
   const day = (e) => SP.parse(e.date).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
-  const trash = next(/^Trash pickup/), sweep = next(/^Street sweeping/), hol = next(/: no /);
+  const trash = next(/^Trash pickup/), sweep = next(/^Street sweeping/);
+  // With a known pickup day, only flag holidays that actually move it.  Otherwise show the next citywide holiday.
+  const late = window.SP_CITY && window.SP_CITY.trashDay ? next(/one day late/) : null, hol = late ? null : next(/: no /);
   const parts = [];
   if (trash) parts.push(`<b>Trash:</b> ${day(trash)}`);
   if (sweep) parts.push(`<b>Street sweeping:</b> ${day(sweep)}`);
   if (!parts.length) parts.push("<b>Trash and sweeping days coming soon.</b>");
+  if (late) parts.push(`<span class="pk-hol">Holiday week: pickup moves to ${day(late)}</span>`);
   if (hol) parts.push(`<span class="pk-hol">${SP.esc(hol.title.split(":")[0])}, ${SP.parse(hol.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}: ${SP.esc(hol.title.split(": ")[1])}</span>`);
   el.innerHTML = `<img src="assets/img/hb-city-mark.png" alt="" width="34" height="26"><span class="pk-list">${parts.map((x) => `<span class="pk-item">${x}</span>`).join("")}</span><a href="calendar.html#city">See the city calendar</a>`;
   el.hidden = false;
