@@ -101,3 +101,43 @@ window.SP = {
   }
   requestAnimationFrame(frame);
 })();
+
+// Date, time and weather bar at the top of every page (Huntington Beach local time).
+(() => {
+  const dEl = document.getElementById("nbDate"), wEl = document.getElementById("nbWx");
+  if (!dEl) return;
+  const TZ = "America/Los_Angeles";
+  const fmt = new Intl.DateTimeFormat("en-US", { timeZone: TZ, weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  const tick = () => { dEl.textContent = fmt.format(new Date()).replace(/, (\d{1,2}:)/, "  ·  $1"); };
+  tick(); setInterval(tick, 15000);
+
+  // Weather codes (WMO), as used by Open-Meteo
+  const WX = [[0, "☀️", "Clear"], [1, "🌤️", "Mostly clear"], [2, "⛅", "Partly cloudy"], [3, "☁️", "Cloudy"], [48, "🌫️", "Fog"],
+    [57, "🌦️", "Drizzle"], [67, "🌧️", "Rain"], [77, "🌨️", "Snow"], [82, "🌧️", "Showers"], [86, "🌨️", "Snow showers"], [99, "⛈️", "Thunderstorms"]];
+  const look = (c) => WX.find(([max]) => c <= max) || [0, "", ""];
+  const URL = "https://api.open-meteo.com/v1/forecast?latitude=33.6637&longitude=-117.9532&current=temperature_2m,weather_code,is_day" +
+    "&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles&forecast_days=1";
+  const KEY = "sp-wx", FRESH = 15 * 60 * 1000;
+  function paint(w) {
+    if (!w || !w.current) return;
+    let [, ico, label] = look(w.current.weather_code);
+    if (w.current.weather_code <= 1 && !w.current.is_day) ico = "🌙";
+    const hi = Math.round(w.daily.temperature_2m_max[0]), lo = Math.round(w.daily.temperature_2m_min[0]);
+    wEl.innerHTML = `<span aria-hidden="true">${ico}</span> <b>${Math.round(w.current.temperature_2m)}°</b> ${label}<span class="nb-hl">  ·  H ${hi}°  L ${lo}°</span>`;
+    wEl.title = `Huntington Beach weather: ${Math.round(w.current.temperature_2m)} degrees, ${label}.  High ${hi}, low ${lo}.`;
+    wEl.hidden = false;
+  }
+  async function load() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    if (saved && Date.now() - saved.t < FRESH) { paint(saved.w); return; }
+    if (saved) paint(saved.w);
+    try {
+      const r = await fetch(URL); if (!r.ok) return;
+      const w = await r.json(); paint(w);
+      try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), w })); } catch (e) {}
+    } catch (e) { /* offline: keep whatever is showing */ }
+  }
+  load(); setInterval(load, FRESH);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { tick(); load(); } });
+})();
