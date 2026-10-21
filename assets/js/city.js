@@ -11,7 +11,7 @@
 //   sweep.day: the weekday, same numbers.  sweep.weeks: which weeks of the month, for example [1, 3], [2, 4] or [1, "last"].
 window.SP_CITY = {
   trashDay: 1,  // Monday, confirmed by a Suburbia Park resident
-  sweep: { day: null, weeks: [], time: "" },
+  sweep: { day: 2, weeks: [1, "last"], time: "" },  // First and last Tuesday, confirmed by a Suburbia Park resident
   from: "2026-10-01",
   to: "2027-12-31",
   phone: "(714) 375-5010",
