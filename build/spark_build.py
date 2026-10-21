@@ -192,13 +192,24 @@ cal = f'''<main>
       </div>
       <div class="cal-dow" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
       <div class="cal-grid" id="calGrid"></div>
-      <div class="legend"><span class="k k-social">Social</span><span class="k k-volunteer">Volunteer</span><span class="k k-market">Market</span><span class="k k-beach">Beach</span><span class="k k-sports">Sports</span></div>
+      <div class="legend"><span class="k k-social">Social</span><span class="k k-volunteer">Volunteer</span><span class="k k-market">Market</span><span class="k k-beach">Beach</span><span class="k k-sports">Sports</span><span class="k k-city">Trash and sweeping</span></div>
     </div>
     <aside class="cal-side">
       <h3 id="dayTitle">Upcoming events</h3>
       <ol class="up-list" id="calList"></ol>
       <a class="btn btn-blue" href="#add">Add an event</a>
     </aside>
+  </section>
+  <section class="wrap city-wrap">
+    <div class="city-card">
+      <div class="kicker">City services</div>
+      <h2>Trash and <em>street sweeping</em></h2>
+      <div class="city-grid">
+        <div><h3>Trash and recycling</h3><p>Picked up once a week by Republic Services, between 7:00 AM and 6:30 PM.  No pickup on New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving or Christmas.  In those weeks, pickup runs one day late from the holiday on.</p><p class="fine">Questions: City Trash and Recycling office, <a href="tel:+17143755010">(714) 375-5010</a>.</p></div>
+        <div><h3>Street sweeping</h3><p>Twice a month.  Check the signs at the entrance to your block and move cars on sweeping days.  Enforced rain or shine, and the ticket is $68.  No sweeping on New Year's Day, Presidents' Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, the day after Thanksgiving or Christmas, and missed streets are not made up.</p><p class="fine">Questions: HB Police Traffic Bureau, <a href="tel:+17145365663">(714) 536-5663</a>.</p></div>
+      </div>
+      <div class="cta-row"><a class="btn btn-blue" href="https://huntingtonbeach.maps.arcgis.com/apps/webappviewer/index.html?id=b040870a1b8a4b089269b5316de22958" target="_blank" rel="noopener">Look up your address</a><a class="btn btn-white" href="https://www3.huntingtonbeachca.gov/hbnotify/" target="_blank" rel="noopener">Get sweeping text alerts</a></div>
+    </div>
   </section>
   <section class="wrap form-wrap" id="add"><div id="addArea">
     <form class="card-form" action="https://formsubmit.co/{FORM_TO}" method="POST">
@@ -427,7 +438,7 @@ helpp = f"""<main>
 
 pages = [
     ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/js/map.js"></script>'),
-    ('calendar.html', 'Calendar | Suburbia Park', 'Suburbia Park community calendar: neighborhood events in Huntington Beach.', cal, '<script src="assets/js/data.js"></script>\n<script src="assets/js/calendar.js"></script>'),
+    ('calendar.html', 'Calendar | Suburbia Park', 'Suburbia Park community calendar: neighborhood events in Huntington Beach.', cal, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/calendar.js"></script>'),
     ('board.html', 'Bulletin Board | Suburbia Park', 'Suburbia Park bulletin board: lost and found, for sale, free, recommendations and news.', board, '<script src="assets/js/data.js"></script>\n<script src="assets/js/board.js"></script>'),
     ('suggestions.html', 'Suggestion Box | Suburbia Park', 'Send an idea to make Suburbia Park even better.', sugg, ''),
     ('account.html', 'Your account | Suburbia Park', 'Sign in or join the Suburbia Park community app.', acct, '<script src="assets/js/account.js"></script>'),
