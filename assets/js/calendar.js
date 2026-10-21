@@ -15,7 +15,7 @@
       list.innerHTML = evs.length ? evs.map(SP.event).join("") : '<li class="empty">Nothing planned this day.</li>';
     } else {
       dayTitle.textContent = "Upcoming events";
-      const up = SP.upcoming(6, events);
+      const up = SP.upcoming(6, events.filter((e) => !e.repeat));
       list.innerHTML = up.length ? up.map(SP.event).join("") : '<li class="empty">Nothing on the calendar yet.</li>';
     }
   }
@@ -43,6 +43,7 @@
   document.getElementById("calNext").onclick = () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); draw(); };
   async function load() {
     try { events = await SPC.events(); } catch (e) { console.warn(e); events = []; }
+    events = events.concat(window.SP_CITY_EVENTS || []);
     index(); draw(); showList();
   }
   load();
