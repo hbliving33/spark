@@ -119,8 +119,6 @@ home = f'''<main>
     </a>
   </section>
 
-  <div class="wrap ad-banner" data-ad-slot="banner" data-max="1" aria-label="Sponsor"></div>
-
   <section class="wrap split">
     <div class="up">
       <div class="sec-head"><div class="kicker">Coming up</div><h2>Next on the <em>calendar</em></h2></div>
@@ -171,11 +169,6 @@ home = f'''<main>
       </div>
     </div>
     <p class="map-links"><a href="https://www.surfcityusa.com/" rel="noopener" target="_blank">Visit Huntington Beach</a><a href="https://www.huntingtonbeachca.gov/" rel="noopener" target="_blank">City of Huntington Beach services</a></p>
-  </section>
-
-  <section class="wrap sponsors" aria-label="Local sponsors">
-    <div class="sec-head"><div class="kicker">Local sponsors</div><h2>Neighbors who keep this <em>going</em></h2></div>
-    <div class="ad-strip" data-ad-slot="strip" data-max="3"></div>
   </section>
 
   <section class="wrap join">
@@ -316,26 +309,32 @@ acct = f'''<main>
 </main>'''
 
 adminp = f'''<main>
-{hero('Admin', 'Keep it <em>neighborly</em>.', 'Approve new neighbors, review reports, manage sponsors and streets.', '', 'hero-short')}
+{hero('Admin', 'Keep it <em>neighborly</em>.', 'Approve new neighbors, review reports and manage streets.', '', 'hero-short')}
   <section class="wrap form-wrap" id="admin"><p class="fine">Loading...</p></section>
 </main>'''
 
 biz = f'''<main>
-{hero('Local businesses', 'Shop <em>local</em>.', 'Businesses that support Suburbia Park.  Neighbors helping neighbors.', '', 'hero-short')}
+{hero('Coming soon', "Your neighbors' <em>go&#8209;to</em> list.", "The trusted local pros, favorite spots and hidden gems that Suburbia Park neighbors swear by, all in one place.  Real recommendations from real neighbors.  We're putting the finishing touches on it now.", '', 'hero-short')}
   <section class="wrap">
-    <div class="ad-grid" data-ad-slot="directory" data-max="6"></div>
+    <div class="teaser-grid">
+      <div class="teaser"><span class="t-ico" aria-hidden="true">🔧</span><b>Home repair and handymen</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="teaser"><span class="t-ico" aria-hidden="true">☕</span><b>Coffee, tacos and takeout</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="teaser"><span class="t-ico" aria-hidden="true">🏄</span><b>Surf, bikes and outdoors</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="teaser"><span class="t-ico" aria-hidden="true">📚</span><b>Tutors, lessons and kids</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="teaser"><span class="t-ico" aria-hidden="true">🐾</span><b>Pets, groomers and sitters</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="teaser"><span class="t-ico" aria-hidden="true">🌿</span><b>Yards, gardens and pools</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
+    </div>
+    <p class="teaser-note">Every business on the list will be recommended by a neighbor.  No paid placements, just people who live here sharing who they trust.</p>
   </section>
-  <section class="wrap form-wrap" id="advertise">
+  <section class="wrap form-wrap" id="recommend">
     <form class="card-form" action="https://formsubmit.co/{FORM_TO}" method="POST">
-      <h2>Advertise with Suburbia Park</h2>
-      <p class="fine">Reach the families who live right here.  Sponsor spots are on the home page and this directory.  Only family-friendly local businesses, and we never track visitors.  Tell us about your business and we'll get back to you with options.</p>
-      {FORM_HIDDEN('Suburbia Park: advertising inquiry', 'https://suburbiapark.com/thanks.html')}
-      <div class="row"><label>Business name<input name="business" required maxlength="80"></label><label>Website <span class="opt">(optional)</span><input name="website" type="url"></label></div>
-      <div class="row"><label>Your name<input name="name" required></label><label>Your email<input type="email" name="email" required></label></div>
-      <label>Spot you're interested in
-        <select name="spot"><option>Home page banner</option><option>Home page sponsor strip</option><option>Local Businesses directory</option><option>Not sure yet</option></select></label>
-      <label>Anything else? <span class="opt">(optional)</span><textarea name="details" rows="3" maxlength="600"></textarea></label>
-      <button class="btn btn-red" type="submit">Send inquiry</button>
+      <h2>Help us build the list</h2>
+      <p class="fine">Know a local business or pro that always does right by you?  Tell us, and they could be one of the first on the list.</p>
+      {FORM_HIDDEN('Suburbia Park: local business recommendation', 'https://suburbiapark.com/thanks.html')}
+      <div class="row"><label>Business name<input name="business" required maxlength="80"></label><label>What they do <span class="opt">(optional)</span><input name="kind" maxlength="60" placeholder="Plumber, taco shop, surf lessons"></label></div>
+      <label>Why neighbors should know them <span class="opt">(optional)</span><textarea name="why" rows="3" maxlength="600"></textarea></label>
+      <div class="row"><label>Your name <span class="opt">(optional)</span><input name="name"></label><label>Your email <span class="opt">(optional, to hear when it launches)</span><input type="email" name="email"></label></div>
+      <button class="btn btn-red" type="submit">Send recommendation</button>
     </form>
   </section>
 </main>'''
@@ -347,7 +346,7 @@ rules = f'''<main>
       <li><b>Neighbors only.</b>  Accounts are for adults 18 and over who live in Suburbia Park.  Kids use the app through a parent.</li>
       <li><b>Keep it family friendly.</b>  No swearing, insults, politics fights or anything you wouldn't say at a block party.</li>
       <li><b>Protect privacy.</b>  Don't post phone numbers, home addresses, license plates or photos of kids.  Never share someone else's information.</li>
-      <li><b>No selling scams or spam.</b>  Selling your own things is fine.  Businesses advertise through a sponsor spot.</li>
+      <li><b>No scams or spam.</b>  Selling your own things is fine.  No business ads on the board.</li>
       <li><b>Report, don't argue.</b>  If a post breaks the rules, tap Report.  It's hidden until a moderator reviews it.</li>
       <li><b>Emergencies go to 911.</b>  This app is not monitored around the clock.</li>
     </ol>
@@ -362,14 +361,14 @@ priv = f'''<main>
     <ul>
       <li><b>When you join:</b> your first name, last initial, house number, street and email address.</li>
       <li><b>When you post:</b> the notices and events you post, and any reports you make.</li>
-      <li><b>When you use a form</b> (suggestion box, advertising inquiry, or posting before sign-in is available): whatever you type, plus your name and email if you give them.</li>
+      <li><b>When you use a form</b> (suggestion box, business recommendation, or posting before sign-in is available): whatever you type, plus your name and email if you give them.</li>
     </ul>
     <h2>How we use it</h2>
     <ul>
       <li>Your address is used only to confirm you live in Suburbia Park.  It is never shown to other neighbors.</li>
       <li>Posts show only your first name and last initial.</li>
       <li>Your email is used to send you sign-in links and to reply to you.</li>
-      <li>We don't sell your information, and we don't use ad networks or tracking cookies.  Sponsors never get your information.</li>
+      <li>We don't sell your information, we don't show ads, and we don't use ad networks or tracking cookies.</li>
     </ul>
     <h2>Who handles it for us</h2>
     <ul>
@@ -427,14 +426,14 @@ helpp = f"""<main>
 </main>"""
 
 pages = [
-    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/js/ads.js"></script>\n<script src="assets/js/map.js"></script>'),
+    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/js/map.js"></script>'),
     ('calendar.html', 'Calendar | Suburbia Park', 'Suburbia Park community calendar: neighborhood events in Huntington Beach.', cal, '<script src="assets/js/data.js"></script>\n<script src="assets/js/calendar.js"></script>'),
     ('board.html', 'Bulletin Board | Suburbia Park', 'Suburbia Park bulletin board: lost and found, for sale, free, recommendations and news.', board, '<script src="assets/js/data.js"></script>\n<script src="assets/js/board.js"></script>'),
     ('suggestions.html', 'Suggestion Box | Suburbia Park', 'Send an idea to make Suburbia Park even better.', sugg, ''),
     ('account.html', 'Your account | Suburbia Park', 'Sign in or join the Suburbia Park community app.', acct, '<script src="assets/js/account.js"></script>'),
     ('admin.html', 'Admin | Suburbia Park', 'Suburbia Park admin.', adminp, '<script src="assets/js/admin.js"></script>'),
     ('help.html', 'Help a Neighbor | Suburbia Park', 'Neighbors helping neighbors in Suburbia Park: grocery runs, errands, rides and check-ins.', helpp, '<script src="assets/js/data.js"></script>\n<script src="assets/js/help.js"></script>'),
-    ('businesses.html', 'Local Businesses | Suburbia Park', 'Local businesses that support Suburbia Park, and how to advertise.', biz, '<script src="assets/js/ads.js"></script>'),
+    ('businesses.html', 'Local Businesses | Suburbia Park', 'Coming soon: the local businesses and pros Suburbia Park neighbors trust.', biz, ''),
     ('rules.html', 'Community Rules | Suburbia Park', 'Suburbia Park community rules.', rules, ''),
     ('privacy.html', 'Privacy | Suburbia Park', 'Suburbia Park privacy policy.', priv, ''),
     ('offline.html', 'Offline | Suburbia Park', 'You are offline.', f"""<main>
