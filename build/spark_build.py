@@ -123,6 +123,7 @@ home = f'''<main>
   <section class="wrap split">
     <div class="up">
       <div class="sec-head"><div class="kicker">Coming up</div><h2>Next on the <em>calendar</em></h2></div>
+      <p class="pickup" id="pickup" hidden></p>
       <ol class="up-list" id="upNext"></ol>
       <a class="more" href="calendar.html">Full calendar &rarr;</a>
     </div>
@@ -186,6 +187,10 @@ cal = f'''<main>
 {hero('Community calendar', 'What\'s <em>happening</em>.', 'Neighborhood events, volunteer days and get-togethers.  Tap a day to see what\'s on.', '', 'hero-short')}
   <section class="wrap cal-wrap">
     <div class="cal">
+      <div class="cal-views" role="group" aria-label="Which calendar">
+        <button type="button" class="cv" data-view="local" aria-pressed="true"><img src="assets/img/mark.svg" alt="" width="44" height="36"><span>Neighborhood</span></button>
+        <button type="button" class="cv" data-view="city" aria-pressed="false"><img src="assets/img/hb-city-mark.png" alt="" width="47" height="36"><span>Trash and sweeping</span></button>
+      </div>
       <div class="cal-head">
         <button type="button" class="cal-nav" id="calPrev" aria-label="Previous month">&lsaquo;</button>
         <h2 id="calTitle">Month</h2>
@@ -193,7 +198,7 @@ cal = f'''<main>
       </div>
       <div class="cal-dow" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
       <div class="cal-grid" id="calGrid"></div>
-      <div class="legend"><span class="k k-social">Social</span><span class="k k-volunteer">Volunteer</span><span class="k k-market">Market</span><span class="k k-beach">Beach</span><span class="k k-sports">Sports</span><span class="k k-city">Trash and sweeping</span></div>
+      <div class="legend" data-for="local"><span class="k k-social">Social</span><span class="k k-volunteer">Volunteer</span><span class="k k-market">Market</span><span class="k k-beach">Beach</span><span class="k k-sports">Sports</span><span class="k k-city">City holiday</span></div><div class="legend" data-for="city" hidden><span class="k k-city">Trash, sweeping and city holidays</span></div>
     </div>
     <aside class="cal-side">
       <h3 id="dayTitle">Upcoming events</h3>
@@ -438,7 +443,7 @@ helpp = f"""<main>
 </main>"""
 
 pages = [
-    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/js/map.js"></script>'),
+    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/js/map.js"></script>'),
     ('calendar.html', 'Calendar | Suburbia Park', 'Suburbia Park community calendar: neighborhood events in Huntington Beach.', cal, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/calendar.js"></script>'),
     ('board.html', 'Bulletin Board | Suburbia Park', 'Suburbia Park bulletin board: lost and found, for sale, free, recommendations and news.', board, '<script src="assets/js/data.js"></script>\n<script src="assets/js/board.js"></script>'),
     ('suggestions.html', 'Suggestion Box | Suburbia Park', 'Send an idea to make Suburbia Park even better.', sugg, ''),
