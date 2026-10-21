@@ -739,3 +739,6 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .nb-wx { white-space: pre; color: #dff1fd; } .nb-wx b { color: #fff; font-size: 14px; }
 @media (max-width: 480px) { .nowbar-in { padding: 4px 14px; font-size: 12px; } .nb-hl { display: none; } }
 @media (display-mode: standalone) { .top { padding-top: 0; } .nowbar { padding-top: env(safe-area-inset-top); } }
+
+/* Fence Wave logo: white disc behind it on the dark footer */
+.brand-foot img { background: #fff; border-radius: 50%; padding: 5px; box-sizing: border-box; }
