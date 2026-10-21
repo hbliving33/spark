@@ -352,8 +352,8 @@ biz = f'''<main>
   </section>
   <section class="wrap">
     <div class="adv-band">
-      <div><div class="kicker">Own a local business?</div><h2>Reach your <em>neighbors.</em></h2><p>Put your business on the Suburbia Park Local page for $5 a month, or on Suburbia Park and all of HBLiving for $10.  Sponsors keep this site free for everyone.</p></div>
-      <a class="btn btn-red" href="{HBL}index.html?community=Suburbia%20Park#advertise" target="_blank" rel="noopener">Advertise with HBLiving</a>
+      <div><div class="kicker">Own a local business?</div><h2>Reach your <em>neighbors.</em></h2><p>Put your business on the Suburbia Park Local page for $5 a month, or on Suburbia Park and all of <span class="nm">HB<em>Living</em></span> for $10.  Sponsors keep this site free for everyone.</p></div>
+      <a class="btn btn-red" href="{HBL}index.html?community=Suburbia%20Park#advertise" target="_blank" rel="noopener">Advertise with <span class="nm">HB<em>Living</em></span></a>
     </div>
   </section>
   <section class="wrap form-wrap" id="recommend">
@@ -463,7 +463,7 @@ pages = [
     ('account.html', 'Your account | Suburbia Park', 'Sign in or join the Suburbia Park community app.', acct, '<script src="assets/js/account.js"></script>'),
     ('admin.html', 'Admin | Suburbia Park', 'Suburbia Park admin.', adminp, '<script src="assets/js/admin.js"></script>'),
     ('help.html', 'Help a Neighbor | Suburbia Park', 'Neighbors helping neighbors in Suburbia Park: grocery runs, errands, rides and check-ins.', helpp, '<script src="assets/js/data.js"></script>\n<script src="assets/js/help.js"></script>'),
-    ('businesses.html', 'Local | Suburbia Park', 'Local businesses and sponsors around Suburbia Park, from HBLiving.', biz, f'<script>window.SP_COMMUNITY = "{COMMUNITY_ID}";</script>\n<script src="{HBL}assets/js/map-data.js" defer></script>\n<script src="assets/js/local.js" defer></script>'),
+    ('businesses.html', 'Local | Suburbia Park', 'Local businesses and sponsors around Suburbia Park, from HBLiving.', biz, f'<script>window.SP_COMMUNITY = "{COMMUNITY_ID}";</script>\n<script src="{HBL}assets/js/track.js" defer></script>\n<script src="{HBL}assets/js/map-data.js" defer></script>\n<script src="assets/js/local.js" defer></script>'),
     ('rules.html', 'Community Rules | Suburbia Park', 'Suburbia Park community rules.', rules, ''),
     ('privacy.html', 'Privacy | Suburbia Park', 'Suburbia Park privacy policy.', priv, ''),
     ('offline.html', 'Offline | Suburbia Park', 'You are offline.', f"""<main>
