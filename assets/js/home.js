@@ -18,3 +18,19 @@
     hm.innerHTML = help.length ? help.map((h) => `<li class="t-${SP.esc(h.type)}"><span>${h.type === "ask" ? "Needs a hand" : "Offering to help"}</span><b>${SP.esc(h.title)}</b></li>`).join("") : '<li><b>No requests right now.</b></li>';
   }
 })();
+
+// Next trash pickup and street sweeping, from the city schedule
+(() => {
+  const el = document.getElementById("pickup");
+  if (!el || !window.SP_CITY_EVENTS) return;
+  const t = SP.key(SP.today()), next = (re) => window.SP_CITY_EVENTS.filter((e) => e.date >= t && re.test(e.title)).sort((a, b) => a.date.localeCompare(b.date))[0];
+  const day = (e) => SP.parse(e.date).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
+  const trash = next(/^Trash pickup/), sweep = next(/^Street sweeping/), hol = next(/: no /);
+  const parts = [];
+  if (trash) parts.push(`<b>Trash:</b> ${day(trash)}`);
+  if (sweep) parts.push(`<b>Street sweeping:</b> ${day(sweep)}`);
+  if (!parts.length) parts.push("<b>Trash and sweeping days coming soon.</b>");
+  if (hol) parts.push(`<span class="pk-hol">${SP.esc(hol.title.split(":")[0])}, ${SP.parse(hol.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}: ${SP.esc(hol.title.split(": ")[1])}</span>`);
+  el.innerHTML = `<img src="assets/img/hb-city-mark.png" alt="" width="34" height="26"><span class="pk-list">${parts.map((x) => `<span class="pk-item">${x}</span>`).join("")}</span><a href="calendar.html#city">See the city calendar</a>`;
+  el.hidden = false;
+})();

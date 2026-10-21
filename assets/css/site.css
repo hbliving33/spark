@@ -742,3 +742,22 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 
 /* Fence Wave logo: white disc behind it on the dark footer */
 .brand-foot img { background: #fff; border-radius: 50%; padding: 5px; box-sizing: border-box; }
+
+/* Calendar views: neighborhood and city */
+.cal-views { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.cv { display: flex; align-items: center; justify-content: center; gap: 10px; font: inherit; font-weight: 800; font-size: 15px; color: var(--ink); background: var(--white); border: 2px solid var(--line); border-radius: 16px; padding: 10px 12px; cursor: pointer; transition: border-color .15s, box-shadow .15s, background .15s; }
+.cv img { height: 36px; width: auto; flex: none; }
+.cv:hover { border-color: var(--sky2); }
+.cv[aria-pressed="true"] { border-color: var(--ocean); background: #eef8fd; box-shadow: 0 6px 16px rgba(18, 113, 168, .16); color: var(--navy); }
+.cv[aria-pressed="false"] img { opacity: .55; filter: grayscale(.4); }
+@media (max-width: 480px) { .cv { flex-direction: column; gap: 4px; font-size: 13px; padding: 8px 6px; } .cv img { height: 30px; } }
+
+/* Home: next pickup line */
+.pickup { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 14px; padding: 10px 14px; background: #eef8fd; border: 1px solid var(--line); border-radius: 14px; font-size: 14px; color: var(--ink); }
+.pickup img { height: 26px; width: auto; }
+.pickup span { flex: 1 1 200px; } .pickup i { font-style: normal; margin: 0 6px; color: var(--muted); }
+.pickup .pk-hol { color: var(--muted); }
+.pickup a { font-weight: 800; color: var(--ocean); text-decoration: none; white-space: nowrap; }
+.legend[hidden] { display: none; }
+.pickup .pk-list { flex: 1 1 200px; display: flex; flex-direction: column; gap: 2px; }
+.pickup .pk-item { flex: none; }

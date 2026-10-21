@@ -2,7 +2,21 @@
   const grid = document.getElementById("calGrid");
   if (!grid) return;
   const title = document.getElementById("calTitle"), list = document.getElementById("calList"), dayTitle = document.getElementById("dayTitle");
-  let events = [], byDay = {};
+  let all = [], events = [], byDay = {};
+  let view2 = "local";
+  try { if (location.hash === "#city" || localStorage.getItem("sp-calview") === "city") view2 = "city"; } catch (e) { if (location.hash === "#city") view2 = "city"; }
+  // Neighborhood view: community events plus city holiday notices.  City view: everything from the city.
+  function pick() { events = all.filter((e) => view2 === "city" ? e.city : (!e.city || !e.repeat)); index(); }
+  function paintViews() {
+    document.querySelectorAll(".cv").forEach((b) => b.setAttribute("aria-pressed", b.dataset.view === view2));
+    document.querySelectorAll(".legend[data-for]").forEach((l) => (l.hidden = l.dataset.for !== view2));
+  }
+  document.querySelectorAll(".cv").forEach((b) => b.addEventListener("click", () => {
+    view2 = b.dataset.view;
+    try { localStorage.setItem("sp-calview", view2); } catch (e) {}
+    paintViews(); pick(); draw(); showList();
+  }));
+  paintViews();
   function index() { byDay = {}; events.sort((a, b) => a.date.localeCompare(b.date)).forEach((e) => (byDay[e.date] = byDay[e.date] || []).push(e)); }
   const today = SP.today();
   let view = new Date(today.getFullYear(), today.getMonth(), 1), selected = null;
@@ -14,8 +28,8 @@
       const evs = byDay[selected] || [];
       list.innerHTML = evs.length ? evs.map(SP.event).join("") : '<li class="empty">Nothing planned this day.</li>';
     } else {
-      dayTitle.textContent = "Upcoming events";
-      const up = SP.upcoming(6, events.filter((e) => !e.repeat));
+      dayTitle.textContent = view2 === "city" ? "Coming up from the city" : "Upcoming events";
+      const up = SP.upcoming(6, view2 === "city" ? events : events.filter((e) => !e.repeat));
       list.innerHTML = up.length ? up.map(SP.event).join("") : '<li class="empty">Nothing on the calendar yet.</li>';
     }
   }
@@ -43,8 +57,8 @@
   document.getElementById("calNext").onclick = () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); draw(); };
   async function load() {
     try { events = await SPC.events(); } catch (e) { console.warn(e); events = []; }
-    events = events.concat(window.SP_CITY_EVENTS || []);
-    index(); draw(); showList();
+    all = events.concat(window.SP_CITY_EVENTS || []);
+    pick(); draw(); showList();
   }
   load();
 
