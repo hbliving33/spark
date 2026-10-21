@@ -780,3 +780,11 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .fam .swh { fill: var(--navy); }
 .scene .skac { stroke: #2fb37a; } .scene .skbc { stroke: #8e5cd9; }
 .scene .skah { fill: #ff8a5b; } .scene .skbh { fill: #1271a8; }
+
+/* Mom with a stroller and a little one walking */
+.scene .wmc { stroke: #2a9d8f; } .scene .wkc { stroke: #ff6fa0; stroke-width: 7; }
+.scene .whair { fill: #6b4a2b; } .scene .kidh2 { fill: #ffd23f; }
+.scene .fam .sframe { fill: none; stroke: #2b3a4a; stroke-width: 1.8; stroke-linecap: round; }
+.scene .fam .sbody { fill: #7ec8f0; stroke: #2b3a4a; stroke-width: 1.4; }
+.scene .fam .shood { fill: #1271a8; }
+.scene .fam .swheel { fill: #fff; stroke: #2b3a4a; stroke-width: 1.6; }
