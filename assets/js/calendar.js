@@ -5,8 +5,8 @@
   let all = [], events = [], byDay = {};
   let view2 = "local";
   try { if (location.hash === "#city" || localStorage.getItem("sp-calview") === "city") view2 = "city"; } catch (e) { if (location.hash === "#city") view2 = "city"; }
-  // Neighborhood view: community events plus city holiday notices.  City view: everything from the city.
-  function pick() { events = all.filter((e) => view2 === "city" ? e.city : (!e.city || !e.repeat)); index(); }
+  // Neighborhood view: community events only.  City view: trash, sweeping and city holidays only.
+  function pick() { events = all.filter((e) => view2 === "city" ? e.city : !e.city); index(); }
   function paintViews() {
     document.querySelectorAll(".cv").forEach((b) => b.setAttribute("aria-pressed", b.dataset.view === view2));
     document.querySelectorAll(".legend[data-for]").forEach((l) => (l.hidden = l.dataset.for !== view2));
@@ -29,7 +29,7 @@
       list.innerHTML = evs.length ? evs.map(SP.event).join("") : '<li class="empty">Nothing planned this day.</li>';
     } else {
       dayTitle.textContent = view2 === "city" ? "Coming up from the city" : "Upcoming events";
-      const up = SP.upcoming(6, view2 === "city" ? events : events.filter((e) => !e.repeat));
+      const up = SP.upcoming(6, events);
       list.innerHTML = up.length ? up.map(SP.event).join("") : '<li class="empty">Nothing on the calendar yet.</li>';
     }
   }
