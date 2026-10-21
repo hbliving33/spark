@@ -3,7 +3,7 @@ import pathlib, hashlib, re
 ROOT = pathlib.Path('/home/claude/spark')
 FORM_TO = 'community@suburbiapark.com'
 YEAR = 2026
-NAV = [('index.html', 'Home'), ('calendar.html', 'Calendar'), ('board.html', 'Board'), ('help.html', 'Help a Neighbor'), ('businesses.html', 'Businesses'), ('suggestions.html', 'Ideas')]
+NAV = [('index.html', 'Home'), ('calendar.html', 'Calendar'), ('board.html', 'Board'), ('help.html', 'Help a Neighbor'), ('businesses.html', 'Local'), ('suggestions.html', 'Ideas')]
 TABS = [('index.html', 'Home', 'M3 11 L12 4 L21 11 V20 H15 V14 H9 V20 H3Z'), ('calendar.html', 'Calendar', 'M4 6 H20 V20 H4Z M4 10 H20 M8 3 V7 M16 3 V7'), ('board.html', 'Board', 'M4 4 H20 V20 H4Z M8 9 H16 M8 13 H16 M8 17 H12'), ('help.html', 'Help', 'M12 20 C 5 15 3 11 3 8 A4.5 4.5 0 0 1 12 6 A4.5 4.5 0 0 1 21 8 C 21 11 19 15 12 20Z'), ('businesses.html', 'Local', 'M4 10 L6 4 H18 L20 10 M4 10 H20 V20 H4Z M10 20 V14 H14 V20'), ('account.html', 'Me', 'M12 12 A4 4 0 1 0 12 4 A4 4 0 1 0 12 12Z M4 21 C4 16 8 14 12 14 S20 16 20 21')]
 CORE_JS = '<script src="assets/js/site.js"></script>\n<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js"></script>\n<script src="assets/js/config.js"></script>\n<script src="assets/js/community.js"></script>'
 
@@ -450,7 +450,7 @@ pages = [
     ('account.html', 'Your account | Suburbia Park', 'Sign in or join the Suburbia Park community app.', acct, '<script src="assets/js/account.js"></script>'),
     ('admin.html', 'Admin | Suburbia Park', 'Suburbia Park admin.', adminp, '<script src="assets/js/admin.js"></script>'),
     ('help.html', 'Help a Neighbor | Suburbia Park', 'Neighbors helping neighbors in Suburbia Park: grocery runs, errands, rides and check-ins.', helpp, '<script src="assets/js/data.js"></script>\n<script src="assets/js/help.js"></script>'),
-    ('businesses.html', 'Local Businesses | Suburbia Park', 'Coming soon: the local businesses and pros Suburbia Park neighbors trust.', biz, ''),
+    ('businesses.html', 'Local | Suburbia Park', 'Coming soon: the local businesses and pros Suburbia Park neighbors trust.', biz, ''),
     ('rules.html', 'Community Rules | Suburbia Park', 'Suburbia Park community rules.', rules, ''),
     ('privacy.html', 'Privacy | Suburbia Park', 'Suburbia Park privacy policy.', priv, ''),
     ('offline.html', 'Offline | Suburbia Park', 'You are offline.', f"""<main>
