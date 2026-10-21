@@ -731,3 +731,11 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .city-grid h3 { font-size: 19px; margin: 0 0 6px; color: var(--navy); }
 .city-grid p { margin: 0 0 8px; color: var(--muted); }
 @media (max-width: 700px) { .city-grid { grid-template-columns: 1fr; } .city-card { padding: 20px; } }
+
+/* Date, time and weather bar, on every page */
+.nowbar { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .01em; }
+.nowbar-in { max-width: 1120px; margin: 0 auto; padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; white-space: nowrap; overflow: hidden; }
+.nb-date { white-space: pre; }
+.nb-wx { white-space: pre; color: #dff1fd; } .nb-wx b { color: #fff; font-size: 14px; }
+@media (max-width: 480px) { .nowbar-in { padding: 4px 14px; font-size: 12px; } .nb-hl { display: none; } }
+@media (display-mode: standalone) { .top { padding-top: 0; } .nowbar { padding-top: env(safe-area-inset-top); } }

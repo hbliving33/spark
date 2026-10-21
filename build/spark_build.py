@@ -53,6 +53,7 @@ def page(fname, title, desc, body, scripts=''):
 </head>
 <body>
 <header class="top">
+  <div class="nowbar" id="nowbar" aria-live="off"><div class="nowbar-in"><span class="nb-date" id="nbDate">Huntington Beach</span><span class="nb-wx" id="nbWx" hidden></span></div></div>
   <div class="top-in">
     <a class="brand" href="index.html"><img src="assets/img/mark.svg" alt="" width="46" height="46"><span><b>Suburbia Park</b><small>Huntington Beach, California</small></span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -69,7 +70,7 @@ def page(fname, title, desc, body, scripts=''):
       <p>Made by neighbors, for neighbors.  Not an official City of Huntington Beach website.</p>
     </div>
     <nav aria-label="Footer">{''.join(f'<a href="{h}">{t}</a>' for h, t in NAV)}<a href="rules.html">Community rules</a><a href="privacy.html">Privacy</a></nav>
-    <small>&copy; {YEAR} Suburbia Park neighbors.</small>
+    <small>&copy; {YEAR} Suburbia Park neighbors.  Weather by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a>.</small>
   </div>
 </footer>
 <nav class="tabbar" aria-label="App">{''.join(f'<a href="{h}"{" aria-current=\"page\"" if h == fname else ""}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="{d}"/></svg><span>{t}</span></a>' for h, t, d in TABS)}</nav>
