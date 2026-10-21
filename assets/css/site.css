@@ -800,3 +800,5 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .adv-band { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; background: var(--navy); color: #fff; border-radius: 22px; padding: 28px 30px; box-shadow: var(--shadow); }
 .adv-band h2 { color: #fff; margin: 4px 0 8px; } .adv-band h2 em { color: #ffd23f; } .adv-band p { margin: 0; color: #cfe6f6; max-width: 620px; } .adv-band .kicker { color: #9fd8ff; }
 @media (max-width: 700px) { .spons { grid-template-columns: 1fr; } }
+.nm { white-space: nowrap; } .nm em { font-style: italic; color: #ffd23f; }
+.btn .nm em { color: inherit; }
