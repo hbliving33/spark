@@ -86,7 +86,7 @@ def hero(kicker, h1, lede, extra='', cls=''):
     <div class="hero-in">
       <div class="kicker">{kicker}</div>
       <h1>{h1}</h1>
-      <p class="lede">{lede}</p>
+      {f'<p class="lede">{lede}</p>' if lede else ''}
       {extra}
     </div>
     <div class="scene-wrap">{SCENE}</div>
@@ -101,7 +101,7 @@ FORM_HIDDEN = lambda subj, nxt: f'''<input type="hidden" name="_subject" value="
 # ---------- Home ----------
 home = f'''<main>
 {hero('Welcome, neighbor', 'Life is better in <em>Suburbia Park</em>.',
-      'Next door to the Seaview ballfields and a short ride down the river trail to the sand.  Find out what is happening, post a notice, and share your ideas for making the neighborhood even better.',
+      '',
       '<div class="cta-row"><a class="btn btn-red" href="calendar.html">See what\'s happening</a><a class="btn btn-white" href="board.html">Visit the bulletin board</a></div>', 'hero-home')}
 
   <section class="wrap tiles">
