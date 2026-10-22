@@ -2,9 +2,6 @@ import pathlib, hashlib, re
 
 ROOT = pathlib.Path('/home/claude/spark')
 FORM_TO = 'community@suburbiapark.com'
-# HBLiving is the parent site.  Sponsors for this community come from its shared ad list.
-HBL = 'https://hbliving33.github.io/hbl/'
-COMMUNITY_ID = 'suburbia-park'
 YEAR = 2026
 NAV = [('index.html', 'Home'), ('calendar.html', 'Calendar'), ('board.html', 'Board'), ('help.html', 'Help a Neighbor'), ('businesses.html', 'Local'), ('suggestions.html', 'Ideas')]
 TABS = [('index.html', 'Home', 'M3 11 L12 4 L21 11 V20 H15 V14 H9 V20 H3Z'), ('calendar.html', 'Calendar', 'M4 6 H20 V20 H4Z M4 10 H20 M8 3 V7 M16 3 V7'), ('board.html', 'Board', 'M4 4 H20 V20 H4Z M8 9 H16 M8 13 H16 M8 17 H12'), ('help.html', 'Help', 'M12 20 C 5 15 3 11 3 8 A4.5 4.5 0 0 1 12 6 A4.5 4.5 0 0 1 21 8 C 21 11 19 15 12 20Z'), ('businesses.html', 'Local', 'M4 10 L6 4 H18 L20 10 M4 10 H20 V20 H4Z M10 20 V14 H14 V20'), ('account.html', 'Me', 'M12 12 A4 4 0 1 0 12 4 A4 4 0 1 0 12 12Z M4 21 C4 16 8 14 12 14 S20 16 20 21')]
@@ -334,12 +331,8 @@ adminp = f'''<main>
 </main>'''
 
 biz = f'''<main>
-{hero('Local businesses', "Your neighbors' <em>go&#8209;to</em> list.", "The local pros, favorite spots and hidden gems around Suburbia Park, all in one place.", '', 'hero-short')}
-  <section class="wrap" id="sponsors" hidden>
-    <div class="sec-head"><div class="kicker">Supporting Suburbia Park</div><h2>Local <em>sponsors</em></h2></div>
-    <ul class="spons" id="sponsorList"></ul>
-  </section>
-  <section class="wrap" id="teaser">
+{hero('Coming soon', "Your neighbors' <em>go&#8209;to</em> list.", "The trusted local pros, favorite spots and hidden gems that Suburbia Park neighbors swear by, all in one place.  Real recommendations from real neighbors.  We're putting the finishing touches on it now.", '', 'hero-short')}
+  <section class="wrap">
     <div class="teaser-grid">
       <div class="teaser"><span class="t-ico" aria-hidden="true">🔧</span><b>Home repair and handymen</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
       <div class="teaser"><span class="t-ico" aria-hidden="true">☕</span><b>Coffee, tacos and takeout</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
@@ -348,13 +341,7 @@ biz = f'''<main>
       <div class="teaser"><span class="t-ico" aria-hidden="true">🐾</span><b>Pets, groomers and sitters</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
       <div class="teaser"><span class="t-ico" aria-hidden="true">🌿</span><b>Yards, gardens and pools</b><span class="t-soon">Coming soon</span><span class="t-blur" aria-hidden="true"><i></i><i></i><i></i></span></div>
     </div>
-    <p class="teaser-note">Neighbor recommendations are always free.  Local businesses can also sponsor Suburbia Park, and sponsors are always clearly marked.</p>
-  </section>
-  <section class="wrap">
-    <div class="adv-band">
-      <div><div class="kicker">Own a local business?</div><h2>Reach your <em>neighbors.</em></h2><p>Put your business on the Suburbia Park Local page for $5 a month, or on Suburbia Park and all of <span class="nm">HB<em>Living</em></span> for $10.  Sponsors keep this site free for everyone.</p></div>
-      <a class="btn btn-red" href="{HBL}index.html?community=Suburbia%20Park#advertise" target="_blank" rel="noopener">Advertise with <span class="nm">HB<em>Living</em></span></a>
-    </div>
+    <p class="teaser-note">Every business on the list will be recommended by a neighbor.  No paid placements, just people who live here sharing who they trust.</p>
   </section>
   <section class="wrap form-wrap" id="recommend">
     <form class="card-form" action="https://formsubmit.co/{FORM_TO}" method="POST">
@@ -463,7 +450,7 @@ pages = [
     ('account.html', 'Your account | Suburbia Park', 'Sign in or join the Suburbia Park community app.', acct, '<script src="assets/js/account.js"></script>'),
     ('admin.html', 'Admin | Suburbia Park', 'Suburbia Park admin.', adminp, '<script src="assets/js/admin.js"></script>'),
     ('help.html', 'Help a Neighbor | Suburbia Park', 'Neighbors helping neighbors in Suburbia Park: grocery runs, errands, rides and check-ins.', helpp, '<script src="assets/js/data.js"></script>\n<script src="assets/js/help.js"></script>'),
-    ('businesses.html', 'Local | Suburbia Park', 'Local businesses and sponsors around Suburbia Park, from HBLiving.', biz, f'<script>window.SP_COMMUNITY = "{COMMUNITY_ID}";</script>\n<script src="{HBL}assets/js/track.js" defer></script>\n<script src="{HBL}assets/js/map-data.js" defer></script>\n<script src="assets/js/local.js" defer></script>'),
+    ('businesses.html', 'Local | Suburbia Park', 'Coming soon: the local businesses and pros Suburbia Park neighbors trust.', biz, ''),
     ('rules.html', 'Community Rules | Suburbia Park', 'Suburbia Park community rules.', rules, ''),
     ('privacy.html', 'Privacy | Suburbia Park', 'Suburbia Park privacy policy.', priv, ''),
     ('offline.html', 'Offline | Suburbia Park', 'You are offline.', f"""<main>

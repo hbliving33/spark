@@ -1,4 +1,4 @@
-// Community data layer: neighbor sign-in, live posts and events, reports and ads.
+// Community data layer: neighbor sign-in, live posts and events, and reports.
 // Uses Supabase when assets/js/config.js is filled in; otherwise runs in preview mode
 // with the sample entries in data.js.
 (() => {
@@ -56,11 +56,6 @@
     if (!live || !me) return [];
     const { data } = await db.from("my_help_replies").select("*").order("created_at");
     return data || [];
-  };
-  C.ads = async (slot) => {
-    if (!live) return [];
-    const { data, error } = await db.from("ads").select("*").eq("slot", slot).order("created_at");
-    return error ? [] : data;
   };
   C.streets = async () => {
     if (!live) return [];

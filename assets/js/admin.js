@@ -6,7 +6,7 @@
 
   async function render() {
     if (!SPC.live) { box.innerHTML = `<p class="fine">The admin page works once the database is connected.</p>`; return; }
-    if (!SPC.admin()) { box.innerHTML = `<div class="card-form gate"><h2>Admins only</h2><p class="fine">Sign in with an admin account to manage neighbors, reports and sponsors.</p><a class="btn btn-red" href="account.html">Sign in</a></div>`; return; }
+    if (!SPC.admin()) { box.innerHTML = `<div class="card-form gate"><h2>Admins only</h2><p class="fine">Sign in with an admin account to manage neighbors, reports and streets.</p><a class="btn btn-red" href="account.html">Sign in</a></div>`; return; }
     const [pend, reps, streets] = await Promise.all([
       db.from("profiles").select("id, first_name, last_initial, house_number, address_ok, created_at, status, streets(name)").in("status", ["pending"]).order("created_at"),
       db.from("reports").select("*").eq("resolved", false).order("created_at"),
@@ -45,7 +45,6 @@
       res = await db.from(b.dataset.t).update({ status: a === "restore" ? (b.dataset.t === "help" ? "open" : "live") : "removed" }).eq("id", b.dataset.item);
       if (!res.error) res = await db.from("reports").update({ resolved: true }).eq("id", id);
     }
-    if (a === "adtoggle") res = await db.from("ads").update({ active: b.dataset.on !== "true" }).eq("id", id);
     if (res && res.error) alert(res.error.message);
     render();
   });
@@ -53,7 +52,7 @@
     e.preventDefault();
     const f = e.target, d = Object.fromEntries(new FormData(f)), msg = f.querySelector(".form-msg");
     Object.keys(d).forEach((k) => d[k] === "" && (d[k] = null));
-    const res = f.id === "adForm" ? await db.from("ads").insert(d) : await db.from("streets").insert(d);
+    const res = await db.from("streets").insert(d);
     if (res.error) { msg.textContent = res.error.message; return; }
     render();
   });
