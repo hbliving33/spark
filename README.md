@@ -10,8 +10,8 @@ Until these steps are done, the site runs in preview mode: sample notices and ev
 2. Open SQL Editor, paste the whole `supabase/schema.sql` file, and click Run.
 3. Add every Suburbia Park street: Table Editor, then `streets` (or the admin page once you're an admin).
 4. Authentication, URL Configuration: set the Site URL to `https://suburbiapark.com` and add `https://suburbiapark.com/account.html` to the redirect URLs.
-5. Authentication, Emails, SMTP Settings: connect the community@suburbiapark.com mailbox.  Supabase's built-in sender only reaches your own team's addresses, 2 emails an hour.
-6. Project Settings, API: copy the Project URL and the anon public key into `assets/js/config.js`.
+5. Authentication, Emails, SMTP Settings: connect an email sending service such as Resend, Brevo, Postmark or Amazon SES, sending from an address like no-reply@suburbiapark.com.  Supabase's built-in sender only reaches your own team's addresses, about 2 emails an hour.  Don't use the Microsoft 365 mailbox here: Supabase signs in to SMTP with a username and password, and Microsoft is retiring that kind of sign-in for Exchange Online.
+6. Project Settings, API: copy the Project URL and the publishable key (older projects call it the anon public key) into `assets/js/config.js`.
 7. Sign up on the site with your own address, then run this once in SQL Editor with your email:
    `update public.profiles set status = 'approved', is_admin = true where id = (select id from auth.users where email = 'YOUR EMAIL');`
 8. Open `admin.html` to approve neighbors, review reports, and add streets.
