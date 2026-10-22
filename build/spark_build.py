@@ -159,9 +159,9 @@ home = f'''<main>
     <div class="map-grid">
       <figure class="route-card" aria-label="Map from Suburbia Park to the beach">{ROUTE}<figcaption>Our way to the beach: a short walk to the river trail, then about 2.2 miles south along the river.  Distances are approximate.  Simplified map.</figcaption></figure>
       <div class="gm">
-        <div class="map-box"><iframe id="gmap" title="Google map of the Suburbia Park area" src="https://maps.google.com/maps?q=Suburbia%20Ln%2C%20Huntington%20Beach%2C%20CA%2092646&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+        <div class="map-box"><iframe id="gmap" title="Google map of the Suburbia Park area" src="https://maps.google.com/maps?q=Huntington%20Beach%2C%20CA%2092646&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
         <ol class="places" id="places">
-          <li class="on"><button type="button" data-q="Suburbia Ln, Huntington Beach, CA 92646" data-z="16"><span class="pin p-home">1</span><b>Suburbia Park</b><span>Our neighborhood, along Suburbia Lane.</span></button></li>
+          <li class="on"><button type="button" data-q="Huntington Beach, CA 92646" data-z="14"><span class="pin p-home">1</span><b>Suburbia Park</b><span>Our neighborhood.</span></button></li>
           <li><button type="button" data-q="Seaview Little League, 20461 Craimer Ln, Huntington Beach, CA 92646" data-z="17"><span class="pin p-field">2</span><b>Seaview Little League fields</b><span>20461 Craimer Lane, right next door.</span></button></li>
           <li><button type="button" data-q="33.66362,-117.94702" data-z="17"><span class="pin p-trail">3</span><b>River trail footbridge</b><span>The closest way onto the trail.</span></button></li>
           <li><button type="button" data-q="33.66033,-117.94940" data-z="17"><span class="pin p-trail">4</span><b>Mile marker 2</b><span>Two miles to the beach.</span></button></li>

@@ -31,7 +31,7 @@
 
       <section class="adm"><h2>Suburbia Park streets</h2><p class="fine">Only addresses on these streets can sign up.  Leave the number range empty to allow any house number.</p>
         ${(streets.data || []).map((s) => `<div class="adm-row"><div><b>${esc(s.name)}</b><span>${s.low_number || s.high_number ? `${esc(s.low_number || "any")} to ${esc(s.high_number || "any")}` : "Any house number"}</span></div></div>`).join("")}
-        <form class="card-form adm-form" id="stForm"><div class="row"><label>Street name<input name="name" required maxlength="60" placeholder="Suburbia Ln"></label><span></span></div>
+        <form class="card-form adm-form" id="stForm"><div class="row"><label>Street name<input name="name" required maxlength="60" placeholder="Street name"></label><span></span></div>
           <div class="row"><label>Lowest house number<input name="low_number" inputmode="numeric" pattern="[0-9]*"></label><label>Highest house number<input name="high_number" inputmode="numeric" pattern="[0-9]*"></label></div>
           <p class="form-msg" role="status"></p><button class="btn btn-red" type="submit">Add street</button></form></section>`;
   }
