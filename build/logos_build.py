@@ -118,6 +118,8 @@ FLAG_FENCE = [
 ]
 LOGOS.extend(FLAG_FENCE)
 
+LOGOS.append(('Fence Wave, Red White and Blue', 'The Fence Wave logo in use now, with the fence line split into red, white and blue thirds.  Subtle, and the rest stays the same.', '<path d="M16 86 V52 l6 -8 l6 8 V86Z" fill="#fff" stroke="#14304d" stroke-width="3" stroke-linejoin="round"/><path d="M34 86 V48 l6 -8 l6 8 V86Z" fill="#fff" stroke="#14304d" stroke-width="3" stroke-linejoin="round"/><path d="M52 86 V44 l6 -8 l6 8 V86Z" fill="#fff" stroke="#14304d" stroke-width="3" stroke-linejoin="round"/><path d="M70 86 C 70 60 84 40 100 44 C 110 47 108 60 98 60 C 92 60 92 53 96 52" fill="none" stroke="#1271a8" stroke-width="8" stroke-linecap="round"/><path d="M10 86 H110" stroke="#14304d" stroke-width="6.4" stroke-linecap="round"/><path d="M10.6 86 H43.3" stroke="#e63946" stroke-width="3.6" stroke-linecap="round"/><path d="M43.3 86 H76.7" stroke="#ffffff" stroke-width="3.6"/><path d="M76.7 86 H109.4" stroke="#1271a8" stroke-width="3.6" stroke-linecap="round"/><path d="M16 100 q7.3 -4 14.7 0 t14.7 0 q7.3 -4 14.7 0 t14.7 0 q7.3 -4 14.7 0 t14.7 0" fill="none" stroke="#1271a8" stroke-width="5" stroke-linecap="round"/>'))
+
 
 
 def mark(svg, size=120):
@@ -176,7 +178,7 @@ html = f'''<!doctype html>
 <header>
   <div class="kicker">Logo options</div>
   <h1>Pick a <em>favorite</em>.</h1>
-  <p>Twenty-four ideas for the Suburbia Park logo.  Number 16, Fence Wave, is the one in use now, and numbers 19 to 24 are new takes on it with the flag.  Each card shows the logo with the name, on a dark background, and as a phone app icon.  Tell us the number you like, or mix and match.</p>
+  <p>Twenty-five ideas for the Suburbia Park logo.  Number 16, Fence Wave, is the one in use now.  Numbers 19 to 24 are new takes on it with the flag, and number 25 is the same logo with a red, white and blue fence line.  Each card shows the logo with the name, on a dark background, and as a phone app icon.  Tell us the number you like, or mix and match.</p>
 </header>
 <main class="grid">{cards}
 </main>
