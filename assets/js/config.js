@@ -1,8 +1,8 @@
 // Suburbia Park app settings.
-// After you create the Supabase project, paste its Project URL and anon public key here
-// (Supabase > Project Settings > API).  The anon key is meant to be public; the security
+// Supabase Project URL and publishable key
+// (Project Settings > Data API, and Project Settings > API Keys).  The publishable key is meant to be public; the security
 // rules in supabase/schema.sql protect the data.  Leave them empty to run in preview mode.
 window.SP_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: ""
+  supabaseUrl: "https://pfmsokttldrqzdeekytu.supabase.co",
+  supabaseAnonKey: "sb_publishable_ZRwXYQ7XFunCuCQyY5h75g_Cn7lCxJG"
 };
