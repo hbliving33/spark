@@ -242,3 +242,20 @@ create policy help_replies_insert on public.help_replies for insert with check (
   public.is_approved() and helper = auth.uid() and public.help_is_open_for_me(help_id));
 drop policy if exists help_replies_select on public.help_replies;
 create policy help_replies_select on public.help_replies for select using (helper = auth.uid() or public.is_admin());
+
+-- ============================================================
+-- Website access (grants).  Supabase projects created after May 30, 2026 no longer
+-- open new tables to the website automatically.  These grants open them; the
+-- security rules above still decide which rows each person can see or change.
+-- ============================================================
+grant usage on schema public to anon, authenticated;
+grant select on public.streets to anon, authenticated;
+grant insert, update, delete on public.streets to authenticated;
+grant select, update on public.profiles to authenticated;
+grant select, insert, update on public.posts, public.events, public.help to authenticated;
+grant select, insert, update on public.reports to authenticated;
+grant select, insert on public.help_replies to authenticated;
+grant select on public.posts_public, public.events_public, public.help_public to anon, authenticated;
+grant select on public.my_help_replies to authenticated;
+grant usage, select on all sequences in schema public to authenticated;
+grant execute on function public.is_approved(), public.is_admin(), public.help_is_open_for_me(bigint) to anon, authenticated;
