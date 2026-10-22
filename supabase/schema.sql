@@ -5,12 +5,11 @@
 -- ---------- Streets in Suburbia Park (sign-up is limited to these) ----------
 create table if not exists public.streets (
   id serial primary key,
-  name text not null unique,          -- for example 'Suburbia Ln'
+  name text not null unique,
   low_number int,                     -- lowest house number allowed (leave empty for any)
   high_number int                     -- highest house number allowed (leave empty for any)
 );
--- Starter entry.  Add the rest of the neighborhood's streets here, or in Table Editor > streets.
-insert into public.streets (name) values ('Suburbia Ln') on conflict (name) do nothing;
+-- Add the neighborhood streets in Table Editor > streets.
 
 -- ---------- Neighbor profiles ----------
 -- status: pending (waiting for approval), approved, denied, suspended
