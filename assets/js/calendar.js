@@ -28,7 +28,7 @@
       dayTitle.textContent = d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
       const evs = byDay[selected] || [];
       const other = (allDay[selected] || []).length - evs.length;
-      const hint = other > 0 ? `<li class="empty other-view">Plus ${other} ${view2 === "city" ? "neighborhood" : "Huntington Beach"} item${other > 1 ? "s" : ""} this day.  <button type="button" class="link-btn" data-switch="${view2 === "city" ? "local" : "city"}">Show ${view2 === "city" ? "Neighborhood" : "Trash and sweeping"}</button></li>` : "";
+      const hint = other > 0 ? `<li class="empty other-view">Plus ${other} ${view2 === "city" ? "neighborhood" : "Huntington Beach"} item${other > 1 ? "s" : ""} this day.  <button type="button" class="link-btn" data-switch="${view2 === "city" ? "local" : "city"}">Show ${view2 === "city" ? "Neighborhood" : "Street Sweeping & Trash"}</button></li>` : "";
       list.innerHTML = (evs.length ? evs.map(SP.event).join("") : '<li class="empty">Nothing planned this day.</li>') + hint;
     } else {
       dayTitle.textContent = view2 === "city" ? "Coming up from the city" : "Upcoming events";

@@ -15,8 +15,9 @@
 <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=1a523fcf">
+<link rel="stylesheet" href="assets/css/site.css?v=9c23a75a">
 </head>
 <body>
 <header class="top">
@@ -305,13 +306,13 @@
       <g class="north" transform="translate(52 96)"><circle r="16"/><path d="M0 -10 L6 6 L0 2 L-6 6Z"/><text y="30">N</text></g>
     </svg><figcaption>Our way to the beach: a short walk to the river trail, then about 2.2 miles south along the river.  Distances are approximate.  Simplified map.</figcaption></figure>
       <div class="gm">
-        <div class="map-box"><iframe id="gmap" title="Google map of the Suburbia Park area" src="https://maps.google.com/maps?q=Huntington%20Beach%2C%20CA%2092646&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+        <div class="map-box"><div id="gmap" role="region" aria-label="Map of Suburbia Park, outlined in red"></div></div>
         <ol class="places" id="places">
-          <li class="on"><button type="button" data-q="Huntington Beach, CA 92646" data-z="14"><span class="pin p-home">1</span><b>Suburbia Park</b><span>Our neighborhood.</span></button></li>
-          <li><button type="button" data-q="Seaview Little League, 20461 Craimer Ln, Huntington Beach, CA 92646" data-z="17"><span class="pin p-field">2</span><b>Seaview Little League fields</b><span>20461 Craimer Lane, right next door.</span></button></li>
-          <li><button type="button" data-q="33.66362,-117.94702" data-z="17"><span class="pin p-trail">3</span><b>River trail footbridge</b><span>The closest way onto the trail.</span></button></li>
-          <li><button type="button" data-q="33.66033,-117.94940" data-z="17"><span class="pin p-trail">4</span><b>Mile marker 2</b><span>Two miles to the beach.</span></button></li>
-          <li><button type="button" data-q="33.62907,-117.95767" data-z="16"><span class="pin p-beach">5</span><b>River mouth and the beach</b><span>Mile 0, at the south end of Huntington State Beach.</span></button></li>
+          <li class="on"><button type="button" data-ll="33.6640,-117.9512" data-z="17" data-tract="1"><span class="pin p-home">1</span><b>Suburbia Park</b><span>Our neighborhood and LeBard Park, outlined in red.</span></button></li>
+          <li><button type="button" data-ll="33.66520,-117.95080" data-z="18"><span class="pin p-field">2</span><b>Seaview Little League fields</b><span>20461 Craimer Lane, right next door.</span></button></li>
+          <li><button type="button" data-ll="33.66362,-117.94702" data-z="18"><span class="pin p-trail">3</span><b>River trail footbridge</b><span>The closest way onto the trail.</span></button></li>
+          <li><button type="button" data-ll="33.66033,-117.94940" data-z="18"><span class="pin p-trail">4</span><b>Mile marker 2</b><span>Two miles to the beach.</span></button></li>
+          <li><button type="button" data-ll="33.62907,-117.95767" data-z="16"><span class="pin p-beach">5</span><b>River mouth and the beach</b><span>Mile 0, at the south end of Huntington State Beach.</span></button></li>
         </ol>
         <a class="more" href="https://www.seaviewlittleleague.com/" rel="noopener" target="_blank">Seaview Little League website &rarr;</a>
       </div>
@@ -351,6 +352,7 @@
 <script src="assets/js/data.js?v=c977cb7c"></script>
 <script src="assets/js/city.js?v=7ee7653e"></script>
 <script src="assets/js/home.js?v=a315e801"></script>
-<script src="assets/js/map.js?v=a5288a25"></script>
+<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script src="assets/js/map.js?v=1e32f9a3"></script>
 </body>
 </html>
