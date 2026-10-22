@@ -62,20 +62,42 @@ window.SP = {
     }).catch(() => {});
   }
   const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (standalone) return;
   let seen = false; try { seen = localStorage.getItem("sp-install-tip") === "1"; } catch (e) {}
-  if (standalone || seen) return;
   const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
   let deferred = null;
-  const show = (html, onGo) => {
+  const show = (html, onGo, remember = true) => {
+    document.querySelectorAll(".install-tip").forEach((t) => t.remove());
     const tip = document.createElement("div");
     tip.className = "install-tip";
     tip.innerHTML = `<img src="assets/img/icon-192.png" alt="" width="40" height="40"><p>${html}</p>${onGo ? '<button type="button" class="btn btn-red it-go">Install</button>' : ""}<button type="button" class="it-x" aria-label="Close">&times;</button>`;
     document.body.appendChild(tip);
-    const close = () => { tip.remove(); try { localStorage.setItem("sp-install-tip", "1"); } catch (e) {} };
+    const close = () => { tip.remove(); if (remember) try { localStorage.setItem("sp-install-tip", "1"); } catch (e) {} };
     tip.querySelector(".it-x").onclick = close;
     if (onGo) tip.querySelector(".it-go").onclick = () => { onGo(); close(); };
   };
-  addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; show("<b>Get the Suburbia Park app</b> on your Home Screen.", () => deferred.prompt()); });
+  // Instructions for when the browser won't show its own install box
+  const steps = () => {
+    const ua = navigator.userAgent;
+    if (ios) return "<b>Get the app on your iPhone</b><br>1. Tap <b>Share</b><br>2. Tap <b>Add to Home Screen</b>, then <b>Add</b>";
+    if (/Edg\//.test(ua)) return "<b>Install in Edge</b><br>Click the <b>app icon</b> at the right end of the address bar, or open the <b>&middot;&middot;&middot;</b> menu, then <b>Apps</b>, then <b>Install this site as an app</b>.";
+    if (/Chrome\//.test(ua) && !/Android/.test(ua)) return "<b>Install in Chrome</b><br>Click the <b>install icon</b> at the right end of the address bar, or open the <b>&#8942;</b> menu, then <b>Cast, save, and share</b>, then <b>Install page as app</b>.";
+    if (/Android/.test(ua)) return "<b>Get the app</b><br>Open the browser menu <b>&#8942;</b>, then tap <b>Add to Home screen</b> or <b>Install app</b>.";
+    if (/Macintosh/.test(ua) && /Safari\//.test(ua) && !/Chrome|Firefox/.test(ua)) return "<b>Install in Safari</b><br>Open the <b>File</b> menu, then <b>Add to Dock</b>.";
+    return "<b>Get the app</b><br>Open this site in <b>Chrome</b>, <b>Edge</b> or <b>Safari</b> to install it.";
+  };
+  const install = () => { if (deferred) { const d = deferred; deferred = null; d.prompt(); } else show(steps(), null, false); };
+  // A Get the app button that is always there, in the footer
+  const foot = document.querySelector(".foot-in");
+  if (foot) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn btn-red get-app";
+    b.innerHTML = '<img src="assets/img/icon-192.png" alt="" width="22" height="22"> Get the app';
+    b.onclick = install; foot.appendChild(b);
+    addEventListener("appinstalled", () => b.remove());
+  }
+  addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; if (!seen) show("<b>Get the Suburbia Park app</b> on your Home Screen.", install); });
+  if (seen) return;
   if (ios && matchMedia("(max-width: 820px)").matches) setTimeout(() => show("<b>Get the app on your iPhone</b><br>1. Tap <b>&middot;&middot;&middot;</b> next to the web address at the bottom<br>2. Tap <b>Share</b><br>3. Scroll down, tap <b>Add to Home Screen</b>, then <b>Add</b>"), 2000);
 })();
 
