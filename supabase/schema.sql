@@ -114,20 +114,8 @@ $$;
 drop trigger if exists on_report on public.reports;
 create trigger on_report after insert on public.reports for each row execute function public.hide_reported();
 
--- ---------- Ads (local sponsors) ----------
-create table if not exists public.ads (
-  id bigserial primary key,
-  business text not null,
-  headline text not null,
-  blurb text,
-  link text,
-  image_url text,
-  slot text not null default 'strip' check (slot in ('banner', 'strip', 'directory')),
-  starts_on date not null default current_date,
-  ends_on date,
-  active boolean not null default false,
-  created_at timestamptz not null default now()
-);
+-- The neighborhood site is free: no ads table.  This removes it if an earlier version created it.
+drop table if exists public.ads cascade;
 
 -- Public view of posts and events with the author's first name and last initial only (never the address)
 create or replace view public.posts_public with (security_invoker = false) as
@@ -144,7 +132,6 @@ alter table public.profiles enable row level security;
 alter table public.posts enable row level security;
 alter table public.events enable row level security;
 alter table public.reports enable row level security;
-alter table public.ads enable row level security;
 
 -- Streets: anyone can read the list (for the sign-up form); only admins change it.
 drop policy if exists streets_read on public.streets;
@@ -182,11 +169,6 @@ create policy reports_admin on public.reports for select using (public.is_admin(
 drop policy if exists reports_admin_update on public.reports;
 create policy reports_admin_update on public.reports for update using (public.is_admin()) with check (public.is_admin());
 
--- Ads: everyone sees active ads in their date range; only admins manage them.
-drop policy if exists ads_read on public.ads;
-create policy ads_read on public.ads for select using ((active and starts_on <= current_date and (ends_on is null or ends_on >= current_date)) or public.is_admin());
-drop policy if exists ads_admin on public.ads;
-create policy ads_admin on public.ads for all using (public.is_admin()) with check (public.is_admin());
 
 -- ---------- Make yourself the first admin ----------
 -- After you sign up on the site, run this once with your email:

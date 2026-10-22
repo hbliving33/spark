@@ -14,7 +14,7 @@ Until these steps are done, the site runs in preview mode: sample notices and ev
 6. Project Settings, API: copy the Project URL and the anon public key into `assets/js/config.js`.
 7. Sign up on the site with your own address, then run this once in SQL Editor with your email:
    `update public.profiles set status = 'approved', is_admin = true where id = (select id from auth.users where email = 'YOUR EMAIL');`
-8. Open `admin.html` to approve neighbors, review reports, and add sponsors and streets.
+8. Open `admin.html` to approve neighbors, review reports, and add streets.
 
 ## Editing sample content
 
