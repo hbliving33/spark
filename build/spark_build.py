@@ -48,6 +48,7 @@ def page(fname, title, desc, body, scripts=''):
 <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -159,13 +160,13 @@ home = f'''<main>
     <div class="map-grid">
       <figure class="route-card" aria-label="Map from Suburbia Park to the beach">{ROUTE}<figcaption>Our way to the beach: a short walk to the river trail, then about 2.2 miles south along the river.  Distances are approximate.  Simplified map.</figcaption></figure>
       <div class="gm">
-        <div class="map-box"><iframe id="gmap" title="Google map of the Suburbia Park area" src="https://maps.google.com/maps?q=Huntington%20Beach%2C%20CA%2092646&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+        <div class="map-box"><div id="gmap" role="region" aria-label="Map of Suburbia Park, outlined in red"></div></div>
         <ol class="places" id="places">
-          <li class="on"><button type="button" data-q="Huntington Beach, CA 92646" data-z="14"><span class="pin p-home">1</span><b>Suburbia Park</b><span>Our neighborhood.</span></button></li>
-          <li><button type="button" data-q="Seaview Little League, 20461 Craimer Ln, Huntington Beach, CA 92646" data-z="17"><span class="pin p-field">2</span><b>Seaview Little League fields</b><span>20461 Craimer Lane, right next door.</span></button></li>
-          <li><button type="button" data-q="33.66362,-117.94702" data-z="17"><span class="pin p-trail">3</span><b>River trail footbridge</b><span>The closest way onto the trail.</span></button></li>
-          <li><button type="button" data-q="33.66033,-117.94940" data-z="17"><span class="pin p-trail">4</span><b>Mile marker 2</b><span>Two miles to the beach.</span></button></li>
-          <li><button type="button" data-q="33.62907,-117.95767" data-z="16"><span class="pin p-beach">5</span><b>River mouth and the beach</b><span>Mile 0, at the south end of Huntington State Beach.</span></button></li>
+          <li class="on"><button type="button" data-ll="33.6640,-117.9512" data-z="17" data-tract="1"><span class="pin p-home">1</span><b>Suburbia Park</b><span>Our neighborhood and LeBard Park, outlined in red.</span></button></li>
+          <li><button type="button" data-ll="33.66520,-117.95080" data-z="18"><span class="pin p-field">2</span><b>Seaview Little League fields</b><span>20461 Craimer Lane, right next door.</span></button></li>
+          <li><button type="button" data-ll="33.66362,-117.94702" data-z="18"><span class="pin p-trail">3</span><b>River trail footbridge</b><span>The closest way onto the trail.</span></button></li>
+          <li><button type="button" data-ll="33.66033,-117.94940" data-z="18"><span class="pin p-trail">4</span><b>Mile marker 2</b><span>Two miles to the beach.</span></button></li>
+          <li><button type="button" data-ll="33.62907,-117.95767" data-z="16"><span class="pin p-beach">5</span><b>River mouth and the beach</b><span>Mile 0, at the south end of Huntington State Beach.</span></button></li>
         </ol>
         <a class="more" href="https://www.seaviewlittleleague.com/" rel="noopener" target="_blank">Seaview Little League website &rarr;</a>
       </div>
@@ -189,7 +190,7 @@ cal = f'''<main>
     <div class="cal">
       <div class="cal-views" role="group" aria-label="Which calendar">
         <button type="button" class="cv" data-view="local" aria-pressed="true"><img src="assets/img/mark.svg" alt="" width="44" height="36"><span>Neighborhood</span></button>
-        <button type="button" class="cv" data-view="city" aria-pressed="false"><img src="assets/img/hb-city-mark.png" alt="" width="47" height="36"><span>Trash and sweeping</span></button>
+        <button type="button" class="cv" data-view="city" aria-pressed="false"><img src="assets/img/hb-city-mark.png" alt="" width="47" height="36"><span>Street Sweeping &amp; Trash</span></button>
       </div>
       <div class="cal-head">
         <button type="button" class="cal-nav" id="calPrev" aria-label="Previous month">&lsaquo;</button>
@@ -443,7 +444,8 @@ helpp = f"""<main>
 </main>"""
 
 pages = [
-    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/js/map.js"></script>'),
+    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script src="assets/js/map.js"></script>'),
     ('calendar.html', 'Calendar | Suburbia Park', 'Suburbia Park community calendar: neighborhood events in Huntington Beach.', cal, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/calendar.js"></script>'),
     ('board.html', 'Bulletin Board | Suburbia Park', 'Suburbia Park bulletin board: lost and found, for sale, free, recommendations and news.', board, '<script src="assets/js/data.js"></script>\n<script src="assets/js/board.js"></script>'),
     ('suggestions.html', 'Suggestion Box | Suburbia Park', 'Send an idea to make Suburbia Park even better.', sugg, ''),
