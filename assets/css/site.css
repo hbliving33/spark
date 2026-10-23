@@ -438,7 +438,7 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .bike2 .rider { fill: var(--red); stroke: none; } .scene .bike2 .helmet { fill: var(--ocean); stroke: none; }
 
 /* Bike path and the small PCH underpass */
-.scene .bikepath { fill: none; stroke: #f2e3bd; stroke-width: 10; stroke-linecap: round; }
+.scene .bikepath { fill: none; stroke: #d9d3c4; stroke-width: 10; stroke-linecap: round; }
 .scene .tunnel { fill: #39434d; }
 .scene .overpass { fill: #c3ccd1; stroke: #9aa6ad; stroke-width: 1.5; }
 .scene .pchdeck { fill: #5d6b78; } .scene .pchlane { stroke: #ffd23f; stroke-width: 1.5; stroke-dasharray: 6 5; }
@@ -779,3 +779,6 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 @media (max-width: 900px) { #gmap { min-height: 340px; } }
 .get-app { display: inline-flex; align-items: center; gap: 8px; justify-self: start; margin-top: 12px; }
 .get-app img { border-radius: 6px; }
+.scene .beachwalk { fill: #d9d3c4; } .scene .beachwalk-edge { stroke: #b3aa96; stroke-width: 1.2; fill: none; }
+.scene .tower .tpole { stroke: #6b7280; stroke-width: 1.6; fill: none; }
+.scene .plaza { fill: #d9d3c4; stroke: #b3aa96; stroke-width: 1.4; } .scene .plaza-ring { fill: none; stroke: #d6cdb8; stroke-width: 1.2; stroke-dasharray: 3 3; }
