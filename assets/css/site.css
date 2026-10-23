@@ -782,3 +782,4 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .beachwalk { fill: #d9d3c4; } .scene .beachwalk-edge { stroke: #b3aa96; stroke-width: 1.2; fill: none; }
 .scene .tower .tpole { stroke: #6b7280; stroke-width: 1.6; fill: none; }
 .scene .plaza { fill: #d9d3c4; stroke: #b3aa96; stroke-width: 1.4; } .scene .plaza-ring { fill: none; stroke: #d6cdb8; stroke-width: 1.2; stroke-dasharray: 3 3; }
+.scene .trail-loop { fill: none; stroke: #d9d3c4; stroke-width: 6; stroke-linejoin: round; }
