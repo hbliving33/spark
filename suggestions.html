@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=9d35e0da">
+<link rel="stylesheet" href="assets/css/site.css?v=7241124c">
 </head>
 <body>
 <header class="top">
@@ -46,6 +46,11 @@
     </g>
     <!-- ground -->
     <path class="lawn" d="M0 236 C 200 228 420 232 560 236 L 800 236 L 820 320 H0Z"/>
+    <path class="lawn" d="M790 236 H 1023 L 967 320 H 790Z"/>
+    <!-- shade trees behind the ballfield and scoreboard -->
+    <g class="tree" transform="translate(700 169) scale(0.76)"><rect class="tr-trunk" x="-4" y="40" width="8" height="50" rx="3"/><circle class="tr-a" cx="0" cy="26" r="24"/><circle class="tr-b" cx="-16" cy="40" r="17"/><circle class="tr-b" cx="16" cy="38" r="18"/><circle class="tr-c" cx="-6" cy="18" r="10"/></g>
+    <g class="tree" transform="translate(838 172) scale(0.72)"><rect class="tr-trunk" x="-4" y="40" width="8" height="50" rx="3"/><circle class="tr-a" cx="0" cy="26" r="24"/><circle class="tr-b" cx="-16" cy="40" r="17"/><circle class="tr-b" cx="16" cy="38" r="18"/><circle class="tr-c" cx="-6" cy="18" r="10"/></g>
+    <g class="tree" transform="translate(918 167) scale(0.8)"><rect class="tr-trunk" x="-4" y="40" width="8" height="50" rx="3"/><circle class="tr-a" cx="0" cy="26" r="24"/><circle class="tr-b" cx="-16" cy="40" r="17"/><circle class="tr-b" cx="16" cy="38" r="18"/><circle class="tr-c" cx="-6" cy="18" r="10"/></g>
     <!-- palms behind houses -->
     <g class="palm" transform="translate(70 128)"><path class="trunk" d="M8 110 C 6 70 10 36 18 6"/><path class="frond" d="M18 6 c-18 -6 -34 2 -42 14 c14 -10 28 -10 42 -10 c-10 -10 -26 -14 -38 -8 c16 -2 28 2 38 8 c4 -14 -2 -26 -12 -32 c8 10 12 20 12 28 c10 -12 26 -16 40 -10 c-14 0 -26 6 -36 14 c16 -4 30 0 40 10 c-14 -6 -28 -6 -42 0z"/></g>
     <g class="palm" transform="translate(436 108) scale(1.1)"><path class="trunk" d="M8 110 C 6 70 10 36 18 6"/><path class="frond" d="M18 6 c-18 -6 -34 2 -42 14 c14 -10 28 -10 42 -10 c-10 -10 -26 -14 -38 -8 c16 -2 28 2 38 8 c4 -14 -2 -26 -12 -32 c8 10 12 20 12 28 c10 -12 26 -16 40 -10 c-14 0 -26 6 -36 14 c16 -4 30 0 40 10 c-14 -6 -28 -6 -42 0z"/></g>
@@ -65,7 +70,7 @@
 
     <!-- playground: swings on the left, slide on the right running out to open grass -->
     <g class="play" transform="translate(537 172) scale(.76)">
-      <rect class="mulch" x="-80" y="82" width="180" height="10" rx="5"/>
+      <rect class="mulch" x="-92" y="80" width="230" height="14" rx="7"/>
       <path class="ladder" d="M8 86 L18 20 M28 86 L36 20 M12 66 H31 M14 50 H33 M16 34 H35"/>
       <rect class="tower-top" x="12" y="14" width="30" height="8" rx="2"/>
       <path class="roofp" d="M8 16 L27 0 L46 16Z"/>
@@ -89,7 +94,7 @@
       <path class="backstop" d="M106 98 Q120 84 134 98" />
       <rect class="base" x="117" y="93" width="6" height="6"/><rect class="base" x="81" y="77" width="6" height="6"/><rect class="base" x="117" y="63" width="6" height="6"/><rect class="base" x="153" y="77" width="6" height="6"/>
       <!-- kids playing ball: three plays on a loop (home run, fly out to left, grounder to short) -->
-      <g class="bb-kid batter" transform="translate(110.5 99)"><animateMotion dur="18s" repeatCount="indefinite" values="0.0,0.0;0.0,0.0;45.5,-16.0;9.5,-30.0;-26.5,-16.0;9.5,0.0;0.0,0.0;0.0,0.0;16.0,-6.0;16.0,-6.0;0.0,0.0;0.0,0.0;45.5,-16.0;45.5,-16.0;0.0,0.0;0.0,0.0" keyTimes="0.0000;0.1111;0.1611;0.2111;0.2611;0.3111;0.3278;0.4167;0.4667;0.5333;0.5889;0.7444;0.8278;0.8778;0.9667;1.0000" calcMode="linear"/><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><g class="bb-bat"><path class="bat" d="M1.6 -8 L7.5 -15"/><animateTransform attributeName="transform" type="rotate" values="0 1.6 -8;0 1.6 -8;-110 1.6 -8;0 1.6 -8;0 1.6 -8;-110 1.6 -8;0 1.6 -8;0 1.6 -8;-110 1.6 -8;0 1.6 -8;0 1.6 -8" keyTimes="0;0.0611;0.0667;0.0806;0.3944;0.4000;0.4139;0.7278;0.7333;0.7472;1" dur="18s" repeatCount="indefinite"/></g><path class="bb-arm" d="M0 -9 L1.6 -8"/></g>
+      <g class="bb-kid batter" transform="translate(110.5 99)"><animateMotion dur="18s" repeatCount="indefinite" values="0.0,0.0;0.0,0.0;45.5,-16.0;9.5,-30.0;-26.5,-16.0;9.5,0.0;0.0,0.0;0.0,0.0;16.0,-6.0;16.0,-6.0;0.0,0.0;0.0,0.0;45.5,-16.0;45.5,-16.0;0.0,0.0;0.0,0.0" keyTimes="0.0000;0.1111;0.1611;0.2111;0.2611;0.3111;0.3278;0.4167;0.4667;0.5333;0.5889;0.7444;0.8278;0.8778;0.9667;1.0000" calcMode="linear"/><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><g class="bb-bat"><animate attributeName="opacity" values="1;0;1;0;1;0;1" keyTimes="0;0.1111;0.3278;0.4167;0.5889;0.7444;0.9667" calcMode="discrete" dur="18s" repeatCount="indefinite"/><path class="bat" d="M1.6 -8 L7.5 -15"/><animateTransform attributeName="transform" type="rotate" values="0 1.6 -8;0 1.6 -8;-110 1.6 -8;0 1.6 -8;0 1.6 -8;-110 1.6 -8;0 1.6 -8;0 1.6 -8;-110 1.6 -8;0 1.6 -8;0 1.6 -8" keyTimes="0;0.0611;0.0667;0.0806;0.3944;0.4000;0.4139;0.7278;0.7333;0.7472;1" dur="18s" repeatCount="indefinite"/></g><path class="bb-arm" d="M0 -9 L1.6 -8"/></g>
       <g class="bb-kid pitcher" transform="translate(120 84)"><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><path class="bb-arm" d="M0 -9 L3 -12"/></g>
       <g class="bb-kid fielder" transform="translate(146 74)"><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><path class="bb-arm" d="M0 -9 L-3 -7"/><circle class="bb-glove" cx="-3.4" cy="-6.8" r="1.6"/></g>
       <g class="bb-kid shortstop" transform="translate(98 78)"><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><path class="bb-arm" d="M0 -9 L3 -7"/><circle class="bb-glove" cx="3.4" cy="-6.8" r="1.6"/></g><g class="bb-kid leftfield" transform="translate(52 90)"><path class="bb-leg" d="M-2 0 L0 -5 L2 0"/><path class="bb-shirt" d="M0 -5 V-10"/><circle class="bb-face" cx="0" cy="-12.6" r="2.4"/><path class="bb-cap" d="M-2.5 -13.2 a2.5 2.2 0 0 1 5 0 Z M2 -13.4 h2"/><path class="bb-arm" d="M0 -9 L3 -7"/><circle class="bb-glove" cx="3.4" cy="-6.8" r="1.6"/></g><circle class="bb-ball" r="1.4"><animateMotion dur="18s" repeatCount="indefinite" values="122.0,72.0;122.0,72.0;113.0,88.0;132.6,57.2;153.6,30.2;175.8,7.0;199.2,-12.4;224.0,-28.1;250.0,-40.0;250.0,-40.0;122.0,72.0;122.0,72.0;113.0,88.0;105.7,68.6;98.4,54.5;91.1,45.6;83.8,42.0;76.4,43.6;68.9,50.5;61.5,62.6;55.0,83.0;55.0,83.0;55.0,83.0;122.0,72.0;122.0,72.0;113.0,88.0;101.0,71.0;101.0,71.0;113.0,67.7;125.0,66.8;137.0,68.2;143.0,67.0;143.0,67.0;143.0,67.0;122.0,72.0" keyTimes="0.0000;0.0222;0.0667;0.0815;0.0963;0.1111;0.1259;0.1407;0.1556;0.1611;0.3333;0.3556;0.4000;0.4118;0.4236;0.4354;0.4472;0.4590;0.4708;0.4826;0.4944;0.5556;0.5611;0.6667;0.6889;0.7333;0.7778;0.7944;0.8028;0.8111;0.8194;0.8278;0.8778;0.8833;1.0000" calcMode="linear"/><animate attributeName="opacity" values="0;1;1;1;1;1;1;1;1;0;0;1;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;1;1;1;1;1;1;0;0" keyTimes="0.0000;0.0222;0.0667;0.0815;0.0963;0.1111;0.1259;0.1407;0.1556;0.1611;0.3333;0.3556;0.4000;0.4118;0.4236;0.4354;0.4472;0.4590;0.4708;0.4826;0.4944;0.5556;0.5611;0.6667;0.6889;0.7333;0.7778;0.7944;0.8028;0.8111;0.8194;0.8278;0.8778;0.8833;1.0000" calcMode="discrete" dur="18s" repeatCount="indefinite"/></circle>
@@ -101,8 +106,7 @@
       <g class="svcloth"><rect x="1" y="2" width="30" height="24" rx="2" fill="#fff" stroke="#0b6b3a" stroke-width="1.6"/><image href="assets/img/seaview-sv.png" x="6" y="4" width="20" height="20" preserveAspectRatio="xMidYMid meet"/></g>
     </g>
     <!-- bike path from the park along the river trail, under PCH, out to the sand -->
-    <path class="lawn" d="M790 236 L 1010 236 L 1010 320 H 790Z"/>
-    <path class="sand" d="M1010 236 C 1080 232 1140 236 1180 240 L 1236 320 H 1010Z"/>
+    <path class="sand" d="M1023 236 C 1080 232 1140 236 1180 240 L 1236 320 H 967Z"/>
     <!-- the Santa Ana River runs beside the trail, under the PCH bridge and out to the ocean -->
     <path class="channel-bank" d="M770 320 C 790 300 820 295 870 294 L 1214 292 L 1236 320Z"/>
     <path class="channel" d="M780 320 C 800 303 830 298 878 297 L 1212 295 L 1232 320Z"/>
@@ -110,14 +114,16 @@
     <!-- park lawn on the beach side of PCH, where the trail loops -->
     <path class="lawn" d="M1040 254 C 1090 251 1150 253 1186 258 L 1206 293 H 1040Z"/>
     <path class="bikepath" d="M-30 276 C 300 272 700 278 1000 278 C 1040 278 1070 280 1094 281"/>
+    <!-- gravel path from the trail up to the playground -->
+    <path class="sidepath" d="M500 276 C 560 272 598 262 634 243"/>
     <!-- paved beach walkway on the ocean side of PCH -->
-    <path class="beachwalk" d="M1036 239 H1048 L1132 320 H1095Z"/>
-    <path class="beachwalk-edge" d="M1036 239 L1095 320 M1048 239 L1132 320"/>
+    <path class="beachwalk" d="M1095 320 C 1074 292 1070 266 1096 246 L 1108 247 C 1088 266 1094 292 1132 320Z"/>
+    <path class="beachwalk-edge" d="M1095 320 C 1074 292 1070 266 1096 246 M1108 247 C 1088 266 1094 292 1132 320"/>
     <!-- the trail follows the river under PCH, meets the beach walkway in a T, and ends in a round plaza beside the river mouth -->
-    <path class="trail-loop" d="M1092 281 C 1100 274 1128 272 1146 275 C 1162 278 1160 287 1142 289 C 1124 291 1102 288 1092 281Z"/>
+    <path class="trail-loop" d="M1088 280 C 1098 268 1138 265 1163 268 C 1188 272 1186 287 1158 290 C 1130 292 1100 290 1088 280Z"/>
     <!-- a mom pushing a stroller, her little one walking beside her; they start on screen ahead of the bikes and walk straight to the playground; the little one climbs and slides five times, then they walk home -->
     <g class="fam walker"><g><animateTransform attributeName="transform" type="scale" values="1 1;-1 1;1 1" keyTimes="0;0.1625;0.8500" calcMode="discrete" dur="160s" begin="0s" repeatCount="indefinite"/><g transform="translate(-13 1.5) scale(.62)"><animate attributeName="opacity" values="1;0;1" keyTimes="0;0.1688;0.4169" calcMode="discrete" dur="160s" begin="0s" repeatCount="indefinite"/><path class="leg" d="M-3 0 L0 -13 L3.5 0"/><path class="torso wkc" d="M0 -13 L1 -25"/><circle class="face" cx="2" cy="-29.5" r="4.4"/><path class="hel kidh2" d="M-2.4 -30.6 a4.6 4.2 0 0 1 9.2 0Z"/><path class="arm" d="M1 -22 L9 -17"/></g><path class="leg" d="M-3 0 L0 -13 L3.5 0"/><path class="torso wmc" d="M0 -13 L1 -25"/><circle class="face" cx="2" cy="-29.5" r="4.4"/><path class="whair" d="M-2.2 -30 q-.5 -5 4.2 -5 q4.6 0 4.4 3.6 q-3 -1.6 -6 -.6 q-.6 4 -2.4 6.4z"/><path class="arm" d="M1 -22 L11 -17"/><path class="sframe" d="M11 -17 L15 -19 M14 -17 L18 -3 M27 -11 L28 -3"/><path class="sbody" d="M14 -10 C 14 -16 30 -17 30 -9 Q30 -6 27 -6 H17 Q14 -6 14 -10Z"/><path class="shood" d="M14.5 -11 C 14 -20 22 -23 26 -16 Z"/><circle class="swheel" cx="18" cy="-2.4" r="2.4"/><circle class="swheel" cx="28" cy="-2.4" r="2.4"/></g>
-      <animateMotion dur="160s" begin="0s" repeatCount="indefinite" keyPoints="0.42;1;1;0;0;0.42" keyTimes="0;0.1625;0.4231;0.6731;0.8500;1" calcMode="linear" path="M-30 276 C 200 275 420 275 540 268 C 590 264 612 252 630 241"/></g>
+      <animateMotion dur="160s" begin="0s" repeatCount="indefinite" keyPoints="0.42;1;1;0;0;0.42" keyTimes="0;0.1625;0.4231;0.6731;0.8500;1" calcMode="linear" path="M-30 276 C 200 276 400 276 500 276 C 560 272 598 262 630 245"/></g>
     <!-- the little one at the playground: up the ladder, down the slide, five times -->
     <g class="fam playkid" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1688;0.4169" calcMode="discrete" dur="160s" begin="0s" repeatCount="indefinite"/><g><animateTransform attributeName="transform" type="scale" values="-1 1;1 1;-1 1;1 1;-1 1;1 1;-1 1;1 1;-1 1;1 1;-1 1" keyTimes="0.0000;0.2038;0.2375;0.2513;0.2850;0.2988;0.3325;0.3463;0.3800;0.3938;1.0000" calcMode="discrete" dur="160s" begin="0s" repeatCount="indefinite"/><g transform="scale(.62)"><path class="leg" d="M-3 0 L0 -13 L3.5 0"/><path class="torso wkc" d="M0 -13 L1 -25"/><circle class="face" cx="2" cy="-29.5" r="4.4"/><path class="hel kidh2" d="M-2.4 -30.6 a4.6 4.2 0 0 1 9.2 0Z"/><path class="arm" d="M1 -22 L9 -17"/></g></g>
       <animateMotion dur="160s" begin="0s" repeatCount="indefinite" values="643.0,241.0;643.0,241.0;545.0,238.0;555.0,184.0;568.0,186.0;568.0,186.0;571.6,190.0;575.3,195.0;578.8,201.6;582.3,209.3;586.0,217.3;590.2,225.2;593.7,230.1;597.4,233.4;601.7,235.2;606.9,235.8;606.9,235.8;545.0,238.0;555.0,184.0;568.0,186.0;568.0,186.0;571.6,190.0;575.3,195.0;578.8,201.6;582.3,209.3;586.0,217.3;590.2,225.2;593.7,230.1;597.4,233.4;601.7,235.2;606.9,235.8;606.9,235.8;545.0,238.0;555.0,184.0;568.0,186.0;568.0,186.0;571.6,190.0;575.3,195.0;578.8,201.6;582.3,209.3;586.0,217.3;590.2,225.2;593.7,230.1;597.4,233.4;601.7,235.2;606.9,235.8;606.9,235.8;545.0,238.0;555.0,184.0;568.0,186.0;568.0,186.0;571.6,190.0;575.3,195.0;578.8,201.6;582.3,209.3;586.0,217.3;590.2,225.2;593.7,230.1;597.4,233.4;601.7,235.2;606.9,235.8;606.9,235.8;545.0,238.0;555.0,184.0;568.0,186.0;568.0,186.0;571.6,190.0;575.3,195.0;578.8,201.6;582.3,209.3;586.0,217.3;590.2,225.2;593.7,230.1;597.4,233.4;601.7,235.2;606.9,235.8;606.9,235.8;643.0,241.0;643.0,241.0" keyTimes="0.0000;0.1688;0.1900;0.2038;0.2075;0.2106;0.2114;0.2123;0.2131;0.2139;0.2147;0.2155;0.2163;0.2171;0.2179;0.2188;0.2213;0.2375;0.2513;0.2550;0.2581;0.2589;0.2598;0.2606;0.2614;0.2622;0.2630;0.2638;0.2646;0.2654;0.2663;0.2688;0.2850;0.2988;0.3025;0.3056;0.3064;0.3073;0.3081;0.3089;0.3097;0.3105;0.3113;0.3121;0.3129;0.3138;0.3163;0.3325;0.3463;0.3500;0.3531;0.3539;0.3548;0.3556;0.3564;0.3572;0.3580;0.3588;0.3596;0.3604;0.3613;0.3638;0.3800;0.3938;0.3975;0.4006;0.4014;0.4023;0.4031;0.4039;0.4047;0.4055;0.4063;0.4071;0.4079;0.4088;0.4113;0.4169;1.0000" calcMode="linear"/></g>
@@ -142,7 +148,7 @@
     <path class="pch-wall" d="M1004.2 264 L982.4 296 M1051.8 264 L1073.6 296"/>
     <path class="pch-rail" d="M1005.6 262 L1050.4 262"/>
     <!-- small California Route 1 (Pacific Coast Highway) sign on a post beside the road -->
-    <g class="pch-sign" transform="translate(1064 214)">
+    <g class="pch-sign" transform="translate(1039 208)">
       <path d="M13 22 V45" stroke="#8a8f96" stroke-width="2.4" stroke-linecap="round"/>
       <path d="M13 0 C 19 3.6 23.4 8.6 25.4 16 C 26 19.6 24.8 23.4 22 24 H4 C 1.2 23.4 0 19.6 0.6 16 C 2.6 8.6 7 3.6 13 0Z" fill="#fff"/>
       <path d="M13 1.8 C 18.2 5 22 9.4 23.8 15.8 C 24.3 18.8 23.3 21.8 21.3 22.3 H4.7 C 2.7 21.8 1.7 18.8 2.2 15.8 C 4 9.4 7.8 5 13 1.8Z" fill="#00704a"/>

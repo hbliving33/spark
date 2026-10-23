@@ -789,3 +789,4 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .guard .g-face { fill: #f2c39b; } .scene .guard .g-hair { fill: #5a3b22; }
 .scene .guard .g-arm { stroke: #d62b1f; stroke-width: 1.6; stroke-linecap: round; } .scene .guard .g-bino { fill: #1b2733; }
 .scene .guard .g-face, .scene .guard .g-hair, .scene .guard .g-bino { stroke: none; }
+.scene .sidepath { fill: none; stroke: #c9ad7f; stroke-width: 7; stroke-linecap: round; stroke-dasharray: 1 0; }
