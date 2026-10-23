@@ -165,7 +165,8 @@ window.SP = {
 })();
 
 // Visit counter: adds one to today's count for this page, once per visit.  No cookies, no personal data.
-(() => {
+// Runs after the page loads, because the database settings (config.js) load after this file.
+addEventListener("DOMContentLoaded", () => {
   const C = window.SP_CONFIG;
   if (!C || !C.supabaseUrl || /^(localhost|127\.)/.test(location.hostname)) return;
   const path = location.pathname.replace(/index\.html$/, "") || "/";
@@ -173,4 +174,4 @@ window.SP = {
   fetch(C.supabaseUrl + "/rest/v1/rpc/count_hit", { method: "POST", keepalive: true,
     headers: { apikey: C.supabaseAnonKey, "Content-Type": "application/json" },
     body: JSON.stringify({ p_site: "suburbiapark", p_path: path }) }).catch(() => {});
-})();
+});
