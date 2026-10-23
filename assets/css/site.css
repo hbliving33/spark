@@ -790,3 +790,5 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .guard .g-arm { stroke: #d62b1f; stroke-width: 1.6; stroke-linecap: round; } .scene .guard .g-bino { fill: #1b2733; }
 .scene .guard .g-face, .scene .guard .g-hair, .scene .guard .g-bino { stroke: none; }
 .scene .sidepath { fill: none; stroke: #c9ad7f; stroke-width: 7; stroke-linecap: round; stroke-dasharray: 1 0; }
+.scene .sidepath { stroke: #d6cbb1; stroke-width: 6; }
+.scene .bench .bn-leg { stroke: #5b4636; stroke-width: 1.6; stroke-linecap: round; fill: none; } .scene .bench .bn-seat, .scene .bench .bn-back { fill: #8a5a2b; }
