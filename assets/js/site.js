@@ -163,3 +163,14 @@ window.SP = {
   load(); setInterval(load, FRESH);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) { tick(); load(); } });
 })();
+
+// Visit counter: adds one to today's count for this page, once per visit.  No cookies, no personal data.
+(() => {
+  const C = window.SP_CONFIG;
+  if (!C || !C.supabaseUrl || /^(localhost|127\.)/.test(location.hostname)) return;
+  const path = location.pathname.replace(/index\.html$/, "") || "/";
+  try { const k = "sp-hit:" + path; if (sessionStorage.getItem(k)) return; sessionStorage.setItem(k, "1"); } catch (e) {}
+  fetch(C.supabaseUrl + "/rest/v1/rpc/count_hit", { method: "POST", keepalive: true,
+    headers: { apikey: C.supabaseAnonKey, "Content-Type": "application/json" },
+    body: JSON.stringify({ p_site: "suburbiapark", p_path: path }) }).catch(() => {});
+})();
