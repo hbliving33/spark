@@ -783,3 +783,9 @@ h1 em, h2 em { font-style: normal; color: var(--red); }
 .scene .tower .tpole { stroke: #6b7280; stroke-width: 1.6; fill: none; }
 .scene .plaza { fill: #d9d3c4; stroke: #b3aa96; stroke-width: 1.4; } .scene .plaza-ring { fill: none; stroke: #d6cdb8; stroke-width: 1.2; stroke-dasharray: 3 3; }
 .scene .trail-loop { fill: none; stroke: #d9d3c4; stroke-width: 6; stroke-linejoin: round; }
+.scene .batter .bb-shirt, .scene .batter .bb-arm { stroke: #d62b1f; } .scene .batter .bb-cap { fill: #14304d; stroke: #14304d; }
+.scene .guard .g-leg { fill: none; stroke: #f2c39b; stroke-width: 1.8; stroke-linecap: round; }
+.scene .guard .g-shirt { stroke: #d62b1f; stroke-width: 3.6; stroke-linecap: round; }
+.scene .guard .g-face { fill: #f2c39b; } .scene .guard .g-hair { fill: #5a3b22; }
+.scene .guard .g-arm { stroke: #d62b1f; stroke-width: 1.6; stroke-linecap: round; } .scene .guard .g-bino { fill: #1b2733; }
+.scene .guard .g-face, .scene .guard .g-hair, .scene .guard .g-bino { stroke: none; }
