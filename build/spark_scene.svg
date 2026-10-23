@@ -79,8 +79,8 @@
     <path class="sidepath" d="M514 270.5 C 546 267 574 258 598 244"/>
     <g class="bench" transform="translate(472 257) scale(1.25)"><path class="bn-leg" d="M1 6 V11 M15 6 V11"/><rect class="bn-seat" x="-1" y="4" width="18" height="2.6" rx="1"/><rect class="bn-back" x="0" y="-1.5" width="16" height="2.4" rx="1"/></g>
     <!-- paved beach walkway on the ocean side of PCH -->
-    <path class="beachwalk" d="M1095 320 C 1076 294 1078 270 1112 256 L 1128 256 C 1096 272 1094 294 1132 320Z"/>
-    <path class="beachwalk-edge" d="M1095 320 C 1076 294 1078 270 1112 256 M1128 256 C 1096 272 1094 294 1132 320"/>
+    <path class="beachwalk" d="M1095 320 C 1084 296 1092 266 1113 238 L 1123 238 C 1104 266 1102 296 1132 320Z"/>
+    <path class="beachwalk-edge" d="M1095 320 C 1084 296 1092 266 1113 238 M1123 238 C 1104 266 1102 296 1132 320"/>
     <!-- the trail follows the river under PCH, meets the beach walkway in a T, and ends in a round plaza beside the river mouth -->
     <path class="trail-loop" d="M1088 280 C 1098 268 1138 265 1163 268 C 1188 272 1186 287 1158 290 C 1130 292 1100 290 1088 280Z"/>
     <!-- a mom pushing a stroller, her little one walking beside her; they start on screen ahead of the bikes and walk straight to the playground; the little one climbs and slides five times, then they walk home -->
