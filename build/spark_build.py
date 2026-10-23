@@ -444,8 +444,7 @@ helpp = f"""<main>
 </main>"""
 
 pages = [
-    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/vendor/leaflet/leaflet.js"></script>
-<script src="assets/js/map.js"></script>'),
+    ('index.html', 'Suburbia Park | Huntington Beach Neighborhood', 'The community website for the Suburbia Park neighborhood in Huntington Beach, California: calendar, bulletin board and suggestion box.', home, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/home.js"></script>\n<script src="assets/vendor/leaflet/leaflet.js"></script>\n<script src="assets/js/map.js"></script>'),
     ('calendar.html', 'Calendar | Suburbia Park', 'Suburbia Park community calendar: neighborhood events in Huntington Beach.', cal, '<script src="assets/js/data.js"></script>\n<script src="assets/js/city.js"></script>\n<script src="assets/js/calendar.js"></script>'),
     ('board.html', 'Bulletin Board | Suburbia Park', 'Suburbia Park bulletin board: lost and found, for sale, free, recommendations and news.', board, '<script src="assets/js/data.js"></script>\n<script src="assets/js/board.js"></script>'),
     ('suggestions.html', 'Suggestion Box | Suburbia Park', 'Send an idea to make Suburbia Park even better.', sugg, ''),
