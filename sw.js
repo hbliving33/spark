@@ -1,5 +1,5 @@
 // Suburbia Park app: offline support.  Pages load fresh when online and fall back to the last copy offline.
-const CACHE = "sp-0ee9bf32d8";
+const CACHE = "sp-b27d8f63bf";
 const CORE = ["./", "index.html", "calendar.html", "board.html", "businesses.html", "suggestions.html", "account.html", "rules.html", "privacy.html", "offline.html", "manifest.webmanifest", "assets/img/mark.svg", "assets/img/icon-192.png"];
 const OFFLINE_HTML = '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Offline</title><body style="font-family:system-ui;padding:40px;text-align:center"><h1>You are offline</h1><p>Check your connection, then try again.</p><p><a href="./">Try again</a></p></body>';
 const offline = () => new Response(OFFLINE_HTML, { headers: { "Content-Type": "text/html; charset=utf-8" } });
