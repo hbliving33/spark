@@ -1,7 +1,7 @@
--- Page visit counter for suburbiapark.com and hbliving.com (one table, one row per site, page and day).
+-- Page visit counter for suburbiapark.com (one row per page per day).
 -- Stores no names, emails, IP addresses or cookies.  Run once in Supabase: SQL Editor, New query, paste, Run.
 create table if not exists public.page_hits (
-  site  text not null check (site in ('suburbiapark', 'hbliving')),
+  site  text not null check (site = 'suburbiapark'),
   path  text not null check (char_length(path) <= 120),
   day   date not null default ((now() at time zone 'America/Los_Angeles')::date),
   hits  integer not null default 0,
