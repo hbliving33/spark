@@ -113,6 +113,11 @@
       }
     });
     if (error) throw error;
+    // Let community@suburbiapark.com know someone is waiting for approval
+    const street = (document.querySelector('select[name="street_id"] option:checked') || {}).textContent || "";
+    fetch("https://formsubmit.co/ajax/community@suburbiapark.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ _subject: "New Suburbia Park sign-up waiting for approval", _template: "table",
+        name: clean(f.first_name, 40) + " " + clean(f.last_initial, 1) + ".", address: clean(f.house_number, 8) + " " + street, email: f.email.trim() }) }).catch(() => {});
   };
   C.signIn = async (email) => {
     const { error } = await db.auth.signInWithOtp({ email: email.trim(), options: { shouldCreateUser: false, emailRedirectTo: back() } });
