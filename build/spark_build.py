@@ -468,7 +468,7 @@ for f, t, d, b, s in pages:
 # Stamp the offline worker with a version from every page, script and style, so phones pick up each update
 import glob
 h = hashlib.md5()
-for f in sorted(glob.glob(str(ROOT / '*.html')) + glob.glob(str(ROOT / 'assets/js/*.js')) + glob.glob(str(ROOT / 'assets/css/*.css'))):
+for f in sorted(glob.glob(str(ROOT / '*.html')) + glob.glob(str(ROOT / 'assets/js/*.js')) + glob.glob(str(ROOT / 'assets/css/*.css')) + glob.glob(str(ROOT / 'assets/img/*'))):
     h.update(pathlib.Path(f).read_bytes())
 sw = (ROOT / 'sw.js').read_text()
 sw = re.sub(r'const CACHE = "sp-[^"]*";', f'const CACHE = "sp-{h.hexdigest()[:10]}";', sw)
